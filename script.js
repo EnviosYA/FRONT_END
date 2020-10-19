@@ -45,3 +45,8 @@ function fixed(){
         header.classList.remove("sticky");
     }
 }
+
+
+fetch('https://localhost:44311/api/Usuario')
+.then(response => response.json())
+.then(data=> console.log(data));
