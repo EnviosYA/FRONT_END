@@ -1,26 +1,24 @@
-.imagenDeFondo{
-  margin: 2% 5% 0 0;
-  float: right;
+body{
+  background-color: #017bab;
 }
 
 .formulario{
   text-align: center;
   margin: auto;
+  margin-top: 5%;
   width: 400px;
   background:#ececec;
   border:solid #ccc;
-  border-width: 2px 0;
-  margin: 8% 0 0 17%;
+  border-width: 5px 0;
   padding:15px 35px;
-  position: absolute;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .formulario input{
   display: inline-block;
   width: 100%;
-  margin: 6px;
-  padding: 4px;
+  margin: 10px;
+  padding: 6px;
   font-size: 1.2em;
 }
 
@@ -28,14 +26,19 @@
   border: none;
   outline: none;
   height: 40px;
+  margin: 3%;
   font-family: Helvetica, sans-serif;
- background-color: black;
- color: white;
+  background-color: black;
+  color: white;
 }
 
-.formulario:hover {
+.formulario [type="textarea"]{
+  padding: 30px;
+}
+
+.formulario:hover{
   transition: .5s ease-in-out;
-  background-color: rgba(52, 58, 64, 1);;
+  background-color: rgba(52, 58, 64, 1);
 }
 
 .formulario:hover input {
@@ -51,10 +54,10 @@
 .formulario a{
   text-decoration: none;
   font-size: 20px;
-  padding: 10%;
-  line-height: 20px;
+  padding: 15%;
+  height: 20px;
+  /* line-height: 20px; */
   color: #ececec;
-
 }
 
 .formulario h2{
@@ -72,4 +75,22 @@
   font-size: 20px;
   color: black;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#contenedor #textoLogin a{
+  text-decoration: none;
+  padding: 11px;
+  margin: 20px;
+  color:black;
+  font-weight: bold;
+}
+
+#contenedor #textoLogin a:hover{
+  transition: .5s ease-in-out;
+  background-color: rgba(52, 58, 64, 1);
+  color: white;
+}
+
+#registro{
+  background-color: black;
 }
