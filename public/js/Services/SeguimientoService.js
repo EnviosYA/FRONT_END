@@ -1,7 +1,7 @@
-import {GETSUCURSALPORENVIO} from "../Constants/Constants.js";
+import {SUCURSAL} from "../Constants/Constants.js";
 
 const getSucursalPorEnvio = (id) => {
-    let url = GETSUCURSALPORENVIO + id;
+    let url = SUCURSAL + id;
 
     return fetch(url)
             .then(data => data.json())

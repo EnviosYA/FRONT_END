@@ -1,4 +1,4 @@
-import * as Service from "./SeguimientoService.js";
+import * as Service from "../Services/SeguimientoService.js";
 
 window.onload = () => {
     document.getElementById('getSeguimiento').onclick = function () {
