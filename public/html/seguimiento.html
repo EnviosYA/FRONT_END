@@ -1,22 +1,20 @@
 <head>
-  <link rel="stylesheet" href="../css/sequimiento.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/seguimiento.css" />
 </head>
 <main>
-    <section id="seguimiento">
-      <div id="ingreso-busqueda">
-        <h3>Seguimiento de su paquete</h3>
-        <input type="text" class="control" id="input-envio" name="Id-Envio" placeholder="Número de envio">
-        <input type="submit" name="" id="getSeguimiento" value="Enviar" class="button">
+  <section id="seguimiento">
+    <div id="ingreso-busqueda">
+      <h2>Seguimiento de su paquete</h2>
+      <input type="text" class="control" id="input-envio" name="Id-Envio" placeholder="Número de envio">
+      <input type="submit" name="" id="getSeguimiento" value="Enviar" class="button">
+      <div id="error" style="display: none">
+        Número de envío incorrecto. Por favor corrobore el número de seguimiento.
       </div>
-      <div class="seguimiento-sucursal">
-        <div class="seguimiento-estado">
-          
-        </div>
-      </div>
-    </section>
-  </main>
-  <script type="module" src="/js/App.js"></script>
-  <script type="module" src="/js/SucursalPorEnviosService.js"></script>
-  <script type="module" src="/js/Constants.js"></script>
-</body>
+    </div>
+  </section>
+  <iframe class="mapa bordes" id="gmaps" style="display: none" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3277.2220273314556!2d-58.27015768530124!3d-34.77518548041548!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a32eb0350b768f%3A0xbd0aa21eac3ef032!2sUniversidad%20Nacional%20Arturo%20Jauretche!5e0!3m2!1ses-419!2sar!4v1603994574996!5m2!1ses-419!2sar" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+</main>
+
+  <script type="module" src="../js/Apps/AppSeguimiento.js"></script>
+  <script type="module" src="../js/Services/SeguimientoService.js"></script>

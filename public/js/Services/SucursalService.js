@@ -1,7 +1,7 @@
-import {POST_DELETE_DIRECCION, GETDIRECCION, GETLOCALIDADES, GET_PUT_SUCURSALES }from "../Constants/ConstantBranchOffices.js";
+import {LOCALIDAD, SUCURSAL} from "../Constants/Constants.js";
 
-const GetLocalidades= () => {
-    let url = GETLOCALIDADES;
+const getLocalidades= () => {
+    let url = LOCALIDAD;
     return fetch(url, {
         method:"GET"
     })
@@ -14,8 +14,8 @@ const GetLocalidades= () => {
     .catch(err => console.log('ERROR: ' + err))
 }
 
-const GetSucursales= () => {
-    let url = GET_PUT_SUCURSALES;
+const getSucursales= () => {
+    let url = SUCURSAL;
     return fetch(url, {
         method:"GET"
     })
@@ -28,4 +28,4 @@ const GetSucursales= () => {
     .catch(err => console.log('ERROR: ' + err))
 }
 
-export {GetLocalidades, GetSucursales};
+export {getLocalidades, getSucursales};
