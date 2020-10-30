@@ -4,6 +4,7 @@ body{
 
 .formulario{
   text-align: center;
+  align-items: center;
   margin: auto;
   margin-top: 5%;
   width: 400px;
@@ -22,13 +23,19 @@ body{
   font-size: 1.2em;
 }
 
-.formulario input[type="submit"]{
+#ingresar{
+  z-index: 10;
   border: none;
   outline: none;
   height: 40px;
-  margin: 3%;
-  font-family: Helvetica, sans-serif;
-  background-color: black;
+  width: 200px;
+  font-family: "Roboto", sans-serif;
+  background-color: white;
+  color:black;
+}
+#ingresar:hover{
+  text-align: center;
+  background-color:black;
   color: white;
 }
 
@@ -46,11 +53,7 @@ body{
   stroke-dashoffset: -480;
 }
 
-.formulario:hover input[type="submit"]{
-  text-align: center;
-  background-color:white;
-  color: black;
-}
+
 
 .formulario a{
   text-decoration: none;
@@ -97,5 +100,8 @@ body{
 }
 
 #noCuenta{
+  font-size: 15px;
+  display: inline-block;
+  color: black;
   padding: 0;
 }

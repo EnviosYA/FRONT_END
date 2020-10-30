@@ -1,13 +1,20 @@
-const URLBASE = 'https://localhost:44311/api/';
+const URLBASECUENTA = 'https://localhost:44311/api/Cuenta';
+const URLBASEUSUARIO = 'https://localhost:44312/api/';
+const URLBASEENVIO = 'https://localhost:44313/api/';
+const URLBASESUCURSAL = "https://localhost:44314/api/";
 
-const GETSUCURSALPORENVIO = URLBASE + 'SucursalPorEnvio/';
+//ENVIO
+const ENVIO = URLBASEENVIO + "Envio";
+const SUCURSALPORENVIO = URLBASEENVIO + "SucursalPorEnvio";
 
-export default GETSUCURSALPORENVIO;
+const TIPOPAQUETE = URLBASEENVIO + "TipoPaquetes";
 
-export class SucursalPorEnvio{
-    constructor(idSucursal, estado, fecha){
-        this.idSucursal = idSucursal,
-        this.estado = estado,
-        this.fecha = fecha
-    }
-}
+
+//SUCURSAL
+const DIRECCION = URLBASESUCURSAL + "direcciones";
+
+const LOCALIDAD = URLBASESUCURSAL + "localidades";
+
+const SUCURSAL = URLBASESUCURSAL + "sucursales";
+
+export {DIRECCION, LOCALIDAD, SUCURSAL, SUCURSALPORENVIO, TIPOPAQUETE, URLBASECUENTA, URLBASEUSUARIO, ENVIO};
