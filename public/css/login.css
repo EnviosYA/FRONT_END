@@ -38,6 +38,7 @@ body{
 
 .formulario:hover{
   transition: .5s ease-in-out;
+  color: white;
   background-color: rgba(52, 58, 64, 1);
 }
 
@@ -93,4 +94,8 @@ body{
 
 #registro{
   background-color: black;
+}
+
+#noCuenta{
+  padding: 0;
 }
