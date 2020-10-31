@@ -5,7 +5,7 @@ const URLBASESUCURSAL = "https://localhost:44314/api/";
 
 //ENVIO
 const ENVIO = URLBASEENVIO + "Envio";
-const SUCURSALPORENVIO = URLBASEENVIO + "SucursalPorEnvio";
+const SUCURSALPORENVIO = URLBASEENVIO + "SucursalPorEnvio/";
 
 const TIPOPAQUETE = URLBASEENVIO + "TipoPaquetes";
 
