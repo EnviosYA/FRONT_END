@@ -47,6 +47,6 @@ function fixed(){
 }
 
 
-fetch('https://localhost:44311/api/Usuario')
-.then(response => response.json())
-.then(data=> console.log(data));
+// fetch('https://localhost:44311/api/Usuario')
+// .then(response => response.json())
+// .then(data=> console.log(data));
