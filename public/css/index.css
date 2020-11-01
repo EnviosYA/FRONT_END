@@ -12,6 +12,8 @@ body {
 body {
   display: flex;
   flex-direction: column;
+  
+  font-style: "Roboto", sans-serif;
 }
 
 body > header {
@@ -34,6 +36,7 @@ body > header nav a {
 
 main {
   flex-grow: 1;
+  background-color: white;
 }
 
 footer {

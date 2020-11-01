@@ -2,7 +2,7 @@ import { seguimiento } from "../js/Apps/AppSeguimiento.js";
 
 let links = document.querySelectorAll(".links");
 let main = document.querySelector("main");
-
+console.log(links);
 links.forEach( link => {
     link.addEventListener("click", e => {
         e.preventDefault();
@@ -21,8 +21,27 @@ window.addEventListener("hashchange", () => {
     console.log(url);
     ajax("get", url, (response) => {
         main.innerHTML = response;
-        if(localizacion == "Seguimiento"){
-            seguimiento();
+
+        switch(localizacion){
+            case "Seguimiento":
+                seguimiento();
+                break;
+            case "Login":
+                let registrarse = document.getElementById("noCuenta");
+                registrarse.addEventListener("click", e=>{
+                    e.preventDefault();
+                    location.hash = e.target.dataset.hash;
+                    let url = location.hash.split("#")[1] + ".html";
+                    console.log(url);
+                    ajax("get", url, (response) => {
+                        main.innerHTML = response;
+                    });
+                });
+                break;
+            case "Sucursales":
+                break;
+            case "Contacto":
+                break;
         }
       });
 });

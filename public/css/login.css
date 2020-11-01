@@ -5,26 +5,28 @@ body{
 .formulario{
   text-align: center;
   align-items: center;
-  margin: auto;
-  margin-top: 5%;
   width: 400px;
-  background:#ececec;
-  border:solid #ccc;
-  border-width: 5px 0;
-  padding:15px 35px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 20px 30px;
+    margin: auto;
+    margin-top: 25px;
+    border-radius: 10px;
+    background: #4e4d4d;
+    box-shadow: 2px 3px 5px #028ec5;
+    color: white;
+  font-family: "Roboto", sans-serif;
 }
 
 .formulario input{
   display: inline-block;
   width: 100%;
-  margin: 10px;
+  margin: 7px;
   padding: 6px;
-  font-size: 1.2em;
+  font-family: "Roboto", sans-serif;  
 }
 
 #ingresar{
   z-index: 10;
+  margin-top: 5px;
   border: none;
   outline: none;
   height: 40px;
@@ -43,30 +45,20 @@ body{
   padding: 30px;
 }
 
-.formulario:hover{
-  transition: .5s ease-in-out;
-  color: white;
-  background-color: rgba(52, 58, 64, 1);
-}
-
 .formulario:hover input {
   stroke-dashoffset: -480;
 }
-
-
 
 .formulario a{
   text-decoration: none;
   font-size: 20px;
   padding: 15%;
   height: 20px;
-  /* line-height: 20px; */
   color: #ececec;
 }
 
 .formulario h2{
   margin: 10px;
-  margin-top: 25px;
 }
 
 #textoLogin{
@@ -102,6 +94,37 @@ body{
 #noCuenta{
   font-size: 15px;
   display: inline-block;
-  color: black;
+  color: white;
   padding: 0;
+  margin-top: 10px;
+}
+
+#noCuenta:hover{
+  color: gray;
+}
+
+.button{
+  width: 100%;
+  height: 40px;
+  margin-bottom: 16px;
+  background: #14a1da;
+  border: 1px solid #156785;
+  border-radius: 5px;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  text-shadow: 1px 1px rgb(90, 89, 89);
+  color: white;
+  cursor: pointer;
+  transition: all 175ms;
+}
+
+.button:hover{
+  border-radius: 8px;
+  box-shadow: 0px 0px 2px rgb(168, 177, 226);
+  background-color: rgb(218, 216, 216);
+  color: #14a1da;
+  font-size: 22px;
+  font-weight: bolder;
+  text-shadow: 1px 1px rgb(179, 179, 179);
 }
