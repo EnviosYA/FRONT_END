@@ -5,7 +5,7 @@ export function maquetarSucursales(){
     let sucursales = getSucursales();
     console.log(sucursales);
 
-    sucursales.then(sucursales => sucursales.forEach(sucursal => {
+    sucursales.then(sucursales => sucursales.forEach(sucursal => { 
         divSucursales.innerHTML += 
            `
                 <div class="sucursal">
