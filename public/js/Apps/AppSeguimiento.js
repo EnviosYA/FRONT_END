@@ -3,6 +3,12 @@ import * as Service from "../Services/SeguimientoService.js";
 export const seguimiento = () => {
     document.getElementById('getSeguimiento').onclick = () => {
         var idEnvio = document.getElementById('input-envio').value;
+        if(idEnvio == ""){
+            document.getElementById('sinEnvio').style.display = "block";
+            document.getElementById('envioIncorrecto').style.display = "none";
+            document.getElementById('input-envio').classList.remove("control");
+            document.getElementById('input-envio').classList.add("input-error");
+        }
         getSucursalPorEnvio(idEnvio);
     }
 }
@@ -13,7 +19,8 @@ function getSucursalPorEnvio(id) {
             .then(x => {
                 console.log(x)
                 if(x.length === 0){
-                    document.getElementById("error").style.display = "block";
+                    document.getElementById('sinEnvio').style.display = "none";
+                    document.getElementById("envioIncorrecto").style.display = "block";
                 } else {
                     document.getElementById("ingreso-busqueda").style.display = "none";
                     var seguimiento = document.getElementById("seguimiento").className += "bordes";

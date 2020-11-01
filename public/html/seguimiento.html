@@ -7,7 +7,10 @@
       <h2>Seguimiento de su paquete</h2>
       <input type="text" class="control" id="input-envio" name="Id-Envio" placeholder="Número de envio">
       <input type="submit" name="" id="getSeguimiento" value="Enviar" class="button">
-      <div id="error" style="display: none">
+      <div id="sinEnvio" class="error" style="display: none">
+        Ingrese el número de envío por favor.
+      </div>
+      <div id="envioIncorrecto" class="error" style="display: none">
         Número de envío incorrecto. Por favor corrobore el número de seguimiento.
       </div>
     </div>
