@@ -2,7 +2,7 @@ import { seguimiento } from "../js/Apps/AppSeguimiento.js";
 
 let links = document.querySelectorAll(".links");
 let main = document.querySelector("main");
-console.log(links);
+
 links.forEach( link => {
     link.addEventListener("click", e => {
         e.preventDefault();
@@ -18,7 +18,6 @@ if(location.hash){
 window.addEventListener("hashchange", () => {
     let localizacion = location.hash.split("#")[1];
     let url = localizacion + ".html";
-    console.log(url);
     ajax("get", url, (response) => {
         main.innerHTML = response;
 
@@ -32,7 +31,6 @@ window.addEventListener("hashchange", () => {
                     e.preventDefault();
                     location.hash = e.target.dataset.hash;
                     let url = location.hash.split("#")[1] + ".html";
-                    console.log(url);
                     ajax("get", url, (response) => {
                         main.innerHTML = response;
                     });

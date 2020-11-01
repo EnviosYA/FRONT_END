@@ -1,14 +1,8 @@
-import { SUCURSALPORENVIO } from "../Constants/Constants.js";
+import { URLSUCURSALPORENVIO } from "../Constants/Constants.js";
+import { get, post} from "../Services/Requests.js";
 
-const getSucursalPorEnvio = (id) => {
-    let url = SUCURSALPORENVIO + id;
-
-    return fetch(url)
-            .then(data => data.json())
-            .then(seguimiento => {
-                return seguimiento
-            })
-            .catch(err => console.log("Error: " + err));
+const getSucursalPorEnvio = () => {
+    get(URLSUCURSALPORENVIO);
 }
 
 export default getSucursalPorEnvio;
