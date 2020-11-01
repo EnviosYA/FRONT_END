@@ -1,8 +1,14 @@
 import * as Service from "../Services/SeguimientoService.js";
 
-window.onload = () => {
-    document.getElementById('getSeguimiento').onclick = function () {
+export const seguimiento = () => {
+    document.getElementById('getSeguimiento').onclick = () => {
         var idEnvio = document.getElementById('input-envio').value;
+        if(idEnvio == ""){
+            document.getElementById('sinEnvio').style.display = "block";
+            document.getElementById('envioIncorrecto').style.display = "none";
+            document.getElementById('input-envio').classList.remove("control");
+            document.getElementById('input-envio').classList.add("input-error");
+        }
         getSucursalPorEnvio(idEnvio);
     }
 }
@@ -13,7 +19,8 @@ function getSucursalPorEnvio(id) {
             .then(x => {
                 console.log(x)
                 if(x.length === 0){
-                    document.getElementById("error").style.display = "block";
+                    document.getElementById('sinEnvio').style.display = "none";
+                    document.getElementById("envioIncorrecto").style.display = "block";
                 } else {
                     document.getElementById("ingreso-busqueda").style.display = "none";
                     var seguimiento = document.getElementById("seguimiento").className += "bordes";
@@ -35,9 +42,9 @@ function maquetarSeguimiento(seguimiento){
                 <div class="seguimiento-estado">
                     <ul>
                         <li><b>ID Sucursal:</b> ${element.idSucursal}</li>
-                        <li><b>Estado del envío:</b> ${element.estado}</li>
-                        <li><b>Fecha:</b> ${fecha.getDate()}-${fecha.getMonth()+1}-
-                            ${fecha.getUTCFullYear()}</li>
+                        <li><i>nombre de la sucursal</i></li>
+                        <li>${element.estado}</li>
+                        <li>${fecha.getDate()}-${fecha.getMonth()+1}-${fecha.getUTCFullYear()}</li>
                     </ul>    
                 </div>
             `;
