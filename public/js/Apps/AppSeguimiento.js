@@ -14,7 +14,7 @@ export const seguimiento = () => {
 }
 
 function getSucursalPorEnvio(id) {
-    
+        
     Service.default(id)
             .then(x => {
                 console.log(x)

@@ -1,4 +1,5 @@
 import { seguimiento } from "../js/Apps/AppSeguimiento.js";
+import {maquetarSucursales} from "../js/Apps/AppSucursales.js";
 
 let links = document.querySelectorAll(".links");
 let main = document.querySelector("main");
@@ -37,6 +38,7 @@ window.addEventListener("hashchange", () => {
                 });
                 break;
             case "Sucursales":
+                maquetarSucursales();
                 break;
             case "Contacto":
                 break;
@@ -68,8 +70,3 @@ function fixed(){
         header.classList.remove("sticky");
     }
 }
-
-
-// fetch('https://localhost:44311/api/Usuario')
-// .then(response => response.json())
-// .then(data=> console.log(data));
