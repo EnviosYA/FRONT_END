@@ -1,7 +1,7 @@
 import * as Service from "../Services/SeguimientoService.js";
 
-window.onload = () => {
-    document.getElementById('getSeguimiento').onclick = function () {
+export const seguimiento = () => {
+    document.getElementById('getSeguimiento').onclick = () => {
         var idEnvio = document.getElementById('input-envio').value;
         getSucursalPorEnvio(idEnvio);
     }
