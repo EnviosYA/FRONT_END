@@ -42,9 +42,9 @@ function maquetarSeguimiento(seguimiento){
                 <div class="seguimiento-estado">
                     <ul>
                         <li><b>ID Sucursal:</b> ${element.idSucursal}</li>
-                        <li><b>Estado del envío:</b> ${element.estado}</li>
-                        <li><b>Fecha:</b> ${fecha.getDate()}-${fecha.getMonth()+1}-
-                            ${fecha.getUTCFullYear()}</li>
+                        <li><i>nombre de la sucursal</i></li>
+                        <li>${element.estado}</li>
+                        <li>${fecha.getDate()}-${fecha.getMonth()+1}-${fecha.getUTCFullYear()}</li>
                     </ul>    
                 </div>
             `;
