@@ -1,31 +1,18 @@
-import {LOCALIDAD, SUCURSAL} from "../Constants/Constants.js";
+import {URLLOCALIDAD, URLSUCURSAL, URLDIRECCION} from "../Constants/Constants.js";
+import { get, post} from "../Services/Requests.js";
 
 const getLocalidades= () => {
-    let url = LOCALIDAD;
-    return fetch(url, {
-        method:"GET"
-    })
-    .then(response => { 
-        return response.json()
-    })
-    .then(json => {
-        return json;
-    })
-    .catch(err => console.log('ERROR: ' + err))
+    get(URLLOCALIDAD);
 }
 
 const getSucursales= () => {
-    let url = SUCURSAL;
-    return fetch(url, {
-        method:"GET"
-    })
-    .then(response => { 
-        return response.json()
-    })
-    .then(json => {
-        return json;
-    })
-    .catch(err => console.log('ERROR: ' + err))
+    get(URLSUCURSAL);
 }
 
-export {getLocalidades, getSucursales};
+const postDireccion = (direccion) => {
+    post(URLDIRECCION, direccion)
+}
+
+
+
+export {getLocalidades, getSucursales, postDireccion};
