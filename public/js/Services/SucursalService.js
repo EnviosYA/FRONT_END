@@ -2,15 +2,15 @@ import {URLLOCALIDAD, URLSUCURSAL, URLDIRECCION} from "../Constants/Constants.js
 import { get, post} from "../Services/Requests.js";
 
 const getLocalidades= () => {
-    get(URLLOCALIDAD);
+    return get(URLLOCALIDAD);
 }
 
 const getSucursales= () => {
-    get(URLSUCURSAL);
+    return get(URLSUCURSAL);
 }
 
 const postDireccion = (direccion) => {
-    post(URLDIRECCION, direccion)
+    return post(URLDIRECCION, direccion)
 }
 
 
