@@ -50,8 +50,8 @@ footer {
   text-align: center;
 }
 
-h5 {
-  padding-top: 90px;
+.profile-description h5 {
+  padding-top: 50px;
   padding-left: 25%;
   padding-right: 25%;
   line-height: 30px;
@@ -99,7 +99,7 @@ h5 {
   background-color: rgba(0, 0, 0, 0.4);
   color: white;
   text-align: center;
-  padding-top: 100px;
+  padding-top: 120px;
   height: 550px;
   width: 100%;
   font-family: Arial, sans-serif;
@@ -150,8 +150,9 @@ h5 {
   text-align: center;
 }
 
-.articulo:hover {
-  background-color: rgba(224, 224, 224, 0.2);
+.articulo:hover {  
+  transform: scale(1.1);
+  background-color: rgba(224, 224, 224, 0.5);
 }
 
 .articulo img {
