@@ -21,7 +21,7 @@ window.addEventListener("hashchange", () => {
     let url = localizacion + ".html";
     ajax("get", url, (response) => {
         main.innerHTML = response;
-
+        
         switch(localizacion){
             case "Seguimiento":
                 seguimiento();
