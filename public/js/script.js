@@ -1,5 +1,6 @@
 import { seguimiento } from "../js/Apps/AppSeguimiento.js";
 import {maquetarSucursales} from "../js/Apps/AppSucursales.js";
+import {clonar} from "../js/Apps/AppEnvio.js";
 
 let links = document.querySelectorAll(".links");
 let main = document.querySelector("main");
@@ -42,6 +43,13 @@ window.addEventListener("hashchange", () => {
                 break;
             case "Contacto":
                 break;
+            case "Envio":
+                let alg = document.getElementById("clonar");
+                alg.addEventListener("click", (e)=> {
+                    e.preventDefault();
+                    clonar();
+                });
+                break;
         }
       });
 });
@@ -58,7 +66,7 @@ function ajax(metodo, url, callback) {
       }
     });
     xhr.send();
- };
+};
   
 window.onscroll = function(){fixed()};
 let header = document.getElementById("myHeader");

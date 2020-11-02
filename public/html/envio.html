@@ -1,22 +1,20 @@
-<head>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/envio.css" /> 
-</head>
-
-
 <main id="registro">
     <form action="" class="formulario">
         <h2>Completa los datos</h2>
-        <input type="text" placeholder="Destino">
-        <div>
-            <h4>Datos de paquete</h4>
-            <input type="text" placeholder="Tipo paquete">
-            <input type="text" placeholder="Peso">
-            <input type="text" placeholder="Largo">
-            <input type="text" placeholder="Ancho">
-            <input type="text" placeholder="Alto">
-            <input type="submit" value="Agregar paquete" class="buttonpkg">    
+        <input type="text" placeholder="Dirección destino">
+        <div id="paquetes">
+            <div id="paquete">
+                <h4>Datos de paquete 1</h4>
+                <div id="datos">
+                    <input type="number" min="0.01" step="0.01" placeholder="Tipo paquete">
+                    <input type="number" min="0.01" step="0.01" placeholder="Peso">
+                    <input type="number" min="0.01" step="0.01" placeholder="Largo">
+                    <input type="number" min="0.01" step="0.01" placeholder="Ancho">
+                    <input type="number" min="0.01" step="0.01" placeholder="Alto">
+                </div>  
+            </div>
         </div>
+        <input type="submit" value="Agregar paquete" class="buttonpkg" id="clonar"> 
         <input type="submit" value="Crear envio" class="button" >
-    </form>
+    </form> 
 </main>
