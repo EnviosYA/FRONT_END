@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+a{
+  color: black;
+  text-decoration: none;
+}
+
 html,
 body {
   height: 100vh;
@@ -26,9 +31,8 @@ body > header {
   z-index: 4;
 }
 
-body > header nav a {
+body > header nav a {  
   color: white;
-  text-decoration: none;
   margin-left: 2rem;
   font-size: 1rem;
   font-family: Helvetica, sans-serif;
@@ -159,4 +163,27 @@ h5 {
   margin: auto;
   font-size: medium;
   color: #5a5959;
+}
+
+#caja {
+  background-image: url("../Images/caja.png");
+  background-size: 50% 50%; 
+  background-repeat: no-repeat;
+  background-position: 50% 70%;
+  padding-top: 35px;
+}
+#mapa{
+  background-image: url("../Images/mapa.png");
+  background-size: 40% 45%; 
+  background-repeat: no-repeat;
+  background-position: 50% 70%;
+  padding-top: 35px;
+}
+
+#lupa{
+  background-image: url("../Images/seguimiento.png");
+  background-size: 40% 45%; 
+  background-repeat: no-repeat;
+  background-position: 50% 70%;
+  padding-top: 35px;
 }
