@@ -66,7 +66,7 @@ function ajax(metodo, url, callback) {
       }
     });
     xhr.send();
-};
+ };
   
 window.onscroll = function(){fixed()};
 let header = document.getElementById("myHeader");
