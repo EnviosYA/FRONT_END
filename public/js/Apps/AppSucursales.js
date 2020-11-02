@@ -10,8 +10,9 @@ export function maquetarSucursales(){
            `
                 <div class="sucursal">
                     <ul>
-                        <li><b>Sucursal:</b> ${sucursal.nombre}</li>
-                        <li><b>Ubicada en la localidad de: </b> ${sucursal.nombreLocalidad}</li>
+                        <li class = "sucursal-nombre">${sucursal.nombre}</li>
+                        <li>${sucursal.calle} ${sucursal.altura}</li>
+                        <li>${sucursal.nombreLocalidad} (${sucursal.cp}) - ${sucursal.nombreProvincia}</li>
                     </ul>    
                 </div>
             `;

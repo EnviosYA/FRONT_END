@@ -1,6 +1,6 @@
 #titulo{
     text-align: center;
-    margin: 20px 300px 0 300px;
+    margin: 20px 300px;
     padding: 10px;
     background:#ececec;
     border:solid #ccc;
@@ -10,6 +10,37 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.sucursal{
-    border: solid;
+#sucursales{
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    bottom: 50px;
+    width: 100%;
+    
 }
+
+.sucursal ul li{
+    list-style: none;
+}
+
+.sucursal{
+    font-family: "Roboto";
+    width: 35%;
+    margin: 20px;   
+    text-align: center;        
+    letter-spacing: 0.7px;
+    color: rgba(0, 0, 0, 0.486);
+}
+
+.sucursal-nombre{
+    font-size: 20px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.623);
+}
+.linea-vertical{
+    position: absolute;
+    text-align: center;
+    box-shadow: 0px 0.5px 0px 0.5px rgba(0, 0, 0, 0.3);
+    height: 210px;
+} 
