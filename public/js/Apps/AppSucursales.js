@@ -4,7 +4,10 @@ export function maquetarSucursales(){
     let divSucursales = document.getElementById("sucursales");
     let sucursales = getSucursales();
     console.log(sucursales);
-
+    divSucursales.innerHTML += 
+    `
+         <div class="linea-vertical"></div>
+    `;
     sucursales.then(sucursales => sucursales.forEach(sucursal => { 
         divSucursales.innerHTML += 
            `
