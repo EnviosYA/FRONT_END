@@ -1,14 +1,18 @@
 <main id="registro">
     <form action="" class="formulario">
         <h2>Completa los datos</h2>
-        <input type="text" placeholder="Dirección destino">
+        <h4>Direccion destino</h4>
+        <input type="text" id="modelo" list="localidades" placeholder="Localidad">
+        <datalist id="localidades"></datalist>
+          </datalist>
+        <input type="text" placeholder="Calle">
+        <input type="number" min="1" step="1" placeholder="Altura">
         <div id="paquetes">
             <div id="paquete">
                 <h4>Datos de paquete 1</h4>
                 <div id="datos">
-                    <!-- <input type="number" min="0.01" step="0.01" placeholder="Tipo paquete"> -->
                         <select name="Tipopaquete">
-                            <option>--- Seleccione Tipo de Paquete ---</option>
+                            <option>  --- Seleccione Tipo de Paquete ---  </option>
                             <option value="1">Caja</option>
                             <option value="2">Bolsin</option>
                             <option value="3">Carta documento</option>
@@ -19,7 +23,6 @@
                     <input type="number" min="0.01" step="0.01" placeholder="Largo">
                     <input type="number" min="0.01" step="0.01" placeholder="Ancho">
                     <input type="number" min="0.01" step="0.01" placeholder="Alto">
-                    
                 </div>  
             </div>
         </div>
