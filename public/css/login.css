@@ -1,30 +1,28 @@
-body{
-  background-color: #017bab;
-}
-
-.formulario{
+.formulario {
+  font-family: Roboto;
   text-align: center;
   align-items: center;
   width: 400px;
-    padding: 20px 30px;
-    margin: auto;
-    margin-top: 25px;
-    border-radius: 10px;
-    background: #4e4d4d;
-    box-shadow: 2px 3px 5px #028ec5;
-    color: white;
-  font-family: "Roboto", sans-serif;
+  padding: 20px 30px;
+  margin: auto;
+  margin-top: 75px;
+  border-radius: 10px;
+  background: #4e4d4d;
+  box-shadow: 2px 3px 5px #028ec5;
+  color: white;
 }
 
-.formulario input{
-  display: inline-block;
+.formulario-input {
   width: 100%;
-  margin: 7px;
-  padding: 6px;
-  font-family: "Roboto", sans-serif;  
+  padding: 11px 10px;
+  margin-bottom: 15px;
+  border: 1px solid #14a1da;
+  border-radius: 5px;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
 }
 
-#ingresar{
+#ingresar {
   z-index: 10;
   margin-top: 5px;
   border: none;
@@ -33,15 +31,15 @@ body{
   width: 200px;
   font-family: "Roboto", sans-serif;
   background-color: white;
-  color:black;
+  color: black;
 }
-#ingresar:hover{
+#ingresar:hover {
   text-align: center;
-  background-color:black;
+  background-color: black;
   color: white;
 }
 
-.formulario [type="textarea"]{
+.formulario [type="textarea"] {
   padding: 30px;
 }
 
@@ -49,82 +47,53 @@ body{
   stroke-dashoffset: -480;
 }
 
-.formulario a{
-  text-decoration: none;
-  font-size: 20px;
-  padding: 15%;
-  height: 20px;
-  color: #ececec;
+.formulario h2 {
+  margin: 0 0 30px 0;
+  height: 40px;
+  border-bottom: 1px solid;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  text-shadow: 1px 1px rgb(90, 89, 89);
 }
 
-.formulario h2{
-  margin: 10px;
-}
-
-#textoLogin{
+#textoLogin {
   text-align: center;
   margin: 20px 300px 0 300px;
   padding: 10px;
-  background:#ececec;
-  border:solid #ccc;
+  background: #ececec;
+  border: solid #ccc;
   border-width: 2px 0;
   font-size: 20px;
   color: black;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-#contenedor #textoLogin a{
+#contenedor #textoLogin a {
   text-decoration: none;
   padding: 11px;
   margin: 20px;
-  color:black;
+  color: black;
   font-weight: bold;
 }
 
-#contenedor #textoLogin a:hover{
-  transition: .5s ease-in-out;
+#contenedor #textoLogin a:hover {
+  transition: 0.5s ease-in-out;
   background-color: rgba(52, 58, 64, 1);
   color: white;
 }
 
-#registro{
+#registro {
   background-color: black;
 }
 
-#noCuenta{
-  font-size: 15px;
-  display: inline-block;
+#noCuenta {
   color: white;
   padding: 0;
-  margin-top: 10px;
+  font-size: 0.9rem;
+  font-family: Roboto;
 }
 
-#noCuenta:hover{
-  color: gray;
-}
-
-.button{
-  width: 100%;
-  height: 40px;
-  margin-bottom: 16px;
-  background: #14a1da;
-  border: 1px solid #156785;
-  border-radius: 5px;
-  font-family: "Roboto", sans-serif;
-  font-size: 20px;
-  font-weight: bold;
-  text-shadow: 1px 1px rgb(90, 89, 89);
-  color: white;
-  cursor: pointer;
-  transition: all 175ms;
-}
-
-.button:hover{
-  border-radius: 8px;
-  box-shadow: 0px 0px 2px rgb(168, 177, 226);
-  background-color: rgb(218, 216, 216);
-  color: #14a1da;
-  font-size: 22px;
-  font-weight: bolder;
-  text-shadow: 1px 1px rgb(179, 179, 179);
+#noCuenta:hover {
+  color: rgba(255, 255, 255, 0.7);
 }

@@ -1,29 +1,20 @@
 <main id="registro">
     <form action="" class="formulario">
         <h2>Completa los datos</h2>
-        <input type="text" placeholder="Dirección destino">
+        <input class="control" type="text" placeholder="Dirección destino">
         <div id="paquetes">
             <div id="paquete">
                 <h4>Datos de paquete 1</h4>
                 <div id="datos">
-                    <!-- <input type="number" min="0.01" step="0.01" placeholder="Tipo paquete"> -->
-                        <select name="Tipopaquete">
-                            <option>--- Seleccione Tipo de Paquete ---</option>
-                            <option value="1">Caja</option>
-                            <option value="2">Bolsin</option>
-                            <option value="3">Carta documento</option>
-                            <option value="4">Telegrama</option>
-                            <option value="5">Carta simple</option>
-                        </select>
-                    <input type="number" min="0.01" step="0.01" placeholder="Peso">
-                    <input type="number" min="0.01" step="0.01" placeholder="Largo">
-                    <input type="number" min="0.01" step="0.01" placeholder="Ancho">
-                    <input type="number" min="0.01" step="0.01" placeholder="Alto">
-                    
+                    <input class="control" type="number" min="0.01" step="0.01" placeholder="Tipo paquete">
+                    <input class="control" type="number" min="0.01" step="0.01" placeholder="Peso">
+                    <input class="control" type="number" min="0.01" step="0.01" placeholder="Largo">
+                    <input class="control" type="number" min="0.01" step="0.01" placeholder="Ancho">
+                    <input class="control" type="number" min="0.01" step="0.01" placeholder="Alto">
                 </div>  
             </div>
         </div>
-        <input type="submit" value="Agregar paquete" class="buttonpkg" id="clonar"> 
+        <input type="submit" value="Agregar paquete" class="button" id="clonar"> 
         <input type="submit" value="Crear envio" class="button" >
     </form> 
 </main>
