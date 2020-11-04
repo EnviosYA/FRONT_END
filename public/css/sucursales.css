@@ -46,11 +46,11 @@
 } 
 
 #maps {
-    width: 80%;
+    width: 60%;
     margin: auto;
     border-style: solid;
     height: 55%;
     border-radius: 5px;
-    border-color: rgba(0, 0, 0, 0.6);
+    border-color: rgba(0, 0, 0, 0.5);
     box-shadow: 10px 10px 20px 5px rgba(0, 0, 0, 0.3);
-  }
+}
