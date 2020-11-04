@@ -3,6 +3,7 @@ import {maquetarSucursales} from "../js/Apps/AppSucursales.js";
 import {clonar} from "../js/Apps/AppEnvio.js";
 import {guardarDireccion, maquetarLocalidades} from "../js/Apps/AppRegistrarse.js";
 
+
 let links = document.querySelectorAll(".links");
 let main = document.querySelector("main");
 
