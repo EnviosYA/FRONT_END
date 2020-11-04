@@ -1,8 +1,8 @@
 import { URLSUCURSALPORENVIO } from "../Constants/Constants.js";
-import { get, post} from "../Services/Requests.js";
+import { get } from "../Services/Requests.js";
 
-const getSucursalPorEnvio = () => {
-    return get(URLSUCURSALPORENVIO);
+const getSucursalPorEnvio = (id) => {
+    return get(URLSUCURSALPORENVIO + id);
 }
 
 export default getSucursalPorEnvio;
