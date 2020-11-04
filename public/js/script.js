@@ -58,7 +58,14 @@ window.addEventListener("hashchange", () => {
                     e.preventDefault();
                     guardarDireccion();
                 });
-                break;            
+                break;   
+            case "Login":
+                let log = document.getElementById("log");
+                registarse.addEventListener("click", (e)=>{
+                    e.preventDefault();
+                    logIn();
+                });
+                break;              
         }
       });
 });
