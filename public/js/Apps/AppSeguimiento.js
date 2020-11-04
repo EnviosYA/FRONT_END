@@ -8,8 +8,9 @@ export const seguimiento = () => {
             document.getElementById('envioIncorrecto').style.display = "none";
             document.getElementById('input-envio').classList.remove("control");
             document.getElementById('input-envio').classList.add("input-error");
+        } else {
+            getSucursalPorEnvio(idEnvio);
         }
-        getSucursalPorEnvio(idEnvio);
     }
 }
 
@@ -17,13 +18,12 @@ function getSucursalPorEnvio(id) {
         
     Service.default(id)
             .then(x => {
-                console.log(x)
-                if(x.length === 0){
+                if(x.length == 0){
                     document.getElementById('sinEnvio').style.display = "none";
                     document.getElementById("envioIncorrecto").style.display = "block";
                 } else {
                     document.getElementById("ingreso-busqueda").style.display = "none";
-                    var seguimiento = document.getElementById("seguimiento").className += "bordes";
+                    document.getElementById("seguimiento").className += "bordes";
                     maquetarSeguimiento(x);
                     document.getElementById("gmaps").style.display = "block";
                 }
@@ -41,8 +41,7 @@ function maquetarSeguimiento(seguimiento){
            `
                 <div class="seguimiento-estado">
                     <ul>
-                        <li><b>ID Sucursal:</b> ${element.idSucursal}</li>
-                        <li><i>nombre de la sucursal</i></li>
+                        <li>${element.nombre}</li>
                         <li>${element.estado}</li>
                         <li>${fecha.getDate()}-${fecha.getMonth()+1}-${fecha.getUTCFullYear()}</li>
                     </ul>    
