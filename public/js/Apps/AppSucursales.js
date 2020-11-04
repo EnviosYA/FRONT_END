@@ -1,3 +1,4 @@
+import { crearMapaSucursales } from "../Services/MapsService.js";
 import {getSucursales} from "../Services/SucursalService.js";
 
 export function maquetarSucursales(){
@@ -8,9 +9,12 @@ export function maquetarSucursales(){
     `
          <div class="linea-vertical"></div>
     `;
-    sucursales.then(sucursales => sucursales.forEach(sucursal => { 
-        divSucursales.innerHTML += 
-           `
+    let latylong = [];
+    sucursales.then(sucursales => {
+        let coord = [];
+        sucursales.forEach(sucursal => { 
+            divSucursales.innerHTML += 
+            `
                 <div class="sucursal">
                     <ul>
                         <li class = "sucursal-nombre">${sucursal.nombre}</li>
@@ -19,5 +23,8 @@ export function maquetarSucursales(){
                     </ul>    
                 </div>
             `;
-    }));
+            coord.push([sucursal.longitud,sucursal.latitud]);
+        });
+        crearMapaSucursales(coord);
+    });
 }

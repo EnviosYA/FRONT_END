@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="../css/envio.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     
+    <!-- Maps -->
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css' type='text/css' />
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
 
     <link rel="shortcut icon" href="../Images/logo.png" type="image/x-icon">
     <title>EnvioYA</title>
@@ -35,7 +38,7 @@
                   tensión e incertidumbre en el comprador.</h5>  
           </div>
           
-          <img 
+          <img as
             class="profile-img"
             src="../Images/homeCamion.jpg"
             frameborder="0"
@@ -68,4 +71,6 @@
   <script type="module" src="../js/Constants/Constants.js"></script>
   <script type="module" src="../js/Apps/AppSeguimiento.js"></script>
   <script type="module" src="../js/Services/SeguimientoService.js"></script>
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
+  <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
 </html>
