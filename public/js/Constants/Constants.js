@@ -19,12 +19,17 @@ const URLSUCURSAL = URLBASESUCURSAL + "sucursales/";
 
 //CLASES
 class Usuario {
-    constructor(mail,contraseña,nombre,apellido,fechaNac,latitud,longitud,calle,altura,idLocalidad){
-        this.mail = mail,
-        this.contraseña = contraseña,
+    constructor(nombre,apellido, dni, fechaNac,cuenta, direccion){        
         this.nombre = nombre,
         this.apellido = apellido,
-        this.fechaNac = fechaNac,        
+        this.dni = dni,
+        this.fechaNac = fechaNac,
+        this.cuenta = cuenta,        
+        this.direccion = direccion
+    }
+}
+class Direccion {
+    constructor(latitud,longitud,calle,altura,idLocalidad){            
         this.latitud = latitud,
         this.longitud = longitud,
         this.calle =  calle,
@@ -33,4 +38,11 @@ class Usuario {
     }
 }
 
-export {URLDIRECCION, URLLOCALIDAD, URLSUCURSAL, URLSUCURSALPORENVIO, URLTIPOPAQUETE, URLBASECUENTA, URLBASEUSUARIO, URLENVIO,  Usuario};
+class Cuenta {
+    constructor(mail, password){
+        this.mail = mail,
+        this.password = password
+    }
+}
+
+export {URLDIRECCION, URLLOCALIDAD, URLSUCURSAL, URLSUCURSALPORENVIO, URLTIPOPAQUETE, URLBASECUENTA, URLBASEUSUARIO, URLENVIO, Usuario, Direccion, Cuenta};
