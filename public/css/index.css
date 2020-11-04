@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-a{
+a {
   color: black;
   text-decoration: none;
 }
@@ -17,7 +17,7 @@ body {
 body {
   display: flex;
   flex-direction: column;
-  
+
   font-style: "Roboto", sans-serif;
 }
 
@@ -31,7 +31,7 @@ body > header {
   z-index: 4;
 }
 
-body > header nav a {  
+body > header nav a {
   color: white;
   margin-left: 2rem;
   font-size: 1rem;
@@ -51,9 +51,7 @@ footer {
 }
 
 .profile-description h5 {
-  padding-top: 50px;
-  padding-left: 25%;
-  padding-right: 25%;
+  padding: 6% 25% 0 25%;
   line-height: 30px;
   font-size: 0.9rem;
   color: #d1d1d1;
@@ -125,10 +123,11 @@ footer {
   height: 400px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 .articulos h3 {
-  color: #5a5959;
+  color: #5a5959b8;
   font-family: "Roboto", sans-serif;
   width: 100%;
   height: 50px;
@@ -137,10 +136,9 @@ footer {
 }
 
 .articulo {
-  width: 20%;
+  width: 14%;
   height: 200px;
-  margin-left: 10%;
-  padding: 20px;
+  padding: 35px 0 0 0;
   border-radius: 10px;
   box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.3);
   font-family: "Roboto", sans-serif;
@@ -148,10 +146,13 @@ footer {
   flex-wrap: wrap;
   justify-content: center;
   text-align: center;
+  background-repeat: no-repeat;
+  background-position: 50% 70%;
 }
 
-.articulo:hover {  
+.articulo:hover {
   transform: scale(1.1);
+  color: black;
   background-color: rgba(224, 224, 224, 0.5);
 }
 
@@ -172,23 +173,14 @@ footer {
 
 #caja {
   background-image: url("../Images/caja.png");
-  background-size: 50% 50%; 
-  background-repeat: no-repeat;
-  background-position: 50% 70%;
-  padding-top: 35px;
+  background-size: 50% 50%;
 }
-#mapa{
+#mapa {
   background-image: url("../Images/mapa.png");
-  background-size: 40% 45%; 
-  background-repeat: no-repeat;
-  background-position: 50% 70%;
-  padding-top: 35px;
+  background-size: 40% 45%;
 }
 
-#lupa{
+#lupa {
   background-image: url("../Images/seguimiento.png");
-  background-size: 40% 45%; 
-  background-repeat: no-repeat;
-  background-position: 50% 70%;
-  padding-top: 35px;
+  background-size: 40% 45%;
 }
