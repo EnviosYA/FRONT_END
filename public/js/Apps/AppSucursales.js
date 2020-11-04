@@ -9,7 +9,6 @@ export function maquetarSucursales(){
     `
          <div class="linea-vertical"></div>
     `;
-    let latylong = [];
     sucursales.then(sucursales => {
         let coord = [];
         sucursales.forEach(sucursal => { 
