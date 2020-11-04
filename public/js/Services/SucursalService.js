@@ -1,4 +1,4 @@
-import {URLLOCALIDAD, URLSUCURSAL, URLDIRECCION} from "../Constants/Constants.js";
+import {URLLOCALIDAD, URLSUCURSALESHABILITADAS, URLDIRECCION} from "../Constants/Constants.js";
 import { get, post} from "../Services/Requests.js";
 
 const getLocalidades = () => {
@@ -6,7 +6,7 @@ const getLocalidades = () => {
 }
 
 const getSucursales = () => {
-    return get(URLSUCURSAL);
+    return get(URLSUCURSALESHABILITADAS);
 }
 
 const getDireccionByID = (id) =>{

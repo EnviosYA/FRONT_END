@@ -5,7 +5,7 @@ export const crearMapaSucursales = (array) => {
         container: "maps", 
         style: 'mapbox://styles/mapbox/streets-v9',  
         center: [-58.43582278331235,-34.6077853705844],
-        zoom: 9
+        zoom: 8
     }); 
     map.addControl(new MapboxGeocoder({
         accessToken: mapboxgl.accessToken
@@ -21,5 +21,5 @@ export const crearMapaSucursales = (array) => {
     
     array.forEach(coord => {
         new mapboxgl.Marker().setLngLat(coord).addTo(map);        
-    });       
+    });    
 }
