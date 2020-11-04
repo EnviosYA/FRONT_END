@@ -17,4 +17,20 @@ const URLLOCALIDAD = URLBASESUCURSAL + "localidades/";
 
 const URLSUCURSAL = URLBASESUCURSAL + "sucursales/";
 
-export {URLDIRECCION, URLLOCALIDAD, URLSUCURSAL, URLSUCURSALPORENVIO, URLTIPOPAQUETE, URLBASECUENTA, URLBASEUSUARIO, URLENVIO};
+//CLASES
+class Usuario {
+    constructor(mail,contraseña,nombre,apellido,fechaNac,latitud,longitud,calle,altura,idLocalidad){
+        this.mail = mail,
+        this.contraseña = contraseña,
+        this.nombre = nombre,
+        this.apellido = apellido,
+        this.fechaNac = fechaNac,        
+        this.latitud = latitud,
+        this.longitud = longitud,
+        this.calle =  calle,
+        this.altura = altura,
+        this.idLocalidad = idLocalidad
+    }
+}
+
+export {URLDIRECCION, URLLOCALIDAD, URLSUCURSAL, URLSUCURSALPORENVIO, URLTIPOPAQUETE, URLBASECUENTA, URLBASEUSUARIO, URLENVIO,  Usuario};

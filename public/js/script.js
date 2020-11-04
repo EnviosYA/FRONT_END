@@ -1,7 +1,7 @@
 import { seguimiento } from "../js/Apps/AppSeguimiento.js";
 import {maquetarSucursales} from "../js/Apps/AppSucursales.js";
 import {clonar} from "../js/Apps/AppEnvio.js";
-import {maquetarLocalidades} from "../js/Apps/AppRegistrarse.js";
+import {guardarDireccion, maquetarLocalidades} from "../js/Apps/AppRegistrarse.js";
 
 let links = document.querySelectorAll(".links");
 let main = document.querySelector("main");
@@ -53,7 +53,11 @@ window.addEventListener("hashchange", () => {
                 break;
             case "Registrarse":
                 maquetarLocalidades();
-                
+                let registarse = document.getElementById("registrarse");
+                registarse.addEventListener("click", (e)=>{
+                    e.preventDefault();
+                    guardarDireccion();
+                });
                 break;            
         }
       });
