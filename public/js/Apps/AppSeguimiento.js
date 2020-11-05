@@ -57,7 +57,7 @@ function maquetarSeguimiento(seguimiento){
 
     document.getElementById("container").innerHTML += 
     `
-        <div id="maps"></div>
+        <div id="mapa"></div>
     `;
 
     crearMapaSucursales(coordenadas);

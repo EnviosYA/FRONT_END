@@ -1,6 +1,6 @@
 import { seguimiento } from "../js/Apps/AppSeguimiento.js";
 import {maquetarSucursales} from "../js/Apps/AppSucursales.js";
-import {clonar} from "../js/Apps/AppEnvio.js";
+import {clonar, guardarEnvio} from "../js/Apps/AppEnvio.js";
 import {guardarDireccion, maquetarLocalidades} from "../js/Apps/AppRegistrarse.js";
 
 
@@ -46,10 +46,16 @@ window.addEventListener("hashchange", () => {
             case "Contacto":
                 break;
             case "Envio":
-                let alg = document.getElementById("clonar");
-                alg.addEventListener("click", (e)=> {
+                maquetarLocalidades();
+                let agregarPaquete = document.getElementById("clonar");
+                agregarPaquete.addEventListener("click", (e)=> {
                     e.preventDefault();
                     clonar();
+                });
+                let crearEnvio = document.getElementById("crearEnvio");
+                crearEnvio.addEventListener("click", (e)=> {
+                    e.preventDefault();
+                    guardarEnvio();
                 });
                 break;
             case "Registrarse":
