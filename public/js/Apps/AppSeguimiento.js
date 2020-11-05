@@ -1,4 +1,5 @@
 import * as Service from "../Services/SeguimientoService.js";
+import { crearMapaSucursales } from "../Services/MapsService.js";
 
 export const seguimiento = () => {
     document.getElementById('getSeguimiento').onclick = () => {
@@ -25,27 +26,39 @@ function getSucursalPorEnvio(id) {
                     document.getElementById("ingreso-busqueda").style.display = "none";
                     document.getElementById("seguimiento").className += "bordes";
                     maquetarSeguimiento(x);
-                    document.getElementById("gmaps").style.display = "block";
                 }
             });
 }
 
 function maquetarSeguimiento(seguimiento){
     var divSeguimiento = document.getElementById("seguimiento");
+    var coordenadas = [];
+    var sucursalActiva = "";
 
     seguimiento.forEach(element => {
         var ms = Date.parse(element.fecha);
         var fecha = new Date(ms);
 
         divSeguimiento.innerHTML += 
-           `
-                <div class="seguimiento-estado">
-                    <ul>
-                        <li>${element.nombre}</li>
-                        <li>${element.estado}</li>
-                        <li>${fecha.getDate()}-${fecha.getMonth()+1}-${fecha.getUTCFullYear()}</li>
-                    </ul>    
-                </div>
-            `;
+        `
+            <div class="seguimiento-estado">
+                <ul>
+                    <li>${element.nombre}</li>
+                    <li>${element.estado}</li>
+                    <li>${fecha.getDate()}-${fecha.getMonth()+1}-${fecha.getUTCFullYear()}</li>
+                </ul>    
+            </div>
+        `;
+        if(element.nombre != sucursalActiva){
+            coordenadas.push([element.longitud, element.latitud]);
+            sucursalActiva = element.nombre;
+        }
     });
+
+    document.getElementById("container").innerHTML += 
+    `
+        <div id="maps"></div>
+    `;
+
+    crearMapaSucursales(coordenadas);
 }
