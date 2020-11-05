@@ -1,4 +1,3 @@
-
 export const crearMapaSucursales = (array) => {
     mapboxgl.accessToken = 'pk.eyJ1IjoiZmF4YWxzb2wiLCJhIjoiY2toM24xbTZiMDNpeTJ6cWI1ZTlmaDgxZiJ9.tBaVmgkNIOiityXw_q6cLg';  
     var map = new mapboxgl.Map({ 
@@ -21,5 +20,5 @@ export const crearMapaSucursales = (array) => {
     
     array.forEach(coord => {
         new mapboxgl.Marker().setLngLat(coord).addTo(map);        
-    });    
+    });
 }

@@ -3,11 +3,11 @@ import { getLocalidades} from "../Services/SucursalService.js";
 import {Direccion, Usuario, Cuenta} from "../Constants/Constants.js";
 
 
-export const maquetarLocalidades = () => {       
+export const maquetarLocalidades = () => {     
     let datalist = document.getElementById("localidades"); 
     getLocalidades().then(elementos => elementos.forEach(element => {
         datalist.innerHTML += `<option value = "${element.nombre}" id = ${element.idLocalidad}><option>`        
-    }));        
+    }));
 }
 
 export const guardarDireccion = () => {    
