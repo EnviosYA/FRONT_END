@@ -1,24 +1,35 @@
-export const crearMapaSucursales = (array) => {
-    mapboxgl.accessToken = 'pk.eyJ1IjoiZmF4YWxzb2wiLCJhIjoiY2toM24xbTZiMDNpeTJ6cWI1ZTlmaDgxZiJ9.tBaVmgkNIOiityXw_q6cLg';  
-    var map = new mapboxgl.Map({ 
-        container: "maps", 
-        style: 'mapbox://styles/mapbox/streets-v9',  
-        center: [-58.43582278331235,-34.6077853705844],
-        zoom: 8
-    }); 
-    map.addControl(new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken
-    }));
-    map.addControl(new mapboxgl.NavigationControl());
-    map.addControl(new mapboxgl.FullscreenControl());
-    map.addControl(new mapboxgl.GeolocateControl({
-        positionOptions: {
-            enableHighAccuracy: true
-        },
-        trackUserLocation: true
-    }));
-    
+import { Coordenada } from "../Constants/Constants.js";
+
+export const crearMapaSucursales = (array) => {    
+    var centro = new Coordenada(-34.6077853705844,-58.43582278331235);
+    var mapOptions = {
+        zoom: 10,
+        center: centro
+    };
+
+    var map = new google.maps.Map(document.getElementById('maps'), mapOptions);    
     array.forEach(coord => {
-        new mapboxgl.Marker().setLngLat(coord).addTo(map);        
+        new google.maps.Marker({
+            position: coord,
+            map: map,
+        });   
     });
+}
+
+export const obtenerCoordenadas = (address) => {
+    var geocoder = new google.maps.Geocoder();
+    let coord = new Coordenada();
+    geocoder.geocode({
+        'address': address
+    }, function (results,status){
+        if (status == google.maps.GeocoderStatus.OK) {            
+            coord.lat = results[0].geometry.location.lat();
+            coord.lng = results[0].geometry.location.lng();    
+        }
+        else{
+            alert('Geocode no tuvo éxito por la siguiente razón: ' + status)
+        }
+    }    
+    );
+    return coord;
 }

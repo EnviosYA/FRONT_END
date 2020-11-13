@@ -1,10 +1,10 @@
+import { Coordenada } from "../Constants/Constants.js";
 import { crearMapaSucursales } from "../Services/MapsService.js";
 import {getSucursales} from "../Services/SucursalService.js";
 
 export function maquetarSucursales(){
     let divSucursales = document.getElementById("sucursales");
     let sucursales = getSucursales();
-    console.log(sucursales);
     divSucursales.innerHTML += 
     `
          <div class="linea-vertical"></div>
@@ -22,7 +22,7 @@ export function maquetarSucursales(){
                     </ul>    
                 </div>
             `;
-            coord.push([sucursal.longitud,sucursal.latitud]);
+            coord.push(new Coordenada(sucursal.latitud,sucursal.longitud));
         });
         crearMapaSucursales(coord);
     });
