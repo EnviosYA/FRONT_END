@@ -1,8 +1,7 @@
 import { seguimiento } from "../js/Apps/AppSeguimiento.js";
 import {maquetarSucursales} from "../js/Apps/AppSucursales.js";
 import {clonar, guardarEnvio} from "../js/Apps/AppEnvio.js";
-import {guardarDireccion, maquetarLocalidades} from "../js/Apps/AppRegistrarse.js";
-
+import {registrarUsuario, maquetarLocalidades} from "../js/Apps/AppRegistrarse.js";
 
 let links = document.querySelectorAll(".links");
 let main = document.querySelector("main");
@@ -23,8 +22,7 @@ window.addEventListener("hashchange", () => {
     let localizacion = location.hash.split("#")[1];
     let url = localizacion + ".html";
     ajax("get", url, (response) => {
-        main.innerHTML = response;
-        
+        main.innerHTML = response;        
         switch(localizacion){
             case "Seguimiento":
                 seguimiento();
@@ -63,7 +61,7 @@ window.addEventListener("hashchange", () => {
                 let registarse = document.getElementById("registrarse");
                 registarse.addEventListener("click", (e)=>{
                     e.preventDefault();
-                    guardarDireccion();
+                    registrarUsuario();
                 });
                 break;   
             case "Login":

@@ -62,4 +62,18 @@ class Paquete{
         this.idTipoPaquete = idTipoPaquete;
     }
 }
-export {URLDIRECCION, URLLOCALIDAD, URLSUCURSALESHABILITADAS, URLSUCURSALPORENVIO, URLTIPOPAQUETE, URLBASECUENTA, URLBASEUSUARIO, URLENVIO, Usuario, Direccion, Cuenta, Envio, Paquete};
+class Coordenada{
+    constructor(latitud,longitud){
+        this.lat = latitud;
+        this.lng = longitud;
+    }
+}
+class Adress{
+    constructor(calle,altura,localidad){
+        this.calle =  calle;
+        this.altura = altura;
+        this.localidad = localidad;
+    }
+}
+export {URLDIRECCION, URLLOCALIDAD, URLSUCURSALESHABILITADAS, URLSUCURSALPORENVIO, URLTIPOPAQUETE, 
+    URLBASECUENTA, URLBASEUSUARIO, URLENVIO, Adress, Coordenada, Usuario, Direccion, Cuenta, Envio, Paquete};
