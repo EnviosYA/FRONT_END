@@ -1,5 +1,6 @@
 import * as Service from "../Services/SeguimientoService.js";
 import { crearMapaSucursales } from "../Services/MapsService.js";
+import { Coordenada } from "../Constants/Constants.js";
 
 export const seguimiento = () => {
     document.getElementById('getSeguimiento').onclick = () => {
@@ -50,7 +51,7 @@ function maquetarSeguimiento(seguimiento){
             </div>
         `;
         if(element.nombre != sucursalActiva){
-            coordenadas.push([element.longitud, element.latitud]);
+            coordenadas.push(new Coordenada(element.latitud, element.longitud));
             sucursalActiva = element.nombre;
         }
     });

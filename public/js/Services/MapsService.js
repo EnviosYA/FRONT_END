@@ -1,6 +1,7 @@
 import { Coordenada } from "../Constants/Constants.js";
 import {postUsuario} from "../Services/UsuarioService.js";
-export const crearMapaSucursales = (array) => {    
+
+export const crearMapaSucursales = (array) => {
     var centro = new Coordenada(-34.6077853705844,-58.43582278331235);
     var mapOptions = {
         zoom: 10,
@@ -18,7 +19,6 @@ export const crearMapaSucursales = (array) => {
 
 export const obtenerCoordenadas = (address, usuario) => {
     var geocoder = new google.maps.Geocoder();
-    let coord = new Coordenada();
     geocoder.geocode({
         'address': address
     }, function (results,status){
@@ -26,8 +26,6 @@ export const obtenerCoordenadas = (address, usuario) => {
             usuario.direccion.lat = results[0].geometry.location.lat();
             usuario.direccion.lng = results[0].geometry.location.lng();    
             console.log(usuario);
-            // coord.lat = results[0].geometry.location.lat();
-            // coord.lng = results[0].geometry.location.lng();    
             //postUsuario(usuario);
         }
         else{

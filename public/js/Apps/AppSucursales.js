@@ -10,7 +10,7 @@ export function maquetarSucursales(){
          <div class="linea-vertical"></div>
     `;
     sucursales.then(sucursales => {
-        let coord = [];
+        let coords = [];
         sucursales.forEach(sucursal => { 
             divSucursales.innerHTML += 
             `
@@ -22,8 +22,8 @@ export function maquetarSucursales(){
                     </ul>    
                 </div>
             `;
-            coord.push(new Coordenada(sucursal.latitud,sucursal.longitud));
+            coords.push(new Coordenada(sucursal.latitud,sucursal.longitud));
         });
-        crearMapaSucursales(coord);
+        crearMapaSucursales(coords);
     });
 }
