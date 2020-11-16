@@ -1,4 +1,3 @@
-import { postUsuario } from "../Services/UsuarioService.js";
 import { getLocalidades} from "../Services/SucursalService.js";
 import {Direccion, Usuario, Cuenta} from "../Constants/Constants.js";
 import { obtenerCoordenadas } from "../Services/MapsService.js";
@@ -22,19 +21,11 @@ export const registrarUsuario = () => {
     let altura = document.getElementById("altura").value;      
     let localidad = document.getElementById("localidad").value;
     let idLocalidad = obtenerIdLocalidad();
-
-    let coords = obtenerCoordenadas("calle " + calle +" "+ altura +" " + localidad )
-
-    setTimeout(() => {
-        let cuenta = new Cuenta(mail,password);
-        let direccion = new Direccion(coords.lat, coords.lng, calle, altura,idLocalidad);
-        let usuario = new Usuario(nombre,apellido, dni, fechaNac, cuenta, direccion);
-        console.log(usuario);
-    }, 2000);       
-
     
-    
-    //postUsuario(usuario);
+    let cuenta = new Cuenta(mail,password);
+    let direccion = new Direccion(0,0,calle, altura,idLocalidad);
+    let usuario = new Usuario(nombre,apellido, dni, fechaNac, cuenta, direccion);
+    let coords = obtenerCoordenadas("calle " + calle +" "+ altura +" " + localidad , usuario)    
 }
 
 const obtenerIdLocalidad = () =>{
