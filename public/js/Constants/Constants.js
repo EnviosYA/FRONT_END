@@ -29,9 +29,7 @@ class Usuario {
     }
 }
 class Direccion {
-    constructor(latitud,longitud,calle,altura,idLocalidad){            
-        this.latitud = latitud;
-        this.longitud = longitud;
+    constructor(calle,altura,idLocalidad){
         this.calle =  calle;
         this.altura = altura;
         this.idLocalidad = idLocalidad;
@@ -46,9 +44,9 @@ class Cuenta {
 }
 
 class Envio {
-    constructor(idUsuario, direccion, paquetes){
+    constructor(idUsuario, direccionDestino, paquetes){
         this.idUsuario = idUsuario;
-        this.direccion = direccion;
+        this.direccionDestino = direccionDestino;
         this.paquetes = paquetes;
     }
 }

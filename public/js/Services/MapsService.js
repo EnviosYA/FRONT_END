@@ -1,5 +1,6 @@
 import { Coordenada } from "../Constants/Constants.js";
-import {postUsuario} from "../Services/UsuarioService.js";
+import {postUsuario} from "./UsuarioService.js";
+import {postEnvio} from "./EnvioService.js";
 
 export const crearMapaSucursales = (array) => {
     var centro = new Coordenada(-34.6077853705844,-58.43582278331235);
@@ -17,21 +18,34 @@ export const crearMapaSucursales = (array) => {
     });
 }
 
-export const obtenerCoordenadas = (address, usuario) => {
+export const obtenerCoordenadas = (address, entity, opcion) => {
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({
         'address': address
-    }, function (results,status){
-        if (status == google.maps.GeocoderStatus.OK) {            
-            usuario.direccion.lat = results[0].geometry.location.lat();
-            usuario.direccion.lng = results[0].geometry.location.lng();    
-            console.log(usuario);
-            //postUsuario(usuario);
+    }, (results,status) =>{
+        if (status == google.maps.GeocoderStatus.OK) { 
+            setearCoordenadas(results,entity,opcion);
         }
         else{
             alert('Geocode no tuvo éxito por la siguiente razón: ' + status)
         }
     }    
     );
-    return coord;
+}
+
+const setearCoordenadas = (results, entity, opcion) =>{
+    switch(opcion){
+        case 1:
+            entity.direccion.latitud = results[0].geometry.location.lat();
+            entity.direccion.longitud = results[0].geometry.location.lng();    
+            console.log(entity);
+            //postUsuario(entity);
+            break;
+        case 2:
+            entity.direccionDestino.latitud = results[0].geometry.location.lat();
+            entity.direccionDestino.longitud = results[0].geometry.location.lng();    
+            console.log(entity);
+            //postEnvio(entity);
+            break;
+    }
 }
