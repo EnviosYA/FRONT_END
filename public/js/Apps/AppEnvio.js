@@ -1,5 +1,6 @@
-import {postEnvio} from "../Services/EnvioService.js";
 import{Direccion, Envio, Paquete} from "../Constants/Constants.js";
+import { obtenerIdLocalidad } from "./AppLocalidad.js";
+import {obtenerCoordenadas} from "../Services/MapsService.js";
 
 let cantPaquetes = 1;
 export const clonar = () =>{
@@ -29,17 +30,23 @@ export const clonar = () =>{
     }
 }
 
-export const guardarEnvio = () => {    
+export const guardarEnvio = () => {
     let idUsuario = 0;   
 
-    let latitud = 0;
-    let longitud = 0;
     let calle = document.getElementById("calle").value;
-    let altura = document.getElementById("altura").value;      
-    let idLocalidad = document.getElementById("localidad").value;    
+    let altura = parseInt(document.getElementById("altura").value);      
+    let localidad = document.getElementById("localidad").value;
+    let idLocalidad = obtenerIdLocalidad();
+    let divPaquetes = document.querySelectorAll(".paquete");    
+    let paquetes = guardarPaquetes(divPaquetes);
 
-    let divPaquetes = document.querySelectorAll(".paquete");
-    let paquetes = [];   
+    let direccionDestino = new Direccion(calle, altura,idLocalidad);
+    let envio = new Envio(idUsuario, direccionDestino, paquetes);
+    obtenerCoordenadas("calle " + calle +" "+ altura +" " + localidad , envio,2);
+}
+
+const guardarPaquetes = (divPaquetes) =>{
+    let paquetes = [];
     divPaquetes.forEach(paquete => {
         let divDatos = paquete.querySelectorAll(".control");
         let arrayPaquete = [];
@@ -48,10 +55,6 @@ export const guardarEnvio = () => {
         })
         let paqueteConcreto = new Paquete(arrayPaquete[0],arrayPaquete[1],arrayPaquete[2], arrayPaquete[3],arrayPaquete[4])        
         paquetes.push(paqueteConcreto);
-    })
-
-    let direccion = new Direccion(latitud, longitud, calle, altura,idLocalidad);
-
-    let envio = new Envio(idUsuario, direccion, paquetes);
-    //postEnvio(envio);
+    });
+    return paquetes;
 }
