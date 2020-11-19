@@ -1,5 +1,5 @@
 import{Direccion, Envio, Paquete} from "../Constants/Constants.js";
-import { obtenerIdLocalidad } from "./AppLocalidad.js";
+import { obtenerIdLocalidad } from "../Utilities/UtLocalidad.js";
 import {obtenerCoordenadas} from "../Services/MapsService.js";
 
 let cantPaquetes = 1;
@@ -31,13 +31,12 @@ export const clonar = () =>{
 }
 
 export const guardarEnvio = () => {
-    let idUsuario = 0;   
-
+    let idUsuario = 0;
     let calle = document.getElementById("calle").value;
-    let altura = parseInt(document.getElementById("altura").value);      
+    let altura = parseInt(document.getElementById("altura").value);
     let localidad = document.getElementById("localidad").value;
     let idLocalidad = obtenerIdLocalidad();
-    let divPaquetes = document.querySelectorAll(".paquete");    
+    let divPaquetes = document.querySelectorAll(".paquete");
     let paquetes = guardarPaquetes(divPaquetes);
 
     let direccionDestino = new Direccion(calle, altura,idLocalidad);

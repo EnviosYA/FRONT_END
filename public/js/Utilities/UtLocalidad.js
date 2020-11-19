@@ -14,3 +14,4 @@ export const obtenerIdLocalidad = () =>{
     if(datalist.options.namedItem(listObj.value) != null)
         return parseInt(datalist.options.namedItem(listObj.value).id);
 }
+
