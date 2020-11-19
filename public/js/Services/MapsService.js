@@ -29,8 +29,7 @@ export const obtenerCoordenadas = (address, entity, opcion) => {
         else{
             alert('Geocode no tuvo éxito por la siguiente razón: ' + status)
         }
-    }    
-    );
+    });
 }
 
 const setearCoordenadas = (results, entity, opcion) =>{

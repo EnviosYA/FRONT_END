@@ -2,7 +2,8 @@ import { seguimiento } from "../js/Apps/AppSeguimiento.js";
 import {maquetarSucursales} from "../js/Apps/AppSucursales.js";
 import {clonar, guardarEnvio} from "../js/Apps/AppEnvio.js";
 import {registrarUsuario} from "../js/Apps/AppRegistrarse.js";
-import{maquetarLocalidades} from "../js/Apps/AppLocalidad.js";
+import{maquetarLocalidades} from "./Utilities/UtLocalidad.js";
+import { logIn } from "./Apps/AppCuenta.js";
 
 let links = document.querySelectorAll(".links");
 let main = document.querySelector("main");
@@ -29,6 +30,12 @@ window.addEventListener("hashchange", () => {
                 seguimiento();
                 break;
             case "Login":
+                let log = document.getElementById("log");
+                log.addEventListener("click", (e)=>{
+                    e.preventDefault();
+                    logIn();
+                });
+                //Si tocas el botón "No tengo cuenta"
                 let registrarse = document.getElementById("noCuenta");
                 registrarse.addEventListener("click", e=>{
                     e.preventDefault();
@@ -36,6 +43,7 @@ window.addEventListener("hashchange", () => {
                     let url = location.hash.split("#")[1] + ".html";
                     ajax("get", url, (response) => {
                         main.innerHTML = response;
+                        let token = logIn();
                     });
                 });
                 break;
@@ -65,14 +73,7 @@ window.addEventListener("hashchange", () => {
                     e.preventDefault();
                     registrarUsuario();
                 });
-                break;   
-            case "Login":
-                let log = document.getElementById("log");
-                registarse.addEventListener("click", (e)=>{
-                    e.preventDefault();
-                    logIn();
-                });
-                break;              
+                break;     
         }
       });
 });
