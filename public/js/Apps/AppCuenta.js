@@ -6,5 +6,5 @@ export const logIn = () =>{
         mail: document.getElementById("mail").value,
         password: cifrar(document.getElementById("contraseña").value)
     }
-    return getCuenta(cuenta);    
+    return getCuenta(cuenta);
 }

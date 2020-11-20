@@ -16,8 +16,7 @@ export const seguimiento = () => {
     }
 }
 
-function getSucursalPorEnvio(id) {
-        
+function getSucursalPorEnvio(id) {        
     Service.default(id)
             .then(x => {
                 if(x.length == 0){
