@@ -1,17 +1,29 @@
-<main id="registro">
-    <form action="" class="formulario">
-        <h2>Completa los datos</h2>
-        <h4>Direccion destino</h4>
-        
-        <input class="control" id = "localidad" type="text" list="localidades" placeholder="Localidad" required>
-        <datalist id="localidades"></datalist required>
-        <input class="control" type="text" placeholder="Calle" id = "calle" required>
-        <input class="control" type="number" min="1" step="1" placeholder="Altura" id ="altura" required>
-        
-        <div id = "paquetes"></div>
-        
-                
-        <input type="submit" value="Agregar paquete" class="button" id="clonar"> 
-        <input type="submit" value="Crear envio" class="button" id="crearEnvio">
-    </form>
-</main>
+<form action="" class="formulario" id="form-Envio">
+    <h2>Completa los datos</h2>
+    <h4>Direccion destino</h4>
+    
+    <input class="control" id = "localidad" type="text" list="localidades" placeholder="Localidad" required>
+    <datalist id="localidades"></datalist required>
+    <input class="control" type="text" placeholder="Calle" id = "calle" required>
+    <input class="control" type="number" min="1" step="1" placeholder="Altura" id ="altura" required>
+    
+    <div id = "paquetes">
+        <h4>Datos de paquete 1</h4>
+            <select class="control" name="Tipopaquete" id="tipo" required>
+                <option>  --- Seleccione Tipo de Paquete ---  </option>
+                <option value="1">Caja</option>
+                <option value="2">Bolsin</option>
+                <option value="3">Carta documento</option>
+                <option value="4">Telegrama</option>
+                <option value="5">Carta simple</option>
+            </select>
+            <input class="control" type="number" min="0.01" step="0.01" placeholder="Peso" id="peso" required>
+            <input class="control" type="number" min="0.01" step="0.01" placeholder="Largo" id="largo" required>
+            <input class="control" type="number" min="0.01" step="0.01" placeholder="Ancho" id="ancho" required>
+            <input class="control" type="number" min="0.01" step="0.01" placeholder="Alto" id="alto" required>
+    </div>
+    
+            
+    <input type="button" value="Agregar paquete" class="button" id="clonar">
+    <input type="submit" value="Crear envio" class="button" id="crearEnvio">
+</form>

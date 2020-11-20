@@ -36,14 +36,13 @@ window.addEventListener("hashchange", () => {
                     logIn();
                 });
                 //Si tocas el botón "No tengo cuenta"
-                let registrarse = document.getElementById("noCuenta");
-                registrarse.addEventListener("click", e=>{
+                let noCuenta = document.getElementById("noCuenta");
+                noCuenta.addEventListener("click", e=>{
                     e.preventDefault();
                     location.hash = e.target.dataset.hash;
                     let url = location.hash.split("#")[1] + ".html";
                     ajax("get", url, (response) => {
                         main.innerHTML = response;
-                        let token = logIn();
                     });
                 });
                 break;
@@ -60,20 +59,20 @@ window.addEventListener("hashchange", () => {
                     clonar();
                 });
 
-                let crearEnvio = document.getElementById("crearEnvio");
-                crearEnvio.addEventListener("click", (e)=> {
+                let crearEnvio = document.getElementById("form-Envio");
+                crearEnvio.addEventListener("submit", (e)=> {
                     e.preventDefault();
                     guardarEnvio();
                 });
                 break;
             case "Registrarse":
                 maquetarLocalidades();
-                let registarse = document.getElementById("registrarse");
-                registarse.addEventListener("click", (e)=>{
+                let registrarse = document.getElementById("form-Registrarse");
+                registrarse.addEventListener("submit", (e)=>{
                     e.preventDefault();
                     registrarUsuario();
                 });
-                break;     
+                break;
         }
       });
 });

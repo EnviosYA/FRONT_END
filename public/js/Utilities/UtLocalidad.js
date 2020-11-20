@@ -1,6 +1,6 @@
 import { getLocalidades} from "../Services/SucursalService.js";
 
-//Agrega las localidades como opción al llenar dirección
+//Agrega las localidades como opción en el formulario dirección
 export const maquetarLocalidades = () => {     
     let datalist = document.getElementById("localidades"); 
     getLocalidades().then(localidades => localidades.forEach(localidad => {
@@ -14,4 +14,3 @@ export const obtenerIdLocalidad = () =>{
     if(datalist.options.namedItem(listObj.value) != null)
         return parseInt(datalist.options.namedItem(listObj.value).id);
 }
-

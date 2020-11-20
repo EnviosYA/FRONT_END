@@ -2,9 +2,8 @@ import{Direccion, Envio, Paquete} from "../Constants/Constants.js";
 import { obtenerIdLocalidad } from "../Utilities/UtLocalidad.js";
 import {obtenerCoordenadas} from "../Services/MapsService.js";
 
-let cantPaquetes = 1;
+let cantPaquetes = 2;
 export const clonar = () =>{
-    
     if (cantPaquetes <= 5)
     {
         let paquetes = document.querySelector("#paquetes");
@@ -27,6 +26,11 @@ export const clonar = () =>{
         </div>
         `
         cantPaquetes++;
+    }
+    if (cantPaquetes > 5){
+        let form = document.getElementById("form-Envio");
+        let btnAgregarPaquete = document.getElementById("clonar");
+        form.removeChild(btnAgregarPaquete);
     }
 }
 
