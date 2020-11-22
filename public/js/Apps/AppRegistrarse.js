@@ -1,11 +1,19 @@
 import {Direccion, Usuario, Cuenta} from "../Constants/Constants.js";
 import { obtenerCoordenadas } from "../Services/MapsService.js";
-import {obtenerIdLocalidad} from "../Utilities/UtLocalidad.js";
-import {cifrar} from "../Utilities/UtHash.js"
+import {obtenerIdLocalidad,maquetarLocalidades} from "../Utilities/UtLocalidad.js";
+
+export const registrarse = () =>{    
+    maquetarLocalidades();
+    let registrarse = document.getElementById("form-Registrarse");
+    registrarse.addEventListener("submit", (e)=>{
+        e.preventDefault();
+        registrarUsuario();
+    });
+}
 
 export const registrarUsuario = () => {    
     let mail = document.getElementById("mail").value;
-    let password = cifrar(document.getElementById("password").value);
+    let password = document.getElementById("password").value;
     let nombre = document.getElementById("nombre").value;
     let apellido = document.getElementById("apellido").value;
     let dni = document.getElementById("dni").value;
