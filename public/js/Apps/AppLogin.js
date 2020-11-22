@@ -5,7 +5,10 @@ export const login = () =>{
     let log = document.getElementById("form-Login");
     log.addEventListener("submit", (e)=>{
         e.preventDefault();
-        loguearse();
+        let token = loguearse();
+        setTimeout(() => {
+            console.log(token);
+        }, 2000);
     });
     //Si tocas el botón "No tengo cuenta"
     noCuenta();

@@ -47,7 +47,8 @@ window.addEventListener("hashchange", () => {
         }
       });
 });
-  
+
+//Header estático
 window.onscroll = function(){fixed()};
 let header = document.getElementById("myHeader");
 let sticky = header.offsetTop;

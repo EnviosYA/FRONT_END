@@ -1,11 +1,11 @@
-const URLBASECUENTA = 'https://localhost:44311/api/Cuenta/';
-const URLBASEUSUARIO = 'https://localhost:44312/api/Usuario/';
+const URLBASECUENTA = 'https://localhost:44311/api/Cuenta';
+const URLBASEUSUARIO = 'https://localhost:44312/api/Usuario';
 const URLBASEENVIO = 'https://localhost:44313/api/';
 const URLBASESUCURSAL = "https://localhost:44314/api/";
 
 
 //CUENTA
-const LOGIN = URLBASECUENTA + "Login";
+const LOGIN = URLBASECUENTA + "/Login";
 
 //ENVIO
 const URLENVIO = URLBASEENVIO + "Envio";
@@ -41,8 +41,8 @@ class Direccion {
 }
 
 class Cuenta {
-    constructor(mail, password){
-        this.mail = mail;
+    constructor(email, password){
+        this.email = email;
         this.password = password;
     }
 }
