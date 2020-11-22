@@ -2,8 +2,10 @@ import{Direccion, Envio, Paquete} from "../Constants/Constants.js";
 import { obtenerIdLocalidad } from "../Utilities/UtLocalidad.js";
 import {obtenerCoordenadas} from "../Services/MapsService.js";
 import{ maquetarLocalidades } from "../Utilities/UtLocalidad.js";
+import { token } from "./AppLogin.js";
+import {separarJWT} from "../Utilities/UtJWT.js";
 
-export const envio = () =>{
+export const envio = () =>{    
     maquetarLocalidades();
     let agregarPaquete = document.getElementById("clonar");
     agregarPaquete.addEventListener("click", (e)=> {
@@ -51,7 +53,7 @@ export const clonar = () =>{
 }
 
 export const guardarEnvio = () => {
-    let idUsuario = 0;
+    let idUsuario = separarJWT(token).idUsuario;
     let calle = document.getElementById("calle").value;
     let altura = parseInt(document.getElementById("altura").value);
     let localidad = document.getElementById("localidad").value;
@@ -61,7 +63,7 @@ export const guardarEnvio = () => {
 
     let direccionDestino = new Direccion(calle, altura,idLocalidad);
     let envio = new Envio(idUsuario, direccionDestino, paquetes);
-    obtenerCoordenadas("calle " + calle +" "+ altura +" " + localidad , envio,2);
+    obtenerCoordenadas("calle " + calle +" "+ altura +" " + localidad , envio,2);    
 }
 
 const guardarPaquetes = (divPaquetes) =>{
