@@ -18,7 +18,7 @@ export const crearMapaSucursales = (array) => {
     });
 }
 
-export const obtenerCoordenadas = (address, entity, opcion) => {
+export const obtenerCoordenadas = (address, entity, opcion) => {    
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({
         'address': address
@@ -30,6 +30,7 @@ export const obtenerCoordenadas = (address, entity, opcion) => {
             alert('Geocode no tuvo éxito por la siguiente razón: ' + status)
         }
     });
+
 }
 
 const setearCoordenadas = (results, entity, opcion) =>{

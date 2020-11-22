@@ -3,7 +3,6 @@ const URLBASEUSUARIO = 'https://localhost:44312/api/Usuario';
 const URLBASEENVIO = 'https://localhost:44313/api/';
 const URLBASESUCURSAL = "https://localhost:44314/api/";
 
-
 //CUENTA
 const LOGIN = URLBASECUENTA + "/Login";
 
@@ -78,4 +77,4 @@ class Adress{
     }
 }
 export {LOGIN,URLDIRECCION, URLLOCALIDAD, URLSUCURSALESHABILITADAS, URLSUCURSALPORENVIO, URLTIPOPAQUETE, 
-    URLBASECUENTA, URLBASEUSUARIO, URLENVIO, Adress, Coordenada, Usuario, Direccion, Cuenta, Envio, Paquete};
+        URLBASECUENTA, URLBASEUSUARIO, URLENVIO, Adress, Coordenada, Usuario, Direccion, Cuenta, Envio, Paquete};

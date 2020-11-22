@@ -1,7 +1,7 @@
 import { seguimiento } from "../js/Apps/AppSeguimiento.js";
 import { sucursales } from "../js/Apps/AppSucursales.js";
 import { envio } from "./Apps/AppEnvio.js";
-import { login } from "./Apps/AppLogin.js";
+import { login, token } from "./Apps/AppLogin.js";
 import { registrarse } from "./Apps/AppRegistrarse.js";
 import { ajax } from "./Utilities/UtAjax.js";
 
@@ -25,21 +25,27 @@ window.addEventListener("hashchange", () => {
     let localizacion = location.hash.split("#")[1];
     let url = localizacion + ".html";
     ajax("get", url, (response) => {
-        main.innerHTML = response;        
+        main.innerHTML = response;
         switch(localizacion){
+            case "Login":
+                login();                              
+                break;
             case "Seguimiento":
                 seguimiento();
-                break;
-            case "Login":
-                login();
-                break;
+                break;            
             case "Sucursales":
                 sucursales();
                 break;
             case "Contacto":
                 break;
             case "Envio":
-                envio();                
+                if (token != null){
+                    envio();
+                }
+                else{
+                    //Popup indicando loguearse
+                }
+                
                 break;
             case "Registrarse":
                 registrarse();
