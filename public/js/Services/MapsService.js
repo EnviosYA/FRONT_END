@@ -38,13 +38,13 @@ const setearCoordenadas = (results, entity, opcion) =>{
             entity.direccion.latitud = results[0].geometry.location.lat();
             entity.direccion.longitud = results[0].geometry.location.lng();    
             console.log(entity);
-            //postUsuario(entity);
+            postUsuario(entity);
             break;
         case 2:
             entity.direccionDestino.latitud = results[0].geometry.location.lat();
             entity.direccionDestino.longitud = results[0].geometry.location.lng();    
             console.log(entity);
-            //postEnvio(entity);
+            postEnvio(entity);
             break;
     }
 }
