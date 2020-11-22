@@ -1,6 +1,22 @@
 import{Direccion, Envio, Paquete} from "../Constants/Constants.js";
 import { obtenerIdLocalidad } from "../Utilities/UtLocalidad.js";
 import {obtenerCoordenadas} from "../Services/MapsService.js";
+import{ maquetarLocalidades } from "../Utilities/UtLocalidad.js";
+
+export const envio = () =>{
+    maquetarLocalidades();
+    let agregarPaquete = document.getElementById("clonar");
+    agregarPaquete.addEventListener("click", (e)=> {
+        e.preventDefault();
+        clonar();
+    });
+
+    let crearEnvio = document.getElementById("form-Envio");
+    crearEnvio.addEventListener("submit", (e)=> {
+        e.preventDefault();
+        guardarEnvio();
+    });
+}
 
 let cantPaquetes = 2;
 export const clonar = () =>{

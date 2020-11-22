@@ -3,6 +3,10 @@ const URLBASEUSUARIO = 'https://localhost:44312/api/Usuario/';
 const URLBASEENVIO = 'https://localhost:44313/api/';
 const URLBASESUCURSAL = "https://localhost:44314/api/";
 
+
+//CUENTA
+const LOGIN = URLBASECUENTA + "Login";
+
 //ENVIO
 const URLENVIO = URLBASEENVIO + "Envio";
 const URLSUCURSALPORENVIO = URLBASEENVIO + "SucursalPorEnvio/";
@@ -73,5 +77,5 @@ class Adress{
         this.localidad = localidad;
     }
 }
-export {URLDIRECCION, URLLOCALIDAD, URLSUCURSALESHABILITADAS, URLSUCURSALPORENVIO, URLTIPOPAQUETE, 
+export {LOGIN,URLDIRECCION, URLLOCALIDAD, URLSUCURSALESHABILITADAS, URLSUCURSALPORENVIO, URLTIPOPAQUETE, 
     URLBASECUENTA, URLBASEUSUARIO, URLENVIO, Adress, Coordenada, Usuario, Direccion, Cuenta, Envio, Paquete};

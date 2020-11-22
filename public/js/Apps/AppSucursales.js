@@ -2,7 +2,7 @@ import { Coordenada } from "../Constants/Constants.js";
 import { crearMapaSucursales } from "../Services/MapsService.js";
 import {getSucursales} from "../Services/SucursalService.js";
 
-export function maquetarSucursales(){
+export const sucursales = () =>{
     let divSucursales = document.getElementById("sucursales");
     let sucursales = getSucursales();
     divSucursales.innerHTML += 

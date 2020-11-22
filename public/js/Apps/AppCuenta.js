@@ -1,10 +1,9 @@
-import {getCuenta} from "../Services/CuentaService.js";
-import {cifrar} from "../Utilities/UtHash.js"
+import { Cuenta } from "../Constants/Constants.js";
+import {autenticarse} from "../Services/CuentaService.js";
 
-export const logIn = () =>{        
-    let cuenta = {
-        mail: document.getElementById("mail").value,
-        password: cifrar(document.getElementById("contraseña").value)
-    }
-    return getCuenta(cuenta);
+export const loguearse = () =>{
+    let mail = document.getElementById("mail").value;
+    let password = document.getElementById("contraseña").value;
+    let cuenta = new Cuenta(mail,password);
+    return autenticarse(cuenta);
 }
