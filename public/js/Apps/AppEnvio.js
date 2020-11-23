@@ -6,7 +6,7 @@ import { token } from "./AppLogin.js";
 import {separarJWT} from "../Utilities/UtJWT.js";
 
 export const envio = () =>{    
-    maquetarLocalidades();
+    maquetarLocalidades();    
     let agregarPaquete = document.getElementById("clonar");
     agregarPaquete.addEventListener("click", (e)=> {
         e.preventDefault();
@@ -19,6 +19,7 @@ export const envio = () =>{
         guardarEnvio();
     });
 }
+
 
 let cantPaquetes = 2;
 export const clonar = () =>{
@@ -63,7 +64,7 @@ export const guardarEnvio = () => {
 
     let direccionDestino = new Direccion(calle, altura,idLocalidad);
     let envio = new Envio(idUsuario, direccionDestino, paquetes);
-    obtenerCoordenadas("calle " + calle +" "+ altura +" " + localidad , envio,2);    
+    obtenerCoordenadas("calle " + calle +" "+ altura +" " + localidad , envio,2);
 }
 
 const guardarPaquetes = (divPaquetes) =>{
@@ -73,9 +74,8 @@ const guardarPaquetes = (divPaquetes) =>{
         let arrayPaquete = [];
         divDatos.forEach(dato=>{
             arrayPaquete.push(dato.value);
-        })
-        let paqueteConcreto = new Paquete(arrayPaquete[0],arrayPaquete[1],arrayPaquete[2], arrayPaquete[3],arrayPaquete[4])        
-        paquetes.push(paqueteConcreto);
+        });    
+        paquetes.push(new Paquete(arrayPaquete[0],arrayPaquete[1],arrayPaquete[2], arrayPaquete[3],arrayPaquete[4]));
     });
     return paquetes;
 }

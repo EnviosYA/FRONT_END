@@ -44,8 +44,7 @@ window.addEventListener("hashchange", () => {
                 }
                 else{
                     //Popup indicando loguearse
-                }
-                
+                }                
                 break;
             case "Registrarse":
                 registrarse();
