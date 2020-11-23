@@ -5,15 +5,22 @@ import { login, token } from "./Apps/AppLogin.js";
 import { registrarse } from "./Apps/AppRegistrarse.js";
 import { ajax } from "./Utilities/UtAjax.js";
 
-
-let links = document.querySelectorAll(".links");
 let main = document.querySelector("main");
 
-links.forEach( link => {
-    link.addEventListener("click", e => {
-        e.preventDefault();
-        location.hash = e.target.dataset.hash;
+
+const recorrerLinks = () =>{
+    let links = document.querySelectorAll(".links");
+
+    links.forEach( link => {
+        link.addEventListener("click", e => {
+            e.preventDefault();
+            location.hash = e.target.dataset.hash;
+        })
     })
+}
+ajax("get", "home.html", (response) =>{
+    main.innerHTML = response;
+    recorrerLinks();
 })
 
 if(location.hash){
@@ -21,25 +28,35 @@ if(location.hash){
     ajax("get",url);
 }
 
-window.addEventListener("hashchange", () => {
+const hola = localStorage.setItem("mivieja",token);
+
+window.addEventListener("hashchange", () => {   
     let localizacion = location.hash.split("#")[1];
     let url = localizacion + ".html";
-    ajax("get", url, (response) => {
-        main.innerHTML = response;
-        switch(localizacion){
+    ajax("get", url, (response) => {        
+        switch(localizacion){     
+            case "Home":                
+                main.innerHTML = response;
+                recorrerLinks();
+                break;       
             case "Login":
+                main.innerHTML = response;
                 login();                              
                 break;
             case "Seguimiento":
+                main.innerHTML = response;
                 seguimiento();
                 break;            
             case "Sucursales":
+                main.innerHTML = response;
                 sucursales();
                 break;
             case "Contacto":
+                main.innerHTML = response;
                 break;
             case "Envio":
                 if (token != null){
+                    main.innerHTML = response;
                     envio();
                 }
                 else{
@@ -47,11 +64,14 @@ window.addEventListener("hashchange", () => {
                 }                
                 break;
             case "Registrarse":
+                main.innerHTML = response;
                 registrarse();
                 break;
         }
       });
 });
+
+
 
 //Header estático
 window.onscroll = function(){fixed()};
