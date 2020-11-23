@@ -1,0 +1,35 @@
+header h2{
+    color: white;
+    margin: 2%;
+    margin: auto;  
+}
+
+header{
+    text-align: center;
+}
+
+main{
+    background-image: url(../Images/homeCamion.jpg);
+    text-align: center;
+}
+
+main h2{
+    margin: 20px 0;
+}
+
+main #reader{
+    margin: auto;
+    border: solid teal 3px;
+}
+
+input[type="text"]{
+    margin: 20px 0;
+    font-size: 1.2em;
+    padding: 5px;
+}
+
+#codigoManual{
+    font-size: 1.2em;
+    border-radius: 8%;
+    padding: 5px;
+}
