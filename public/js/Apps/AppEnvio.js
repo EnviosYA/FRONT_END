@@ -19,7 +19,6 @@ export const envio = () =>{
     });
 }
 
-
 let cantPaquetes = 2;
 export const clonar = () =>{
     if (cantPaquetes <= 5)
