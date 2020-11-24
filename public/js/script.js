@@ -29,9 +29,12 @@ if(location.hash){
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const hola = localStorage.setItem("mivieja",token);
 window.addEventListener("hashchange", () => {  
 =======
+=======
+>>>>>>> 19516ddadad955d0b3ddd02490c1908fc254e0bf
 window.addEventListener("hashchange", () => {   
 >>>>>>> 19516ddadad955d0b3ddd02490c1908fc254e0bf
     let localizacion = location.hash.split("#")[1];
