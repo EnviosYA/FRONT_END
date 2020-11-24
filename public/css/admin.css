@@ -1,7 +1,12 @@
-header h2{
+header h1{
     color: white;
-    margin: 2%;
-    margin: auto;  
+    margin: 1%;
+    margin: auto; 
+}
+
+main h2{
+    margin: auto;
+    margin: 15px 0; 
 }
 
 header{
@@ -13,23 +18,29 @@ main{
     text-align: center;
 }
 
-main h2{
-    margin: 20px 0;
-}
-
 main #reader{
     margin: auto;
-    border: solid teal 3px;
+    border: solid  rgba(52, 58, 64, 1) 3px;
 }
 
 input[type="text"]{
     margin: 20px 0;
-    font-size: 1.2em;
     padding: 5px;
 }
 
 #codigoManual{
-    font-size: 1.2em;
     border-radius: 8%;
     padding: 5px;
+}
+
+#contMain{
+    text-align: center;
+}
+
+#estadoEnvio{
+    border: solid  rgba(52, 58, 64, 1) 2px;
+    padding: 5px;
+    background-color: rgb(160, 157, 157);
+    width: 65%;
+    margin: 15px auto;
 }

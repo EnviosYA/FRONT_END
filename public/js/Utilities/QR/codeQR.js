@@ -8,61 +8,36 @@ function(error){ // función de mala lectura
 let btnBuscarCodigo = document.getElementById('codigoManual');
 btnBuscarCodigo.addEventListener('click', function(e){
     e.preventDefault();
-    swal ("¿Desea realizar el tracking de este envio?",
+    let data = "1234";
+    swal ("¿Desea realizar el tracking de este envio? " +data,
     { 
         buttons : [ "¡Por el momento, no!" , "¡Realizar tracking!" ] ,  
      }).then((e) => {
          if(e)
          {
-             tracking();
+             tracking(data);
          }
      })
 });
 
-let tracking = () =>{
-    swal({
-        text: 'Indique el estado del envio".',
-        content: "select",/* <option selected value="0"> Elige una opción </option>,
-        <optgroup label="Microsoft"> 
-        <option value="1">Windows Vista</option> 
-        <option value="2">Windows 7</option> 
-        <option value="3">Windows XP</option> 
-    </optgroup> , */
-        button: {
-          text: "Search!",
-          closeModal: false,
-        },
-      })
-      .then(name => {
-        if (!name) throw null;
-       
-        return fetch(`https://itunes.apple.com/search?term=${name}&entity=movie`);
-      })
-      .then(results => {
-        return results.json();
-      })
-      .then(json => {
-        const movie = json.results[0];
-       
-        if (!movie) {
-          return swal("No movie was found!");
-        }
-       
-        const name = movie.trackName;
-        const imageURL = movie.artworkUrl100;
-       
-        swal({
-          title: "Top result:",
-          text: name,
-          icon: imageURL,
-        });
-      })
-      .catch(err => {
-        if (err) {
-          swal("Oh noes!", "The AJAX request failed!", "error");
-        } else {
-          swal.stopLoading();
-          swal.close();
-        }
-      });
+let tracking = (data) =>{
+   /*  alert("Estamos en la funcion"); */
+    let main = document.getElementById('contMain');
+    let estadoEnvio = document.createElement("DIV");
+    estadoEnvio.id = "estadoEnvio";
+    estadoEnvio.innerHTML+=
+    `
+    El envio ${data} se encuentra en la sucursal de ${"Florencio Varela"}
+    con un estado de
+    <form name="form1" target="_blank">
+  <select name="menu1" onChange="MM_jumpMenu('parent',this,0)">
+    <option value="Ingreso a la sucursal" selected>Ingreso a la sucursal</option>
+    <option value="En proceso">En proceso</option>
+    <option value="Despachado">Despachado</option>
+    <option value="En viaje al domicilio del destinatiario">En viaje al domicilio del destinatiario</option>
+    <option value="Entregado">Entregado</option>
+  </select>
+  <input type="button" value="Publicar estado" onclick="Publicar('${data}');">           
+    `
+    main.appendChild(estadoEnvio);
 }
