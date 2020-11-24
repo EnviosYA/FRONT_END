@@ -8,9 +8,6 @@ import { separarJWT } from "./Utilities/UtJWT.js";
 
 let main = document.querySelector("main");
 
-let tokenOb = separarJWT(localStorage.getItem("token"));
-console.log(tokenOb);
-
 const recorrerLinks = () =>{
     let links = document.querySelectorAll(".links");
 
@@ -71,8 +68,6 @@ window.addEventListener("hashchange", () => {
         }
       });
 });
-
-
 
 //Header estático
 window.onscroll = function(){fixed()};
