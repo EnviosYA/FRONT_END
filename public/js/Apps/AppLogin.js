@@ -3,23 +3,41 @@ import { Cuenta } from "../Constants/Constants.js";
 import {autenticarse} from "../Services/CuentaService.js";
 import { separarJWT } from "../Utilities/UtJWT.js";
 
-export let token = null; 
-
 export const login = () =>{
     let log = document.getElementById("form-Login");
     log.addEventListener("submit", async (e)=>{
-        e.preventDefault();                
-        token = await loguearse();
+        e.preventDefault();
+        let token = await loguearse();
+        if(token.status == 401){                
+            maquetarErrorLogin(1);
+            return;
+        }
+        else{
+            maquetarErrorLogin(2);
+            localStorage.setItem("token",token.value.toString());
+            
+        }
     });
     //Si tocas el botón "No tengo cuenta"
     noCuenta();
 }
+
 export const loguearse = async () =>{
     let mail = document.getElementById("mail").value;
     let password = document.getElementById("contraseña").value;
     let cuenta = new Cuenta(mail,password);
-    let token = await autenticarse(cuenta);    
-    return token.value.toString();
+    return await autenticarse(cuenta);   
+}
+
+const maquetarErrorLogin = (opcion) =>{
+    let error = document.getElementById("error-login");
+    if(opcion == 1){
+        error.style.display = "block";
+    }
+    else{
+        error.style.display = "none";
+    }
+    
 }
 
 const noCuenta = () =>{

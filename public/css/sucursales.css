@@ -45,7 +45,7 @@
     height: 210px;
 } 
 
-#maps {
+.map-sucursales{
     width: 60%;
     margin: auto;
     border-style: solid;

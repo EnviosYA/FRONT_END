@@ -2,7 +2,6 @@ import{Direccion, Envio, Paquete} from "../Constants/Constants.js";
 import { obtenerIdLocalidad } from "../Utilities/UtLocalidad.js";
 import {obtenerCoordenadas} from "../Services/MapsService.js";
 import{ maquetarLocalidades } from "../Utilities/UtLocalidad.js";
-import { token } from "./AppLogin.js";
 import {separarJWT} from "../Utilities/UtJWT.js";
 
 export const envio = () =>{    
@@ -19,7 +18,6 @@ export const envio = () =>{
         guardarEnvio();
     });
 }
-
 
 let cantPaquetes = 2;
 export const clonar = () =>{
@@ -54,7 +52,7 @@ export const clonar = () =>{
 }
 
 export const guardarEnvio = () => {
-    let idUsuario = separarJWT(token).idUsuario;
+    let idUsuario = separarJWT(localStorage.getItem("token")).IdUser;
     let calle = document.getElementById("calle").value;
     let altura = parseInt(document.getElementById("altura").value);
     let localidad = document.getElementById("localidad").value;
@@ -75,7 +73,8 @@ const guardarPaquetes = (divPaquetes) =>{
         divDatos.forEach(dato=>{
             arrayPaquete.push(dato.value);
         });    
-        paquetes.push(new Paquete(arrayPaquete[0],arrayPaquete[1],arrayPaquete[2], arrayPaquete[3],arrayPaquete[4]));
+        let paqueteConcreto = new Paquete(arrayPaquete[0],arrayPaquete[1],arrayPaquete[2], arrayPaquete[3],arrayPaquete[4]);
+        paquetes.push(paqueteConcreto);
     });
     return paquetes;
 }

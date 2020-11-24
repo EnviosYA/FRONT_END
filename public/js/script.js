@@ -1,12 +1,12 @@
 import { seguimiento } from "../js/Apps/AppSeguimiento.js";
 import { sucursales } from "../js/Apps/AppSucursales.js";
 import { envio } from "./Apps/AppEnvio.js";
-import { login, token } from "./Apps/AppLogin.js";
+import { login } from "./Apps/AppLogin.js";
 import { registrarse } from "./Apps/AppRegistrarse.js";
 import { ajax } from "./Utilities/UtAjax.js";
+import { separarJWT } from "./Utilities/UtJWT.js";
 
 let main = document.querySelector("main");
-
 
 const recorrerLinks = () =>{
     let links = document.querySelectorAll(".links");
@@ -28,19 +28,23 @@ if(location.hash){
     ajax("get",url);
 }
 
+<<<<<<< HEAD
 const hola = localStorage.setItem("mivieja",token);
 window.addEventListener("hashchange", () => {  
+=======
+window.addEventListener("hashchange", () => {   
+>>>>>>> 19516ddadad955d0b3ddd02490c1908fc254e0bf
     let localizacion = location.hash.split("#")[1];
     let url = localizacion + ".html";
-    ajax("get", url, (response) => {        
-        switch(localizacion){     
-            case "Home":                
+    ajax("get", url, (response) => {
+        switch(localizacion){
+            case "Home":
                 main.innerHTML = response;
                 recorrerLinks();
-                break;       
+                break;
             case "Login":
                 main.innerHTML = response;
-                login();                              
+                login();
                 break;
             case "Seguimiento":
                 main.innerHTML = response;
@@ -54,12 +58,13 @@ window.addEventListener("hashchange", () => {
                 main.innerHTML = response;
                 break;
             case "Envio":
-                if (token != null){
+                if (localStorage.getItem("token") != null){
                     main.innerHTML = response;
                     envio();
                 }
                 else{
-                }                
+                    //Popup indicando loguearse
+                }
                 break;
             case "Registrarse":
                 main.innerHTML = response;
@@ -68,8 +73,6 @@ window.addEventListener("hashchange", () => {
         }
       });
 });
-
-
 
 //Header estático
 window.onscroll = function(){fixed()};
