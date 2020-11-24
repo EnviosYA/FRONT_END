@@ -109,7 +109,7 @@
   color: rgb(255, 73, 73);
 }
 
-#mapa {
+.map-seguimiento {
   width: 50%;
   height: 300px;
   margin: auto;
