@@ -29,8 +29,7 @@ if(location.hash){
 }
 
 const hola = localStorage.setItem("mivieja",token);
-
-window.addEventListener("hashchange", () => {   
+window.addEventListener("hashchange", () => {  
     let localizacion = location.hash.split("#")[1];
     let url = localizacion + ".html";
     ajax("get", url, (response) => {        
@@ -60,7 +59,6 @@ window.addEventListener("hashchange", () => {
                     envio();
                 }
                 else{
-                    //Popup indicando loguearse
                 }                
                 break;
             case "Registrarse":
