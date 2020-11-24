@@ -43,7 +43,7 @@ const setearCoordenadas = (results, entity, opcion) =>{
             entity.direccionDestino.latitud = results[0].geometry.location.lat();
             entity.direccionDestino.longitud = results[0].geometry.location.lng();    
             console.log(entity);
-            postEnvio(entity);
+            //postEnvio(entity);
             break;
     }
 }
