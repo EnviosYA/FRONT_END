@@ -8,13 +8,12 @@ export const crearMapaSucursales = (array) => {
         zoom: 10,
         center: centro
     };
-
     var map = new google.maps.Map(document.getElementById('maps'), mapOptions);    
     array.forEach(coord => {
         new google.maps.Marker({
             position: coord,
             map: map,
-        });   
+        });
     });
 }
 
@@ -30,14 +29,13 @@ export const obtenerCoordenadas = (address, entity, opcion) => {
             alert('Geocode no tuvo éxito por la siguiente razón: ' + status)
         }
     });
-
 }
 
 const setearCoordenadas = (results, entity, opcion) =>{
     switch(opcion){
         case 1:
             entity.direccion.latitud = results[0].geometry.location.lat();
-            entity.direccion.longitud = results[0].geometry.location.lng();    
+            entity.direccion.longitud = results[0].geometry.location.lng();
             console.log(entity);
             postUsuario(entity);
             break;
