@@ -36,9 +36,7 @@ const setearCoordenadas = (results, entity, opcion) =>{
         case 1:
             entity.direccion.latitud = results[0].geometry.location.lat();
             entity.direccion.longitud = results[0].geometry.location.lng();
-            console.log(entity);
             postUsuario(entity).then( e => {
-                console.log(e);
                 if(e.status){
                     swal ( "¡Se registró el usuario correctamente! ", "Numero de Cliente: " + e.id, "success" );
                 }
