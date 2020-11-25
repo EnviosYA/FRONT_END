@@ -3,8 +3,22 @@ import { obtenerIdLocalidad } from "../Utilities/UtLocalidad.js";
 import {obtenerCoordenadas} from "../Services/MapsService.js";
 import{ maquetarLocalidades } from "../Utilities/UtLocalidad.js";
 import {separarJWT} from "../Utilities/UtJWT.js";
+import {ajax} from "../Utilities/UtAjax.js";
 
-export const envio = () =>{    
+let main = document.querySelector("main");
+
+export const envio = (response) =>{    
+
+    if (localStorage.getItem("token") != null){
+        main.innerHTML = response;
+        envioInterno();
+    }
+    else{
+        popUpLoginEnvio();
+    }
+}
+
+const envioInterno = () => {
     maquetarLocalidades();    
     let agregarPaquete = document.getElementById("clonar");
     agregarPaquete.addEventListener("click", (e)=> {
@@ -18,6 +32,28 @@ export const envio = () =>{
         guardarEnvio();
     });
 }
+
+const popUpLoginEnvio = () => {
+    swal({
+        title: "Desea iniciar sesión",
+        text: "Para acceder a esta funcion debe iniciar sesion o Resgistrarse",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((accion) => {
+        if (accion) {
+            location.hash = "Login";
+            ajax("get", "login.html",(logear) =>{
+                main.innerHTML = logear
+            });
+        }
+        else{
+            location.hash = "Home"
+        }
+     });
+}
+
 
 let cantPaquetes = 2;
 export const clonar = () =>{
@@ -78,3 +114,4 @@ const guardarPaquetes = (divPaquetes) =>{
     });
     return paquetes;
 }
+

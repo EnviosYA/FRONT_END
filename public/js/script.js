@@ -3,6 +3,7 @@ import { sucursales } from "../js/Apps/AppSucursales.js";
 import { envio } from "./Apps/AppEnvio.js";
 import { login } from "./Apps/AppLogin.js";
 import { registrarse } from "./Apps/AppRegistrarse.js";
+import { Envio } from "./Constants/Constants.js";
 import { ajax } from "./Utilities/UtAjax.js";
 import { separarJWT } from "./Utilities/UtJWT.js";
 
@@ -22,11 +23,6 @@ ajax("get", "home.html", (response) =>{
     main.innerHTML = response;
     recorrerLinks();
 })
-
-if(location.hash){
-    let url = location.hash.split("#")[1] + ".html";
-    ajax("get",url);
-}
 
 window.addEventListener("hashchange", () => {   
     let localizacion = location.hash.split("#")[1];
@@ -53,13 +49,7 @@ window.addEventListener("hashchange", () => {
                 main.innerHTML = response;
                 break;
             case "Envio":
-                if (localStorage.getItem("token") != null){
-                    main.innerHTML = response;
-                    envio();
-                }
-                else{
-                    //Popup indicando loguearse
-                }
+                envio(response);
                 break;
             case "Registrarse":
                 main.innerHTML = response;

@@ -22,11 +22,11 @@ export const obtenerCoordenadas = (address, entity, opcion) => {
     geocoder.geocode({
         'address': address
     }, (results,status) =>{
-        if (status == google.maps.GeocoderStatus.OK) { 
+        if (status == google.maps.GeocoderStatus.OK) {
             setearCoordenadas(results,entity,opcion);
         }
         else{
-            alert('Geocode no tuvo éxito por la siguiente razón: ' + status)
+            swal("Error al querer registrar usuario.","Error Google: " + status, "error" );
         }
     });
 }
@@ -37,7 +37,15 @@ const setearCoordenadas = (results, entity, opcion) =>{
             entity.direccion.latitud = results[0].geometry.location.lat();
             entity.direccion.longitud = results[0].geometry.location.lng();
             console.log(entity);
-            postUsuario(entity);
+            postUsuario(entity).then( e => {
+                console.log(e);
+                if(e.status){
+                    swal ( "¡Se registró el usuario correctamente! ", "Numero de Cliente: " + e.id, "success" );
+                }
+                else{
+                    swal("Error al querer registrar usuario.","Se ah producido un error re intente mas tarde", "error" );
+                }
+            })
             break;
         case 2:
             entity.direccionDestino.latitud = results[0].geometry.location.lat();
