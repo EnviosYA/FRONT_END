@@ -27,7 +27,7 @@ export const registrarUsuario = () => {
     let cuenta = new Cuenta(mail,password);
     let direccion = new Direccion(calle, altura,idLocalidad);
     let usuario = new Usuario(nombre,apellido, dni, fechaNac, cuenta, direccion);
-    obtenerCoordenadas("calle " + calle +" "+ altura +" " + localidad , usuario,1);
+    obtenerCoordenadas("calle " + calle +" "+ altura +" " + localidad , usuario,1 );
 }
 
 const maquetarFechas = () =>{

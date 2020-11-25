@@ -15,7 +15,6 @@ export const login = () =>{
         else{
             maquetarErrorLogin(2);
             localStorage.setItem("token",token.value.toString());
-            
         }
     });
     //Si tocas el botón "No tengo cuenta"
