@@ -24,7 +24,16 @@ function getSucursalPorEnvio(id) {
                     document.getElementById("envioIncorrecto").style.display = "block";
                 } else {
                     document.getElementById("ingreso-busqueda").style.display = "none";
-                    document.getElementById("seguimiento").className += "bordes";
+                    const seguimiento = document.createElement("div");
+                    seguimiento.setAttribute("id", "seguimiento");
+                    const contenedor = document.getElementById("container");
+
+                    contenedor.innerHTML = 
+                    `
+                        <div id="map-tracking" class="map-seguimiento"></div>
+                    `;
+
+                    contenedor.appendChild(seguimiento);
                     maquetarSeguimiento(x);
                 }
             });
@@ -32,6 +41,7 @@ function getSucursalPorEnvio(id) {
 
 function maquetarSeguimiento(seguimiento){
     var divSeguimiento = document.getElementById("seguimiento");
+    /*divSeguimiento.setAttribute("class", "bordes");*/
     var coordenadas = [];
     var sucursalActiva = "";
 
@@ -39,26 +49,31 @@ function maquetarSeguimiento(seguimiento){
         var ms = Date.parse(element.fecha);
         var fecha = new Date(ms);
 
-        divSeguimiento.innerHTML += 
-        `
-            <div class="seguimiento-estado">
-                <ul>
-                    <li>${element.nombre}</li>
-                    <li>${element.estado}</li>
-                    <li>${fecha.getDate()}-${fecha.getMonth()+1}-${fecha.getUTCFullYear()}</li>
-                </ul>    
-            </div>
-        `;
+        let divEstado = document.createElement("div");
+        divEstado.setAttribute("class", "seguimiento-estado");
+
+        let ul = document.createElement("ul");
+
+        if(element.nombre != sucursalActiva){
+            let liNombre = document.createElement("li");
+            liNombre.setAttribute("class", "nombre-sucursal");
+            liNombre.innerHTML = element.nombre;
+            ul.appendChild(liNombre);
+        }
+
+        let liEstadoFecha = document.createElement("li");
+        liEstadoFecha.innerHTML = `${element.estado}: ${fecha.getDate()}-${fecha.getMonth()+1}-${fecha.getUTCFullYear()}`;
+        ul.appendChild(liEstadoFecha);
+        
+        divEstado.appendChild(ul);
+
+        divSeguimiento.appendChild(divEstado);
+        
         if(element.nombre != sucursalActiva){
             coordenadas.push(new Coordenada(parseFloat(element.latitud), parseFloat(element.longitud)));
             sucursalActiva = element.nombre;
         }
     });
-    
-    document.getElementById("container").innerHTML += 
-    `
-        <div id="map-tracking" class="map-seguimiento"></div>
-    `;
     
     crearMapaSeguimiento(coordenadas);
 }
