@@ -25,16 +25,18 @@ export const HeaderLogueado = (token) =>{
     }
 }
 
-const botonSalir = () =>{    
-    let nav = document.querySelector("nav");
-    let ancla = document.createElement("a");
-    ancla.classList.add("Cerrar-Sesion");
-    ancla.innerText="Cerrar Sesión";
-    ancla.style.cursor = "pointer";
-    nav.appendChild(ancla);
-    ancla.addEventListener("click",()=>{        
-        popupSalir(nav,ancla);
-    })
+const botonSalir = () =>{
+    if(document.querySelector(".Cerrar-Sesion") == undefined){
+        let nav = document.querySelector("nav");
+        let ancla = document.createElement("a");
+        ancla.classList.add("Cerrar-Sesion");
+        ancla.innerText="Cerrar sesión";
+        ancla.style.cursor = "pointer";
+        nav.appendChild(ancla);
+        ancla.addEventListener("click",()=>{   
+            popupSalir(nav,ancla);
+        })
+    }    
 }
 
 const popupSalir = (nav,ancla) =>{    
