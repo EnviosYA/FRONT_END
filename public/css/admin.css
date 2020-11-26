@@ -1,4 +1,4 @@
-header h1{
+/* header h1{
     color: white;
     margin: 0 1%;
     margin: auto; 
@@ -45,3 +45,8 @@ input[type="text"]{
     width: 65%;
     margin: 15px auto;
 }
+
+#reader{
+    width:370px;
+    height:280px;
+} */
