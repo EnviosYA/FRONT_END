@@ -4,25 +4,14 @@ import { envio } from "./Apps/AppEnvio.js";
 import { login } from "./Apps/AppLogin.js";
 import { registrarse } from "./Apps/AppRegistrarse.js";
 import { Envio } from "./Constants/Constants.js";
-import { ajax } from "./Utilities/UtAjax.js";
+import { ajax , toHome , recorrerLinks } from "./Utilities/UtAjax.js";
 import { separarJWT } from "./Utilities/UtJWT.js";
 
 let main = document.querySelector("main");
 
-const recorrerLinks = () =>{
-    let links = document.querySelectorAll(".links");
+recorrerLinks();
 
-    links.forEach( link => {
-        link.addEventListener("click", e => {
-            e.preventDefault();
-            location.hash = e.target.dataset.hash;
-        })
-    })
-}
-ajax("get", "home.html", (response) =>{
-    main.innerHTML = response;
-    recorrerLinks();
-})
+toHome();
 
 window.addEventListener("hashchange", () => {   
     let localizacion = location.hash.split("#")[1];
@@ -54,6 +43,9 @@ window.addEventListener("hashchange", () => {
             case "Registrarse":
                 main.innerHTML = response;
                 registrarse();
+                break;
+            case "Perfil":
+                main.innerHTML = response;    
                 break;
         }
       });

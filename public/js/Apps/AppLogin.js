@@ -1,7 +1,8 @@
-import { ajax } from "../Utilities/UtAjax.js";
+import { ajax, toHome } from "../Utilities/UtAjax.js";
 import { Cuenta } from "../Constants/Constants.js";
 import {autenticarse} from "../Services/CuentaService.js";
 import { separarJWT } from "../Utilities/UtJWT.js";
+import {HeaderLogueado} from '../Utilities/UtHeader.js'
 
 export const login = () =>{
     let log = document.getElementById("form-Login");
@@ -15,6 +16,8 @@ export const login = () =>{
         else{
             maquetarErrorLogin(2);
             localStorage.setItem("token",token.value.toString());
+            HeaderLogueado(localStorage.getItem("token"));
+            toHome()
         }
     });
     //Si tocas el botón "No tengo cuenta"
