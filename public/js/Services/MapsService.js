@@ -31,7 +31,7 @@ export const obtenerCoordenadas = (address, entity, opcion) => {
     });
 }
 
-const setearCoordenadas = (results, entity, opcion) =>{
+const setearCoordenadas = async(results, entity, opcion) =>{
     switch(opcion){
         case 1:
             entity.direccion.latitud = results[0].geometry.location.lat();
@@ -49,7 +49,8 @@ const setearCoordenadas = (results, entity, opcion) =>{
             entity.direccionDestino.latitud = results[0].geometry.location.lat();
             entity.direccionDestino.longitud = results[0].geometry.location.lng();    
             console.log(entity);
-            //postEnvio(entity);
+            const l = await postEnvio(entity);
+            console.log(l)
             break;
     }
 }
