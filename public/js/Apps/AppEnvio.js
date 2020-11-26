@@ -3,7 +3,7 @@ import { obtenerIdLocalidad } from "../Utilities/UtLocalidad.js";
 import {obtenerCoordenadas} from "../Services/MapsService.js";
 import{ maquetarLocalidades } from "../Utilities/UtLocalidad.js";
 import {separarJWT} from "../Utilities/UtJWT.js";
-import {ajax} from "../Utilities/UtAjax.js";
+import {ajax, toHome, toPage} from "../Utilities/UtAjax.js";
 
 let main = document.querySelector("main");
 
@@ -35,22 +35,38 @@ const envioInterno = () => {
 
 const popUpLoginEnvio = () => {
     swal({
-        title: "Desea iniciar sesión",
-        text: "Para acceder a esta funcion debe iniciar sesion o Resgistrarse",
+        title: "No ha iniciado sesión",
+        text: "¡Para realizar un envío debe iniciar sesión!",
         icon: "warning",
-        buttons: true,
-        dangerMode: true,
+        // buttons: true,
+        buttons: {
+            cancel: "Cancelar",
+            catch: {
+                text: "Registrarse",
+                value: "catch",
+            },
+            defeat: "Iniciar sesión",
+        },
+        // dangerMode: true,
       })
       .then((accion) => {
-        if (accion) {
-            location.hash = "Login";
-            ajax("get", "login.html",(logear) =>{
-                main.innerHTML = logear
-            });
-        }
-        else{
-            location.hash = "Home"
-        }
+          switch (accion){
+            case "defeat":
+                toPage("login.html"); 
+                break;
+            case "catch":
+                toPage("registrarse.html");
+              break;
+            default:        
+              toHome();
+              break;
+          }          
+        // if (accion) {
+        //     toPage("login.html");
+        // }
+        // else{
+        //     location.hash = "Home"
+        // }
      });
 }
 

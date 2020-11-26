@@ -4,9 +4,8 @@ export const admin = () =>{
         $('#reader').html5_qrcode_stop();},
     function(error){ // función de mala lectura
     }, function(videoError){ // función si falla la utilización de la camara.
-        
-    });
-    
+        alert("videoError");
+    });    
     
     let btnBuscarCodigo = document.getElementById('codigoManual');
     btnBuscarCodigo.addEventListener('click', function(e){
@@ -41,7 +40,6 @@ let tracking = (data) =>{
     <option value="En viaje al domicilio del destinatiario">En viaje al domicilio del destinatiario</option>
     <option value="Entregado">Entregado</option>
   </select>
-  <input type="button" value="Publicar estado" onclick="Publicar('${data}');">           
-    `
+  <input type="button" value="Publicar estado" onclick="Publicar('${data}');">    `
     main.appendChild(estadoEnvio);
 }

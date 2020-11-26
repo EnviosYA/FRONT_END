@@ -1,4 +1,6 @@
-export const ajax  = (metodo, url, callback) =>{
+import { pascalCase } from "./UtFormatos.js";
+
+export const ajax  = async (metodo, url, callback) =>{
   let xhr = new XMLHttpRequest();
   xhr.open(metodo, url);
   xhr.addEventListener("progress", (e) => {
@@ -10,19 +12,19 @@ export const ajax  = (metodo, url, callback) =>{
     }
   });
   xhr.send();
- };
+};
  
 export const recorrerLinks = () =>{
   let links = document.querySelectorAll(".links");
   
-  links.forEach( link => {
+  links.forEach((link) => {
     link.addEventListener("click", e => {
       e.preventDefault();
       location.hash = e.target.dataset.hash;
     })
   })
 }
-  
+
 export const toHome = () =>{
   let main =  document.querySelector("main");
   ajax("get", "home.html", (response) =>{
@@ -30,4 +32,10 @@ export const toHome = () =>{
     location.hash = "Home";
     recorrerLinks();
   })
+}
+
+export const toPage = (url) =>{
+  let pagina = url.split(".")[0];
+  let page = pascalCase(pagina);
+  location.hash = page;
 }
