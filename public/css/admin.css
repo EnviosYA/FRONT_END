@@ -1,49 +1,38 @@
-/* header h1{
-    color: white;
-    margin: 0 1%;
-    margin: auto; 
+.QR h2 {
+  padding: 3% 0;
 }
 
-main h2{
-    margin: auto;
-    margin: 15px 0; 
+.QR {
+  background-image: url(../Images/homeCamion.jpg);
+  text-align: center;
+  height: 100%;
 }
 
-header{
-    text-align: center;
+.QR input[type="text"] {
+  margin: 20px 0;
+  padding: 5px;
+}
+*/ #codigoManual {
+  border-radius: 8%;
+  padding: 5px;
+  font-weight: bold;
 }
 
-main{
-    background-image: url(../Images/homeCamion.jpg);
-    text-align: center;
+#contMain {
+  text-align: center;
 }
 
-input[type="text"]{
-    margin: 20px 0;
-    padding: 5px;
-}*/
-
-#codigoManual{
-    border-radius: 8%;
-    padding: 5px;
-    font-weight: bold;
+#estadoEnvio {
+  border: solid rgba(52, 58, 64, 1) 2px;
+  padding: 5px;
+  background-color: rgb(160, 157, 157);
+  width: 65%;
+  margin: 15px auto;
 }
 
-#contMain{
-    text-align: center;
-}
-
-#estadoEnvio{
-    border: solid  rgba(52, 58, 64, 1) 2px;
-    padding: 5px;
-    background-color: rgb(160, 157, 157);
-    width: 65%;
-    margin: 15px auto;
-}
-
-#reader{
-    margin: auto;
-    border: solid  rgba(52, 58, 64, 1) 3px;
-    width:370px;
-    height:280px;
+#reader {
+  margin: auto;
+  border: solid rgba(52, 58, 64, 1) 3px;
+  width: 370px;
+  height: 280px;
 }

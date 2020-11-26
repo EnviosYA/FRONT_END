@@ -4,7 +4,7 @@ export const admin = () =>{
         $('#reader').html5_qrcode_stop();},
     function(error){ // función de mala lectura
     }, function(videoError){ // función si falla la utilización de la camara.
-        alert("videoError");
+        
     });
     
     
