@@ -1,32 +1,35 @@
-$('#reader').html5_qrcode(function(data){ // función de lectura Ok
-    alert(data);
-    $('#reader').html5_qrcode_stop();},
-function(error){ // función de mala lectura
-}, function(videoError){ // función si falla la utilización de la camara.
-    alert("videoError");});
-
-
-let btnBuscarCodigo = document.getElementById('codigoManual');
-btnBuscarCodigo.addEventListener('click', function(e){
-    e.preventDefault();
-    let data = "1234";
-    swal ("¿Desea realizar el tracking de este envio? " +data,
-    { 
-        buttons : [ "¡Por el momento, no!" , "¡Realizar tracking!" ] ,  
-     }).then((e) => {
-         if(e)
-         {
-          tracking(data);
-         }
-     })
-});
+export const admin = () =>{
+    $('#reader').html5_qrcode(function(data){ // función de lectura Ok
+        alert(data);
+        $('#reader').html5_qrcode_stop();},
+    function(error){ // función de mala lectura
+    }, function(videoError){ // función si falla la utilización de la camara.
+        alert("videoError");
+    });
+    
+    
+    let btnBuscarCodigo = document.getElementById('codigoManual');
+    btnBuscarCodigo.addEventListener('click', function(e){
+        e.preventDefault();
+        let data = "1234";
+        swal ("¿Desea realizar el tracking de este envio? " +data,
+        { 
+            buttons : [ "¡Por el momento, no!" , "¡Realizar tracking!" ] ,  
+         }).then((e) => {
+             if(e)
+             {
+              tracking(data);
+             }
+         })
+    });
+}
 
 let tracking = (data) =>{
    /*  alert("Estamos en la funcion"); */
-    let main = document.getElementById('contMain');
+    let main = document.querySelector('main');
     let estadoEnvio = document.createElement("DIV");
     estadoEnvio.id = "estadoEnvio";
-    estadoEnvio.innerHTML+=
+    estadoEnvio.innerHTML +=
     `
     El envio ${data} se encuentra en la sucursal de ${"Florencio Varela"}
     con un estado de
