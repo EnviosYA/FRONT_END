@@ -33,6 +33,8 @@ class Usuario {
 }
 class Direccion {
     constructor(calle,altura,idLocalidad){
+        this.latitud= 0;
+        this.longitud = 0;
         this.calle =  calle;
         this.altura = altura;
         this.idLocalidad = idLocalidad;
@@ -56,11 +58,11 @@ class Envio {
 
 class Paquete{
     constructor(idTipoPaquete, peso, largo, ancho, alto){        
+        this.idTipoPaquete = idTipoPaquete;
         this.peso = peso;
         this.largo = largo;
         this.ancho = ancho;
         this.alto = alto;
-        this.idTipoPaquete = idTipoPaquete;
     }
 }
 class Coordenada{

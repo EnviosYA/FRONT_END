@@ -88,7 +88,7 @@ export const clonar = () =>{
 }
 
 export const guardarEnvio = () => {
-    let idUsuario = separarJWT(localStorage.getItem("token")).IdUser;
+    let idUsuario = parseInt(separarJWT(localStorage.getItem("token")).IdUser);
     let calle = document.getElementById("calle").value;
     let altura = parseInt(document.getElementById("altura").value);
     let localidad = document.getElementById("localidad").value;
@@ -109,7 +109,7 @@ const guardarPaquetes = (divPaquetes) =>{
         divDatos.forEach(dato=>{
             arrayPaquete.push(dato.value);
         });    
-        let paqueteConcreto = new Paquete(arrayPaquete[0],arrayPaquete[1],arrayPaquete[2], arrayPaquete[3],arrayPaquete[4]);
+        let paqueteConcreto = new Paquete(parseInt(arrayPaquete[0]),parseInt(arrayPaquete[1]),parseInt(arrayPaquete[2]), parseInt(arrayPaquete[3]),parseInt(arrayPaquete[4]));
         paquetes.push(paqueteConcreto);
     });
     return paquetes;

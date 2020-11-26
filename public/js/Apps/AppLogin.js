@@ -9,7 +9,7 @@ export const login = () =>{
     log.addEventListener("submit", async (e)=>{
         e.preventDefault();
         let token = await loguearse();
-        if(token.status == 401){                
+        if(token.statusCode == 401){                
             maquetarErrorLogin(1);
             return;
         }
