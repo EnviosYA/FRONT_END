@@ -3,20 +3,15 @@ import { sucursales } from "../js/Apps/AppSucursales.js";
 import { envio } from "./Apps/AppEnvio.js";
 import { login } from "./Apps/AppLogin.js";
 import { registrarse } from "./Apps/AppRegistrarse.js";
-import { Envio } from "./Constants/Constants.js";
 import { admin } from "./Utilities/QR/codeQR.js";
 import { ajax , toHome , recorrerLinks } from "./Utilities/UtAjax.js";
 import { HeaderLogueado } from "./Utilities/UtHeader.js";
-import { separarJWT } from "./Utilities/UtJWT.js";
 
 let main = document.querySelector("main");
-
 const token = localStorage.getItem("token");
 
 HeaderLogueado(token);
-
 recorrerLinks();
-
 toHome();
 
 window.addEventListener("hashchange", () => {   
@@ -39,10 +34,7 @@ window.addEventListener("hashchange", () => {
             case "Sucursales":
                 main.innerHTML = response;
                 sucursales();
-                break;
-            case "Contacto":
-                main.innerHTML = response;
-                break;
+                break;            
             case "Envio":
                 envio(response);
                 break;
@@ -57,6 +49,9 @@ window.addEventListener("hashchange", () => {
                 main.innerHTML = response;
                 admin();
                 break;
+            // case "Contacto":
+            //     main.innerHTML = response;
+            //     break;
         }
       });
 });
