@@ -4,6 +4,7 @@ import { envio } from "./Apps/AppEnvio.js";
 import { login } from "./Apps/AppLogin.js";
 import { registrarse } from "./Apps/AppRegistrarse.js";
 import { Envio } from "./Constants/Constants.js";
+import { admin } from "./Utilities/QR/codeQR.js";
 import { ajax , toHome , recorrerLinks } from "./Utilities/UtAjax.js";
 import { HeaderLogueado } from "./Utilities/UtHeader.js";
 import { separarJWT } from "./Utilities/UtJWT.js";
@@ -54,6 +55,7 @@ window.addEventListener("hashchange", () => {
                 break;
             case "Admin":
                 main.innerHTML = response;
+                admin();
                 break;
         }
       });

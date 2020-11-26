@@ -1,4 +1,4 @@
-header h1{
+/* header h1{
     color: white;
     margin: 0 1%;
     margin: auto; 
@@ -28,7 +28,7 @@ input[type="text"]{
     padding: 5px;
 }
 
-#codigoManual, #registro{
+#codigoManual{
     border-radius: 8%;
     padding: 5px;
     font-weight: bold;
@@ -45,3 +45,8 @@ input[type="text"]{
     width: 65%;
     margin: 15px auto;
 }
+
+#reader{
+    width:370px;
+    height:280px;
+} */
