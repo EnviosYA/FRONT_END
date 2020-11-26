@@ -171,6 +171,11 @@ footer {
   color: #5a5959;
 }
 
+.Cerrar-Sesion:hover {
+  color: #a0a0a0;
+  transition: 0.3s;
+}
+
 #caja {
   background-image: url("../Images/caja.png");
   background-size: 50% 50%;

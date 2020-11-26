@@ -5,9 +5,14 @@ import { login } from "./Apps/AppLogin.js";
 import { registrarse } from "./Apps/AppRegistrarse.js";
 import { Envio } from "./Constants/Constants.js";
 import { ajax , toHome , recorrerLinks } from "./Utilities/UtAjax.js";
+import { HeaderLogueado } from "./Utilities/UtHeader.js";
 import { separarJWT } from "./Utilities/UtJWT.js";
 
 let main = document.querySelector("main");
+
+const token = localStorage.getItem("token");
+
+HeaderLogueado(token);
 
 recorrerLinks();
 
@@ -46,6 +51,9 @@ window.addEventListener("hashchange", () => {
                 break;
             case "Perfil":
                 main.innerHTML = response;    
+                break;
+            case "Admin":
+                main.innerHTML = response;
                 break;
         }
       });
