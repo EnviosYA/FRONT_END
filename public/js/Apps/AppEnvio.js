@@ -43,14 +43,13 @@ const maquetarMedidas = () =>{
             let divPaquete = select.parentNode;      
             let inputs = divPaquete.querySelectorAll(".medida");
             let cantInputs = inputs.length;
-            console.log(inputs);
-            if(select.value == 1){                
+            if(select.value == 1){
                 if(!cantInputs){
                     divPaquete.insertAdjacentHTML('beforeend', `
-                    <input class="control medida" type="number" min="0.01" step="0.01" max="1000" placeholder="Peso" id="peso" required>
-                    <input class="control medida" type="number" min="0.01" step="0.01" max="1000" placeholder="Largo" id="largo" required>
-                    <input class="control medida" type="number" min="0.01" step="0.01" max="1000" placeholder="Ancho" id="ancho" required>
-                    <input class="control medida" type="number" min="0.01" step="0.01" max="1000" placeholder="Alto" id="alto" required>
+                    <input class="control medida" type="number" min="0.01" step="0.01" max="1000" placeholder="Peso (Kg)" id="peso" required>
+                    <input class="control medida" type="number" min="0.01" step="0.01" max="1000" placeholder="Largo (M)" id="largo" required>
+                    <input class="control medida" type="number" min="0.01" step="0.01" max="1000" placeholder="Ancho (M)" id="ancho" required>
+                    <input class="control medida" type="number" min="0.01" step="0.01" max="1000" placeholder="Alto (M)" id="alto" required>
                     `)
                 }                
             }
@@ -100,8 +99,7 @@ export const guardarEnvio = () => {
     let altura = parseInt(document.getElementById("altura").value);
     let localidad = document.getElementById("localidad").value;
     let idLocalidad = obtenerIdLocalidad();
-    let divPaquetes = document.querySelectorAll(".paquete");
-    let paquetes = guardarPaquetes(divPaquetes);
+    let paquetes = guardarPaquetes();
 
     let direccionDestino = new Direccion(calle, altura,idLocalidad);
     direccionDestino.localidad = localidad;
@@ -109,7 +107,8 @@ export const guardarEnvio = () => {
     obtenerCoordenadas("calle " + calle +" "+ altura +" " + localidad , envio,2);
 }
 
-const guardarPaquetes = (divPaquetes) =>{
+const guardarPaquetes = () =>{
+    let divPaquetes = document.querySelectorAll(".paquete");
     let paquetes = [];
     divPaquetes.forEach(paquete => {
         let divDatos = paquete.querySelectorAll(".control");
@@ -117,10 +116,14 @@ const guardarPaquetes = (divPaquetes) =>{
         divDatos.forEach(dato=>{
             arrayPaquete.push(dato.value);
         });    
-        let paqueteConcreto = new Paquete(parseInt(arrayPaquete[0]),parseInt(arrayPaquete[1]),parseInt(arrayPaquete[2]), parseInt(arrayPaquete[3]), parseInt(arrayPaquete[4]));
+        let paqueteConcreto = new Paquete(parseInt(arrayPaquete[0]));
         switch(paqueteConcreto.idTipoPaquete){
             case 1:
-                paqueteConcreto.tipoPaquete = "Caja";
+                paqueteConcreto.tipoPaquete = "Caja";                
+                paqueteConcreto.peso = parseInt(arrayPaquete[1]);
+                paqueteConcreto.largo = parseInt(arrayPaquete[2]);
+                paqueteConcreto.ancho = parseInt(arrayPaquete[3]);
+                paqueteConcreto.alto = parseInt(arrayPaquete[4]);
                 break;
             case 2:
                 paqueteConcreto.tipoPaquete = "Bolsin";
