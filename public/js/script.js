@@ -5,12 +5,12 @@ import { login } from "./Apps/AppLogin.js";
 import { registrarse } from "./Apps/AppRegistrarse.js";
 import { admin } from "./Utilities/QR/codeQR.js";
 import { ajax , toHome , recorrerLinks } from "./Utilities/UtAjax.js";
-import { HeaderLogueado } from "./Utilities/UtHeader.js";
+import { headerLogueado } from "./Apps/AppHeader.js";
 
 let main = document.querySelector("main");
 const token = localStorage.getItem("token");
 
-HeaderLogueado(token);
+headerLogueado(token);
 toHome();
 
 window.addEventListener("hashchange", () => {   

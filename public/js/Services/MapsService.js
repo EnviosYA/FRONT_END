@@ -1,7 +1,7 @@
 import { Coordenada } from "../Constants/Constants.js";
 import {postUsuario} from "./UsuarioService.js";
 import {postEnvio} from "./EnvioService.js";
-import { toHome, toPage } from "../Utilities/UtAjax.js";
+import { popupErrorDireccion, popupErrorEnvio, popupErrorRegistro, popupEnvioCorrecto, popupRegistroCorrecto } from "../Apps/AppPopups/AppPopupsMaps.js";
 
 export const crearMapaSucursales = (array) => {
     var centro = new Coordenada(-34.6077853705844,-58.43582278331235);
@@ -27,20 +27,7 @@ export const obtenerCoordenadas = (address, entity, opcion) => {
             setearCoordenadas(results,entity,opcion);
         }
         else{
-            swal({
-                title: "La dirección ingresada no existe, o no pudo ser resuelta",
-                text: "Inténtelo más tarde. En caso de continuar el inconveniente, por favor contáctenos para poder ayudarlo.",
-                buttons: ["Contáctanos", "Aceptar"],
-                icon: "error"
-              })
-              .then((accion) => {
-                if (accion) {
-                    toPage("registrarse.html");
-                }
-                else{
-                    //Agregar opción de enviar mail, o maquetar pantalla de contacto
-                }
-             });
+            popupErrorDireccion();
         }
     });
 }
@@ -52,37 +39,10 @@ const setearCoordenadas = async(results, entity, opcion) =>{
             entity.direccion.longitud = results[0].geometry.location.lng();
             const responseUsuario = await postUsuario(entity);
             if(responseUsuario.status){
-                swal({
-                    title: "¡Se registró correctamente!",
-                    text: "El próximo paso es iniciar sesión",
-                    buttons: ["Volver al inicio", "Aceptar"],
-                    icon: "success"
-                  })
-                  .then((accion) => {
-                    if (accion) {
-                        toPage("login.html");
-                    }
-                    else{
-                        toHome();
-                    }
-                 });
+                popupRegistroCorrecto();
             }
             else{
-                swal({
-                    title: "Error al registrarse.",
-                    //text: responseUsuario.mensaje,
-                    text:  "Se ha producido un error intente más tarde",
-                    buttons: ["Volver al inicio", "Reintentar"],
-                    icon: "error"
-                  })
-                  .then((accion) => {
-                    if (accion) {
-                        toPage("registrarse.html");
-                    }
-                    else{
-                        toHome();
-                    }
-                 });
+                popupErrorRegistro();
             }            
             break;
         case 2:
@@ -90,31 +50,9 @@ const setearCoordenadas = async(results, entity, opcion) =>{
             entity.direccionDestino.longitud = results[0].geometry.location.lng();
             const responseEnvio = await postEnvio(entity);
             if(responseEnvio.codigo == 201){
-                swal({
-                    title: responseEnvio.mensaje,
-                    text: "Su número de envío es: " + responseEnvio.id,
-                    icon: "success"
-                  })
-                  .then((accion) => {
-                    if (accion) {
-                        toPage("perfil.html");
-                    }
-                 });
+                popupEnvioCorrecto(entity,responseEnvio);
             }else{
-                swal({
-                    title: "Ocurrió un error al crear su envío.",
-                    text: responseEnvio.mensaje,
-                    buttons: ["Volver al inicio", "Reintentar"],
-                    icon: "error"
-                  })
-                  .then((accion) => {
-                    if (accion) {
-                        toPage("envio.html");
-                    }
-                    else{
-                        toHome();
-                    }
-                 });
+                popupErrorEnvio(responseEnvio);
             }
             break;
     }
