@@ -1,8 +1,8 @@
-import { separarJWT } from './UtJWT.js'
-import { pascalCase } from './UtFormatos.js'
-import { toHome } from './UtAjax.js';
+import { separarJWT } from '../Utilities/UtJWT.js'
+import { pascalCase } from '../Utilities/UtFormatos.js'
+import { popupCerrarSesion } from './AppPopups/AppPopupsHeader.js';
 
-export const HeaderLogueado = (token) =>{
+export const headerLogueado = (token) =>{
     let headerLogin = document.getElementById("login-header");
     
     if(token != undefined){
@@ -34,23 +34,7 @@ const botonSalir = () =>{
         ancla.style.cursor = "pointer";
         nav.appendChild(ancla);
         ancla.addEventListener("click",()=>{   
-            popupSalir(nav,ancla);
+            popupCerrarSesion(nav,ancla);
         })
     }    
-}
-
-const popupSalir = (nav,ancla) =>{    
-    swal({
-        title: "¿Desea cerrar sesión?",
-        buttons: ["Cancelar", "Aceptar"],
-        icon: "warning"        
-        })
-        .then((accion) => {
-        if (accion) {
-            localStorage.removeItem("token");
-            nav.removeChild(ancla);
-            HeaderLogueado(undefined);
-            toHome();
-        }
-    });
 }

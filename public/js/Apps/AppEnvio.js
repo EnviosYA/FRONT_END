@@ -1,9 +1,10 @@
-import{Direccion, Envio, Paquete} from "../Constants/Constants.js";
+import{ Direccion, Envio, Paquete } from "../Constants/Constants.js";
 import { obtenerIdLocalidad } from "../Utilities/UtLocalidad.js";
 import {obtenerCoordenadas} from "../Services/MapsService.js";
 import{ maquetarLocalidades } from "../Utilities/UtLocalidad.js";
-import {separarJWT} from "../Utilities/UtJWT.js";
-import {ajax, toHome, toPage} from "../Utilities/UtAjax.js";
+import { separarJWT } from "../Utilities/UtJWT.js";
+import { popupNoLogin } from "./AppPopups/AppPopupsNoLogin.js";
+
 
 let main = document.querySelector("main");
 
@@ -14,12 +15,13 @@ export const envio = (response) =>{
         envioInterno();
     }
     else{
-        popUpLoginEnvio();
+        popupNoLogin();
     }
 }
 
 const envioInterno = () => {
-    maquetarLocalidades();    
+    maquetarLocalidades();
+    maquetarMedidas();
     let agregarPaquete = document.getElementById("clonar");
     agregarPaquete.addEventListener("click", (e)=> {
         e.preventDefault();
@@ -33,51 +35,43 @@ const envioInterno = () => {
     });
 }
 
-const popUpLoginEnvio = () => {
-    swal({
-        title: "No ha iniciado sesión",
-        text: "¡Para realizar un envío debe iniciar sesión!",
-        icon: "warning",
-        // buttons: true,
-        buttons: {
-            cancel: "Cancelar",
-            catch: {
-                text: "Registrarse",
-                value: "catch",
-            },
-            defeat: "Iniciar sesión",
-        },
-        // dangerMode: true,
-      })
-      .then((accion) => {
-          switch (accion){
-            case "defeat":
-                toPage("login.html"); 
-                break;
-            case "catch":
-                toPage("registrarse.html");
-              break;
-            default:        
-              toHome();
-              break;
-          }          
-        // if (accion) {
-        //     toPage("login.html");
-        // }
-        // else{
-        //     location.hash = "Home"
-        // }
-     });
+const maquetarMedidas = () =>{
+    let selects = document.querySelectorAll("#tipo");
+    selects.forEach(select =>{        
+        select.addEventListener("change", (e)=>{
+            e.preventDefault();      
+            let divPaquete = select.parentNode;      
+            let inputs = divPaquete.querySelectorAll(".medida");
+            let cantInputs = inputs.length;
+            console.log(inputs);
+            if(select.value == 1){                
+                if(!cantInputs){
+                    divPaquete.insertAdjacentHTML('beforeend', `
+                    <input class="control medida" type="number" min="0.01" step="0.01" max="1000" placeholder="Peso" id="peso" required>
+                    <input class="control medida" type="number" min="0.01" step="0.01" max="1000" placeholder="Largo" id="largo" required>
+                    <input class="control medida" type="number" min="0.01" step="0.01" max="1000" placeholder="Ancho" id="ancho" required>
+                    <input class="control medida" type="number" min="0.01" step="0.01" max="1000" placeholder="Alto" id="alto" required>
+                    `)
+                }                
+            }
+            else{
+                if(cantInputs){
+                   inputs.forEach(input =>{
+                       divPaquete.removeChild(input);
+                   })
+                }
+            }
+        })
+    })    
 }
 
-
-let cantPaquetes = 2;
-export const clonar = () =>{
+const clonar = () =>{
+    let paquetes = document.querySelectorAll(".paquete");
+    let cantPaquetes = paquetes.length + 1;
     if (cantPaquetes <= 5)
-    {
-        let paquetes = document.querySelector("#paquetes");
-        paquetes.innerHTML += 
-        `
+    {        
+        let divPaquetes = document.getElementById("paquetes");
+        divPaquetes.insertAdjacentHTML('beforeend',`
         <div class="paquete">
             <h4>Datos de paquete ${cantPaquetes}</h4>
             <select class="control" name="Tipopaquete" id="tipo" required>
@@ -87,16 +81,13 @@ export const clonar = () =>{
                 <option value="3">Carta documento</option>
                 <option value="4">Telegrama</option>
                 <option value="5">Carta simple</option>
-            </select>
-            <input class="control" type="number" min="0.01" step="0.01" placeholder="Peso" id="peso" required>
-            <input class="control" type="number" min="0.01" step="0.01" placeholder="Largo" id="largo" required>
-            <input class="control" type="number" min="0.01" step="0.01" placeholder="Ancho" id="ancho" required>
-            <input class="control" type="number" min="0.01" step="0.01" placeholder="Alto" id="alto" required>
+            </select>            
         </div>
-        `
-        cantPaquetes++;
+        `);
+        maquetarMedidas();
     }
-    if (cantPaquetes > 5){
+    cantPaquetes = paquetes.length + 1;
+    if (cantPaquetes == 5){
         let form = document.getElementById("form-Envio");
         let btnAgregarPaquete = document.getElementById("clonar");
         form.removeChild(btnAgregarPaquete);
@@ -113,6 +104,7 @@ export const guardarEnvio = () => {
     let paquetes = guardarPaquetes(divPaquetes);
 
     let direccionDestino = new Direccion(calle, altura,idLocalidad);
+    direccionDestino.localidad = localidad;
     let envio = new Envio(idUsuario, direccionDestino, paquetes);
     obtenerCoordenadas("calle " + calle +" "+ altura +" " + localidad , envio,2);
 }
@@ -125,7 +117,24 @@ const guardarPaquetes = (divPaquetes) =>{
         divDatos.forEach(dato=>{
             arrayPaquete.push(dato.value);
         });    
-        let paqueteConcreto = new Paquete(parseInt(arrayPaquete[0]),parseInt(arrayPaquete[1]),parseInt(arrayPaquete[2]), parseInt(arrayPaquete[3]),parseInt(arrayPaquete[4]));
+        let paqueteConcreto = new Paquete(parseInt(arrayPaquete[0]),parseInt(arrayPaquete[1]),parseInt(arrayPaquete[2]), parseInt(arrayPaquete[3]), parseInt(arrayPaquete[4]));
+        switch(paqueteConcreto.idTipoPaquete){
+            case 1:
+                paqueteConcreto.tipoPaquete = "Caja";
+                break;
+            case 2:
+                paqueteConcreto.tipoPaquete = "Bolsin";
+                break;
+            case 3:
+                paqueteConcreto.tipoPaquete = "Carta documento";
+                break;
+            case 4:
+                paqueteConcreto.tipoPaquete = "Telegrama";
+                break;
+            case 5:
+                paqueteConcreto.tipoPaquete = "Carta simple";
+                break;            
+        }
         paquetes.push(paqueteConcreto);
     });
     return paquetes;

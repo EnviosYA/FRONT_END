@@ -37,7 +37,8 @@ class Direccion {
         this.longitud = 0;
         this.calle =  calle;
         this.altura = altura;
-        this.idLocalidad = idLocalidad;
+        this.idLocalidad = idLocalidad
+        this.localidad = null;
     }
 }
 
@@ -63,6 +64,7 @@ class Paquete{
         this.largo = largo;
         this.ancho = ancho;
         this.alto = alto;
+        this.tipoPaquete = null;
     }
 }
 class Coordenada{
