@@ -58,12 +58,12 @@ class Envio {
 }
 
 class Paquete{
-    constructor(idTipoPaquete, peso, largo, ancho, alto){        
+    constructor(idTipoPaquete){        
         this.idTipoPaquete = idTipoPaquete;
-        this.peso = peso;
-        this.largo = largo;
-        this.ancho = ancho;
-        this.alto = alto;
+        this.peso = 0;
+        this.largo = 0;
+        this.ancho = 0;
+        this.alto = 0;
         this.tipoPaquete = null;
     }
 }
