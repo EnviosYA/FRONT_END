@@ -11,11 +11,10 @@ let main = document.querySelector("main");
 const token = localStorage.getItem("token");
 
 HeaderLogueado(token);
-recorrerLinks();
 toHome();
 
 window.addEventListener("hashchange", () => {   
-    let localizacion = location.hash.split("#")[1];
+    let localizacion = location.hash.split("#")[1];    
     let url = localizacion + ".html";
     ajax("get", url, (response) => {
         switch(localizacion){
@@ -49,11 +48,11 @@ window.addEventListener("hashchange", () => {
                 main.innerHTML = response;
                 admin();
                 break;
-            // case "Contacto":
-            //     main.innerHTML = response;
-            //     break;
+            case "Contacto":
+                main.innerHTML = response;
+                break;
         }
-      });
+    });    
 });
 
 //Header estático
