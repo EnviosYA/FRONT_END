@@ -1,4 +1,8 @@
 import { toHome, toPage } from "../../Utilities/UtAjax.js";
+import { imprimirPDF } from "../imprimirPDF.js";
+import { codeQR } from "../../Utilities/QR/Generate QR/codigoQR.js";
+import { separarJWT } from '../../Utilities/UtJWT.js';
+import { pascalCase } from '../../Utilities/UtFormatos.js';
 
 export const popupErrorDireccion = () =>{
     swal({
@@ -54,30 +58,19 @@ export const popupErrorRegistro = (responseUsuario) =>{
 }
 
 export const popupEnvioCorrecto = (entity,responseEnvio) =>{
-    let infoEnvio = {
-        numeroEnvio: "Número de envío: " + responseEnvio.id,
-        direccionEnvio: "\n Destino: " + entity.direccionDestino.calle + " " + entity.direccionDestino.altura + " " + entity.direccionDestino.localidad,
-        paquetesEnvio: ""
-    }  
-    let cantPaquetes = 1;             
-    entity.paquetes.forEach(paquete =>{                    
-        infoEnvio.paquetesEnvio += "\n Paquete " + cantPaquetes + ": " + paquete.tipoPaquete + " ";
-        if(paquete.tipoPaquete == "Caja"){
-            infoEnvio.paquetesEnvio += paquete.peso + "kg " +  paquete.largo + "m " + paquete.ancho + "m " + paquete.alto + "m ";
-        }
-        cantPaquetes++;
-    })
-    let info = infoEnvio.numeroEnvio + infoEnvio.direccionEnvio + infoEnvio.paquetesEnvio;
-    swal({
-        title: responseEnvio.mensaje,
-        text:  info,
-        icon: "success"
-      })
-      .then((accion) => {
-        if (accion) {
-            toPage("perfil.html");
-        }
-     });
+    Comprobante(entity,responseEnvio);
+    let envio = responseEnvio.id;
+    codigo(envio);
+    
+    const botonImprimir = document.getElementById('button1');
+    botonImprimir.addEventListener('click', function(){
+        imprimirPDF();
+    });
+
+    const botonVolver = document.getElementById('button2');
+    botonVolver.addEventListener('click', function(){
+        toHome();
+    });
 }
 
 export const popupErrorEnvio = (responseEnvio) =>{
@@ -96,5 +89,102 @@ export const popupErrorEnvio = (responseEnvio) =>{
             toHome();
         }
      });
+}
+
+let Comprobante = (entity,responseEnvio) =>{
+    let main = document.querySelector("main");
+    main.innerHTML="";
+
+    let infoEnvio = {
+        paquetesEnvio: ""
+    }  
+
+    let cantPaquetes = 1;             
+    entity.paquetes.forEach(paquete =>{                    
+        infoEnvio.paquetesEnvio += "Articulo " + cantPaquetes + ", Tipo de paquete: " + paquete.tipoPaquete + " ";
+        if(paquete.tipoPaquete == "Caja"){
+            infoEnvio.paquetesEnvio += "Detalle: Peso: " + paquete.peso + "kg, " + "Largo " +  paquete.largo + "m, " + "Ancho " + paquete.ancho + "m, " + "Alto: " + paquete.alto + "m";
+        }
+        cantPaquetes++;
+    })
+    let info = infoEnvio.paquetesEnvio;
+
+    let instrucciones = document.createElement("div");
+    instrucciones.id="instrucciones";
+    let instruccionesTexto = document.createTextNode("Puede descargar este comprobante y pegarlo en el frente de tu encomienda");
+    instrucciones.appendChild(instruccionesTexto);
+
+    let contenedorBoton = document.createElement("div");
+    contenedorBoton.id = "contBtn";
+
+    const btnImprimir = document.createElement('button');
+    btnImprimir.type = 'button';
+    btnImprimir.className = "button";
+    btnImprimir.id ="button1";
+    btnImprimir.innerText = 'Descargar Comprobante';
+    contenedorBoton.appendChild(btnImprimir);
+
+    const btnSalir = document.createElement('button');
+    btnSalir.type = 'button';
+    btnSalir.className = "button";
+    btnSalir.id ="button2";
+    btnSalir.innerText = 'Volver al home';
+    contenedorBoton.appendChild(btnSalir);
+
+    let paginaPDF = document.createElement("div");
+    paginaPDF.id = "paginaPDF";
+    
+    let cabaceraPDF = document.createElement("div");
+    cabaceraPDF.id="cabaceraPDF";
+    
+    let titulo = document.createElement("div");
+    titulo.id = "tituloCuerpo"
+    let envioYA = document.createTextNode("EnviosYA");
+    titulo.appendChild(envioYA);
+    cabaceraPDF.appendChild(titulo);
+
+    let lema = document.createElement("div");
+    lema.id = "lema"
+    let lemaEnvioYA = document.createTextNode("La tranquilidad de saber donde esta mi envio");
+    lema.appendChild(lemaEnvioYA);
+    cabaceraPDF.appendChild(lema);
+
+    let Datos = localStorage.getItem("token");
+    let tokenObject = separarJWT(Datos);
+    let Remitente = document.createElement("div");
+    Remitente.id = "Remitente"
+    Remitente.innerHTML+=
+    `
+            <table>
+            <tr><td>Datos del remitente</td><td> </td></tr>
+            <tr><td>Numero de envio </td><td>${responseEnvio.id}</td></tr>
+            <tr><td>Nombre y apellido: </td><td>${pascalCase(tokenObject.Name)} ${pascalCase(tokenObject.LastName)}</td></tr>
+            <tr><td>Direccion: </td><td>Token de acceso a direcion</td></tr>
+            <tr><td>DNI: </td><td>Token de dni</td></tr>
+            <tr><td>E-Mail: </td><td>Token de Email</td></tr>
+            <tr><td>Datos del destinatario</td><td> </td></tr>
+            <tr><td>Destino: </td><td>${entity.direccionDestino.calle} ${entity.direccionDestino.altura} ${entity.direccionDestino.localidad}</td></tr>
+            <tr><td>Descripcion: </td><td>${info}</td></tr>
+            </table>
+    `;
+    let codigoQR = document.createElement("div");
+    codigoQR.id="codigoQR";
+    
+    let contenedorCabecera = document.createElement("div");
+    contenedorCabecera.id = "contenedorCabecera";
+    contenedorCabecera.appendChild(codigoQR);
+    contenedorCabecera.appendChild(cabaceraPDF);
+    paginaPDF.appendChild(contenedorCabecera);
+    paginaPDF.appendChild(Remitente);
+    
+    main.appendChild(instrucciones);
+    
+    main.appendChild(paginaPDF);
+
+    main.appendChild(contenedorBoton);
+}
+
+let codigo = (envio) =>{
+    codeQR(envio);
 }
 
