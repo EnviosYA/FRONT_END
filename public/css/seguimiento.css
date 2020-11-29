@@ -20,20 +20,25 @@
 }
 
 .seguimiento-estado {
-  width: 50%;
+  width: 70%;
+  padding: 10px;
   margin: 0px auto;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  border: 2px solid #028ec5;
+  /*box-shadow: 1px 1px 2px #028ec5;*/
+  border-radius: 5px;
   font-family: "Roboto", sans-serif;
   text-align: center;
   letter-spacing: 2px;
   color: #535353;
 }
 
-.seguimiento-estado:last-child {
-  border: none;
+.seguimiento-estado:last-child{
+  border: 2px solid #09e41b;
+  box-shadow: 1px 1px 4px #44ff15;
 }
 
-.seguimiento-estado ul li {
+.seguimiento-estado li {
   padding-bottom: 1px;
   list-style: none;
   font-size: 15px;
@@ -42,7 +47,7 @@
 .nombre-sucursal{
   font-size: 20px !important;
   font-weight: bold;
-  border-bottom: 1px solid gray;
+  /*border-bottom: 1px solid gray*/
 }
 
 .map-seguimiento {
