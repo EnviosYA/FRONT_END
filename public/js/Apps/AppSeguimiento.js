@@ -24,6 +24,7 @@ function getSucursalPorEnvio(id) {
                     document.getElementById("envioIncorrecto").style.display = "block";
                 } else {
                     document.getElementById("ingreso-busqueda").style.display = "none";
+                    document.getElementById("titulo").style.display = "none";
                     const seguimiento = document.createElement("div");
                     seguimiento.setAttribute("id", "seguimiento");
                     const contenedor = document.getElementById("container");
