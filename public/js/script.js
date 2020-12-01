@@ -6,6 +6,7 @@ import { registrarse } from "./Apps/AppRegistrarse.js";
 import { admin } from "./Utilities/QR/codeQR.js";
 import { ajax , toHome , recorrerLinks } from "./Utilities/UtAjax.js";
 import { headerLogueado } from "./Apps/AppHeader.js";
+import {maquetarPerfil} from './Apps/AppPerfil.js'
 
 let main = document.querySelector("main");
 const token = localStorage.getItem("token");
@@ -42,7 +43,8 @@ window.addEventListener("hashchange", () => {
                 registrarse();
                 break;
             case "Perfil":
-                main.innerHTML = response;    
+                main.innerHTML = response;
+                maquetarPerfil();    
                 break;
             case "Admin":
                 main.innerHTML = response;

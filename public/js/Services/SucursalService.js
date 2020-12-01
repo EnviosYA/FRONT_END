@@ -17,4 +17,4 @@ const postDireccion = (direccion) => {
     return post(URLDIRECCION, direccion)
 }
 
-export {getLocalidades, getSucursales, postDireccion};
+export {getLocalidades, getSucursales, postDireccion,getDireccionByID};
