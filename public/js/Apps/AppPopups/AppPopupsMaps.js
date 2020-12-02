@@ -59,8 +59,7 @@ export const popupErrorRegistro = (responseUsuario) =>{
 
 export const popupEnvioCorrecto = (entity,responseEnvio) =>{
     Comprobante(entity,responseEnvio);
-    let envio = responseEnvio.id;
-    codigo(envio);
+    codeQR(responseEnvio.id);
     
     const botonImprimir = document.getElementById('button1');
     botonImprimir.addEventListener('click', function(){
@@ -162,23 +161,6 @@ let Comprobante = (entity,responseEnvio) =>{
     Destino: ${entity.direccionDestino.calle} ${entity.direccionDestino.altura} ${entity.direccionDestino.localidad}<br>
     Descripcion: ${info}
 `;
-   /*  `
-            <table>
-            <tr><td>Datos del remitente</td><td> </td></tr>
-            <tr><td>Numero de envio </td><td>${responseEnvio.id}</td></tr>
-            <tr><td>Nombre y apellido: </td><td>${pascalCase(tokenObject.Name)} ${pascalCase(tokenObject.LastName)}</td></tr>
-            <tr><td>Direccion: </td><td>Token de acceso a direcion</td></tr>
-            <tr><td>DNI: </td><td>Token de dni</td></tr>
-            <tr><td>E-Mail: </td><td>Token de Email</td></tr>
-            <tr><td>Datos del destinatario</td><td> </td></tr>
-            <tr><td>Destino: </td><td>${entity.direccionDestino.calle} ${entity.direccionDestino.altura} ${entity.direccionDestino.localidad}</td></tr>
-            <tr><td>Descripcion: </td><td>${info}</td></tr>
-            </table>
-
-            Direccion: Token de acceso a direcion<br>
-            DNI: Token de dni<br>
-            E-Mail: Token de Email<br>
-    `; */
     let codigoQR = document.createElement("div");
     codigoQR.id="codigoQR";
     
@@ -194,9 +176,5 @@ let Comprobante = (entity,responseEnvio) =>{
     main.appendChild(paginaPDF);
 
     main.appendChild(contenedorBoton);
-}
-
-let codigo = (envio) =>{
-    codeQR(envio);
 }
 

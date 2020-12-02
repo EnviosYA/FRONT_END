@@ -1,11 +1,11 @@
 export const admin = () =>{
-    /* $('#reader').html5_qrcode(function(data){ // función de lectura Ok
+    $('#reader').html5_qrcode(function(data){ // función de lectura Ok
         alert(data);
         $('#reader').html5_qrcode_stop();},
     function(error){ // función de mala lectura
     }, function(videoError){ // función si falla la utilización de la camara.
         alert("videoError");
-    });     */
+    });    
     
     let btnBuscarCodigo = document.getElementById('codigoManual');
     btnBuscarCodigo.addEventListener('click', function(e){
