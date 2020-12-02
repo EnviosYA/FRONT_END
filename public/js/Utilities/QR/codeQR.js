@@ -1,11 +1,11 @@
 export const admin = () =>{
-    $('#reader').html5_qrcode(function(data){ // función de lectura Ok
+    /* $('#reader').html5_qrcode(function(data){ // función de lectura Ok
         alert(data);
         $('#reader').html5_qrcode_stop();},
     function(error){ // función de mala lectura
     }, function(videoError){ // función si falla la utilización de la camara.
         alert("videoError");
-    });    
+    });     */
     
     let btnBuscarCodigo = document.getElementById('codigoManual');
     btnBuscarCodigo.addEventListener('click', function(e){
@@ -17,6 +17,7 @@ export const admin = () =>{
          }).then((e) => {
              if(e)
              {
+              console.log("Hasta aca llegue");
               tracking(data);
              }
          })
@@ -24,13 +25,20 @@ export const admin = () =>{
 }
 
 let tracking = (data) =>{
-   /*  alert("Estamos en la funcion"); */
+    alert("Estamos en la funcion");
     let main = document.querySelector('main');
+    let QR = document.querySelector('.QR');
     let estadoEnvio = document.createElement("DIV");
     estadoEnvio.id = "estadoEnvio";
     estadoEnvio.innerHTML +=
     `
-    El envio ${data} se encuentra en la sucursal de ${"Florencio Varela"}
+    El envio ${data} se encuentra en la sucursal de
+    <select name="menu1" onChange="MM_jumpMenu('parent',this,0)">
+    <option value="Retiro" selected>Retiro</option>
+    <option value="Monserrat">Monserrat</option>
+    <option value="Florencio Varela">Florencio Varela</option>
+    <option value="Quilmes">Quilmes</option>
+  </select>
     con un estado de
     <form name="form1" target="_blank">
   <select name="menu1" onChange="MM_jumpMenu('parent',this,0)">
@@ -41,5 +49,6 @@ let tracking = (data) =>{
     <option value="Entregado">Entregado</option>
   </select>
   <input type="button" value="Publicar estado" onclick="Publicar('${data}');">    `
-    main.appendChild(estadoEnvio);
+  QR.appendChild(estadoEnvio);
+  console.log(QR);
 }

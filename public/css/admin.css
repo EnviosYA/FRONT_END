@@ -28,6 +28,7 @@
   background-color: rgb(160, 157, 157);
   width: 65%;
   margin: 15px auto;
+  z-index: 10;
 }
 
 #reader {
