@@ -1,9 +1,5 @@
-export let imprimirPDF = () =>
-{
-    console.log("Me llamraon");
+export let imprimirPDF = () =>{
     const $elementoParaConvertir = document.getElementById('paginaPDF');
-    /* const $elementoParaConvertir = document.body; */
-    console.log($elementoParaConvertir);
     html2pdf()
         .set({
             margin: 1,

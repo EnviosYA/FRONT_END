@@ -1,6 +1,6 @@
 import { toHome, toPage } from "../../Utilities/UtAjax.js";
 import { imprimirPDF } from "../imprimirPDF.js";
-import { codeQR } from "../../Utilities/QR/Generate QR/codigoQR.js";
+import { codeQR } from "../../Utilities/UtQR.js";
 import { separarJWT } from '../../Utilities/UtJWT.js';
 import { pascalCase } from '../../Utilities/UtFormatos.js';
 
@@ -34,7 +34,7 @@ export const popupRegistroCorrecto = () =>{
             toPage("login.html");
         }
         else{
-            toHome();
+            toPage("home.html");
         }
      });
 }
@@ -52,7 +52,7 @@ export const popupErrorRegistro = (responseUsuario) =>{
             toPage("registrarse.html");
         }
         else{
-            toHome();
+            toPage("home.html");
         }
      });
 }
@@ -85,7 +85,7 @@ export const popupErrorEnvio = (responseEnvio) =>{
             toPage("envio.html");
         }
         else{
-            toHome();
+            toPage("home.html");
         }
      });
 }
