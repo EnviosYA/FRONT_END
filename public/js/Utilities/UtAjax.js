@@ -29,7 +29,7 @@ export const toHome = () =>{
   ajax("get", "home.html", (response) =>{
     main.innerHTML = response;
     recorrerLinks();
-  })  
+  })
 }
 
 export const toPage = (url) =>{

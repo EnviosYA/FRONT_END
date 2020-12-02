@@ -3,10 +3,10 @@ import { sucursales } from "../js/Apps/AppSucursales.js";
 import { envio } from "./Apps/AppEnvio.js";
 import { login } from "./Apps/AppLogin.js";
 import { registrarse } from "./Apps/AppRegistrarse.js";
-import { admin } from "./Utilities/QR/codeQR.js";
 import { ajax , toHome , recorrerLinks } from "./Utilities/UtAjax.js";
 import { headerLogueado } from "./Apps/AppHeader.js";
 import {maquetarPerfil} from './Apps/AppPerfil.js'
+import { admin } from "./Apps/AppAdmin.js";
 
 let main = document.querySelector("main");
 const token = localStorage.getItem("token");

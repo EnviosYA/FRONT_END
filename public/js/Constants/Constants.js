@@ -73,12 +73,12 @@ class Coordenada{
         this.lng = longitud;
     }
 }
-class Adress{
-    constructor(calle,altura,localidad){
-        this.calle =  calle;
-        this.altura = altura;
-        this.localidad = localidad;
+class SucursalPorEnvio{
+    constructor(idEnvio,idSucursal,idEstado){
+        this.idEnvio = idEnvio;
+        this.idSucursal = idSucursal;
+        this.idEstado = idEstado;
     }
 }
 export {LOGIN,URLDIRECCION, URLLOCALIDAD, URLSUCURSALESHABILITADAS, URLSUCURSALPORENVIO, URLTIPOPAQUETE, 
-        URLBASECUENTA, URLBASEUSUARIO, URLENVIO, Adress, Coordenada, Usuario, Direccion, Cuenta, Envio, Paquete};
+        URLBASECUENTA, URLBASEUSUARIO, URLENVIO, Coordenada, Usuario, Direccion, Cuenta, Envio, Paquete, SucursalPorEnvio};
