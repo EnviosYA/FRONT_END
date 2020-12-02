@@ -1,5 +1,5 @@
 #paginaPDF{
-    width: 90%;
+    width: 55%;
     background-color: #ececec;
     margin: 2% auto;
     border: solid 2px black;
@@ -58,6 +58,8 @@
 
 #Remitente{
     text-align: left;
+    margin-left: 2%;
+    margin-bottom: 2%;
 }
 
 #tituloRemitente{

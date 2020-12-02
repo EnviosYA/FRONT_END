@@ -145,7 +145,7 @@ let Comprobante = (entity,responseEnvio) =>{
 
     let lema = document.createElement("div");
     lema.id = "lema"
-    let lemaEnvioYA = document.createTextNode("La tranquilidad de saber donde esta mi envio");
+    let lemaEnvioYA = document.createTextNode("La tranquilidad de saber donde esta tu envio");
     lema.appendChild(lemaEnvioYA);
     cabaceraPDF.appendChild(lema);
 
@@ -155,6 +155,14 @@ let Comprobante = (entity,responseEnvio) =>{
     Remitente.id = "Remitente"
     Remitente.innerHTML+=
     `
+    <h3>Datos del remitente</h3><br>
+    Numero de envio ${responseEnvio.id}<br>
+    Nombre y apellido: ${pascalCase(tokenObject.Name)} ${pascalCase(tokenObject.LastName)}<br>
+    <h3>Datos del destinatario</h3><br>
+    Destino: ${entity.direccionDestino.calle} ${entity.direccionDestino.altura} ${entity.direccionDestino.localidad}<br>
+    Descripcion: ${info}
+`;
+   /*  `
             <table>
             <tr><td>Datos del remitente</td><td> </td></tr>
             <tr><td>Numero de envio </td><td>${responseEnvio.id}</td></tr>
@@ -166,7 +174,11 @@ let Comprobante = (entity,responseEnvio) =>{
             <tr><td>Destino: </td><td>${entity.direccionDestino.calle} ${entity.direccionDestino.altura} ${entity.direccionDestino.localidad}</td></tr>
             <tr><td>Descripcion: </td><td>${info}</td></tr>
             </table>
-    `;
+
+            Direccion: Token de acceso a direcion<br>
+            DNI: Token de dni<br>
+            E-Mail: Token de Email<br>
+    `; */
     let codigoQR = document.createElement("div");
     codigoQR.id="codigoQR";
     
