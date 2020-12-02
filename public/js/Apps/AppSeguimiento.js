@@ -24,6 +24,7 @@ function getSucursalPorEnvio(id) {
                     document.getElementById("envioIncorrecto").style.display = "block";
                 } else {
                     document.getElementById("ingreso-busqueda").style.display = "none";
+                    document.getElementById("titulo").style.display = "none";
                     const seguimiento = document.createElement("div");
                     seguimiento.setAttribute("id", "seguimiento");
                     const contenedor = document.getElementById("container");
@@ -41,37 +42,45 @@ function getSucursalPorEnvio(id) {
 
 function maquetarSeguimiento(seguimiento){
     var divSeguimiento = document.getElementById("seguimiento");
-    /*divSeguimiento.setAttribute("class", "bordes");*/
     var coordenadas = [];
     var sucursalActiva = "";
+    let arrayLetras = ["A", "B", "C", "D", "E", "F", "G"];
+    let i = 0;
+    let cantidadSeguimiento = seguimiento.length;
 
     seguimiento.forEach(element => {
         var ms = Date.parse(element.fecha);
         var fecha = new Date(ms);
 
-        let divEstado = document.createElement("div");
-        divEstado.setAttribute("class", "seguimiento-estado");
-
-        let ul = document.createElement("ul");
-
         if(element.nombre != sucursalActiva){
+            let divEstado = document.createElement("div");
+            divEstado.setAttribute("class", "seguimiento-estado");
+            divEstado.setAttribute("id", `"estado-${element.nombre}"`);
+
             let liNombre = document.createElement("li");
             liNombre.setAttribute("class", "nombre-sucursal");
-            liNombre.innerHTML = element.nombre;
-            ul.appendChild(liNombre);
-        }
+            if(cantidadSeguimiento == 1){
+                liNombre.innerHTML = `${element.nombre}`;
+            } else {
+                liNombre.innerHTML = `${element.nombre} (${arrayLetras[i]})`;
+                i += 1;
+            }
 
-        let liEstadoFecha = document.createElement("li");
-        liEstadoFecha.innerHTML = `${element.estado}: ${fecha.getDate()}-${fecha.getMonth()+1}-${fecha.getUTCFullYear()}`;
-        ul.appendChild(liEstadoFecha);
-        
-        divEstado.appendChild(ul);
+            let liEstadoFecha = document.createElement("li");
+            liEstadoFecha.innerHTML = `${element.estado}: ${fecha.getDate()}-${fecha.getMonth()+1}-${fecha.getUTCFullYear()}`;
 
-        divSeguimiento.appendChild(divEstado);
-        
-        if(element.nombre != sucursalActiva){
+            divEstado.appendChild(liNombre);
+            divEstado.appendChild(liEstadoFecha);
+            divSeguimiento.appendChild(divEstado);
+
             coordenadas.push(new Coordenada(parseFloat(element.latitud), parseFloat(element.longitud)));
             sucursalActiva = element.nombre;
+        } else {
+            let liEstadoFecha = document.createElement("li");
+            liEstadoFecha.innerHTML = `${element.estado}: ${fecha.getDate()}-${fecha.getMonth()+1}-${fecha.getUTCFullYear()}`;
+
+            let divEstado = document.getElementById(`"estado-${element.nombre}"`);
+            divEstado.appendChild(liEstadoFecha);
         }
     });
     
