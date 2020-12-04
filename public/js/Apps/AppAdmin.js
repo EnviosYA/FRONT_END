@@ -1,6 +1,6 @@
-import { SucursalPorEnvio } from "../Constants/Constants.js";
+
 import { getEnvioById } from "../Services/EnvioService.js";
-import { popupErrorAlPublicarEstado, popupErrorIdEnvio, popupEstadoExitoso } from "./AppPopups/AppPopupsAdmin.js";
+import { popupErrorAlPublicarEstado, popupErrorIdEnvio, popupEstadoExitoso, popupConfirmarPublicarEstado } from "./AppPopups/AppPopupsAdmin.js";
 import getSucursalPorEnvio, { postSucursalPorEnvio } from "../Services/SeguimientoService.js"
 import { toPage } from "../Utilities/UtAjax.js";
 
@@ -69,16 +69,18 @@ const maquetarAdmin = (nroEnvio) =>{
 }
 
 const maquetarActualizacionEstado = (nroEnvio) =>{
-  limpiarEstado();
   let QR = document.querySelector('.QR');
   QR.removeChild(document.getElementById("reader"));
   QR.removeChild(document.getElementById("form-Admin"));
+  let titulo = document.getElementById("tituloAdmin");
+
+  titulo.innerText = "Modificando el estado del envío " + nroEnvio;
   let estadoEnvio = document.createElement("DIV");
   estadoEnvio.id = "estadoEnvio";
   estadoEnvio.innerHTML +=
   `
     <form action="" class="formulario" id="form-Estado">        
-      <h2>Envío ${nroEnvio}</h2>
+      <h2>Actualizar estado</h2>
       <select class="control" id="sucursal">
         <option value="1" selected>Retiro</option>
         <option value="2">Monserrat</option>
@@ -92,13 +94,10 @@ const maquetarActualizacionEstado = (nroEnvio) =>{
         <option value="4">En viaje al domicilio del destinatiario</option>
         <option value="5">Entregado</option>
       </select>
-      <input id="publicar" type="submit" class="button" value="Publicar estado">
+      <input id="publicar" type="submit" class="button" value="Actualizar">
       <input id="cancelar-estado" type="button" class="button" value="Cancelar">
     </form>       
   `
-  let titulo = document.getElementById("tituloAdmin");
-  titulo.innerText = "Modificando el estado del envío " + nroEnvio;
-
   QR.appendChild(estadoEnvio);
   publicarEstado(nroEnvio);
   cancelar(); 
@@ -108,15 +107,10 @@ const publicarEstado = (nroEnvio) =>{
   let formEstado = document.getElementById("form-Estado");
   formEstado.addEventListener("submit", async (e) =>{    
     e.preventDefault();
-    let idSucursal = parseInt(document.getElementById("sucursal").value);
-    let idEstado = parseInt(document.getElementById("estado").value);
-    let sucursalPorEnvio = new SucursalPorEnvio(parseInt(nroEnvio),idSucursal,idEstado);
-    let responseSucPorEnvio = await postSucursalPorEnvio(sucursalPorEnvio);
-    if (responseSucPorEnvio.codigo == 201){
-      popupEstadoExitoso();
-    }else{
-      popupErrorAlPublicarEstado();
-    }
+    let inputSucursal = document.getElementById("sucursal");
+    let inputEstado = document.getElementById("estado");
+    let nuevoEstado = "Sucursal: " + inputSucursal.options[inputSucursal.selectedIndex].text + "\n" + "Estado: " + inputEstado.options[inputEstado.selectedIndex].text;
+    popupConfirmarPublicarEstado(nuevoEstado,nroEnvio);    
   })
 }
 
@@ -126,11 +120,4 @@ const cancelar = () =>{
     location.hash = "";
     toPage("admin.html");
   })
-}
-
-const limpiarEstado = () =>{
-  let existeEstadoEnvio = document.getElementById("estadoEnvio");
-  if(existeEstadoEnvio){
-    document.querySelector(".QR").removeChild(existeEstadoEnvio);
-  }
 }
