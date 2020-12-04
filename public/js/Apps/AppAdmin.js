@@ -1,7 +1,7 @@
 import { SucursalPorEnvio } from "../Constants/Constants.js";
 import { getEnvioById } from "../Services/EnvioService.js";
 import { popupErrorAlPublicarEstado, popupErrorIdEnvio, popupEstadoExitoso } from "./AppPopups/AppPopupsAdmin.js";
-import { postSucursalPorEnvio } from "../Services/SeguimientoService.js"
+import getSucursalPorEnvio, { postSucursalPorEnvio } from "../Services/SeguimientoService.js"
 import { toPage } from "../Utilities/UtAjax.js";
 
 export const admin = () =>{
@@ -14,7 +14,7 @@ const lectorQR = () =>{
     if(await noExisteEnvio(nroEnvio)){
       popupErrorIdEnvio("El QR escaneado es incorrecto.");
     }else{
-      maquetarActualizacionEstado(nroEnvio);        
+      maquetarAdmin(nroEnvio);        
     }
     $('#reader').html5_qrcode_stop();
     return;
@@ -26,6 +26,25 @@ const lectorQR = () =>{
   });
 }
 
+const maquetarEstadoActual = async (nroEnvio) =>{
+  let estados = await getSucursalPorEnvio(nroEnvio);
+  let estadoActual = estados.pop();  
+  let QR = document.querySelector('.QR');
+  let divEstadoActual = document.createElement("div");
+  divEstadoActual.id = "estadoActual";
+
+  let ms = Date.parse(estadoActual.fecha);
+  let fecha = new Date(ms);
+  divEstadoActual.innerHTML +=
+  `
+    <h2 id= "estadoActual-titulo">Estado actual</h2>
+    <h4 id="estadoActual-sucursal">${estadoActual.nombre.split("EnvioYa")[1]}</h4>
+    <li id="estadoActual-fecha">${estadoActual.estado}: ${fecha.getDate()}-${fecha.getMonth()+1}-${fecha.getUTCFullYear()}</li>        
+  `;
+
+  QR.appendChild(divEstadoActual);
+}
+
 const ingresoManual = () =>{
   let formAdmin = document.getElementById('form-Admin');
   formAdmin.addEventListener('submit', async (e) =>{
@@ -34,7 +53,7 @@ const ingresoManual = () =>{
     if (await noExisteEnvio(nroEnvio)){
       popupErrorIdEnvio("El número de envio no existe.");
     }else{
-      maquetarActualizacionEstado(nroEnvio);  
+      maquetarAdmin(nroEnvio);
     }
   });
 }
@@ -44,8 +63,13 @@ const noExisteEnvio = async (nroEnvio) =>{
   return envio.status == 400;
 }
 
+const maquetarAdmin = (nroEnvio) =>{  
+  maquetarEstadoActual(nroEnvio);
+  maquetarActualizacionEstado(nroEnvio);  
+}
+
 const maquetarActualizacionEstado = (nroEnvio) =>{
-  limpiarEstado();  
+  limpiarEstado();
   let QR = document.querySelector('.QR');
   QR.removeChild(document.getElementById("reader"));
   QR.removeChild(document.getElementById("form-Admin"));
