@@ -7,9 +7,8 @@ export const popupErrorIdEnvio = (error) =>{
         icon: "error"
       })
       .then((accion) => {
-        if (accion) {
-            let url = location.hash + ".html";
-            toPage(url);
+        if (accion) {            
+            toPage("admin.html");
         }
         else{
             toPage("home.html");

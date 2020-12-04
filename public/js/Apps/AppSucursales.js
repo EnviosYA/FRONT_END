@@ -1,6 +1,6 @@
 import { Coordenada } from "../Constants/Constants.js";
 import { crearMapaSucursales } from "../Services/MapsService.js";
-import {getSucursales} from "../Services/SucursalService.js";
+import { getSucursales } from "../Services/SucursalService.js";
 
 export const sucursales = () =>{
     let divSucursales = document.getElementById("sucursales");

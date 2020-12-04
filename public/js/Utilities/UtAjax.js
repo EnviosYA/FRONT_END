@@ -32,8 +32,8 @@ export const toHome = () =>{
   })
 }
 
-export const toPage = (url) =>{
+export const toPage = (url) =>{  
   let pagina = url.split(".")[0];
-  let page = pascalCase(pagina);
+  let page = pascalCase(pagina);  
   location.hash = page;
 }

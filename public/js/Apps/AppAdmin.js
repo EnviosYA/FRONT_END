@@ -2,72 +2,88 @@ import { SucursalPorEnvio } from "../Constants/Constants.js";
 import { getEnvioById } from "../Services/EnvioService.js";
 import { popupErrorAlPublicarEstado, popupErrorIdEnvio, popupEstadoExitoso } from "./AppPopups/AppPopupsAdmin.js";
 import { postSucursalPorEnvio } from "../Services/SeguimientoService.js"
+import { toPage } from "../Utilities/UtAjax.js";
 
 export const admin = () =>{
-    lectorQR();
-
-    let formAdmin = document.getElementById('form-Admin');
-    formAdmin.addEventListener('submit', async (e) =>{
-        e.preventDefault();
-        let nroEnvio = document.getElementById("nro-Envio").value;
-        const envio = await getEnvioById(nroEnvio);
-        if (envio.codigo == 201){
-          popupErrorIdEnvio(envio.mensaje);
-        }else{
-          swal ("¿Desea cambiar el estado de este envío?",
-          {
-            buttons : [ "¡Por el momento no!" , "¡Ver y cambiar estado del envío!" ] ,  
-          })
-          .then((e) => {
-            if(e){            
-              tracking(nroEnvio);
-            }
-          })
-        }
-        
-    });
+  lectorQR();
+  ingresoManual();
 }
+
 const lectorQR = () =>{
-  $('#reader').html5_qrcode(function(data){ // función de lectura Ok
-    tracking(data);
+  $('#reader').html5_qrcode(async function (nroEnvio){ // función de lectura Ok
+    if(await noExisteEnvio(nroEnvio)){
+      popupErrorIdEnvio("El QR escaneado es incorrecto.");
+    }else{
+      maquetarActualizacionEstado(nroEnvio);        
+    }
     $('#reader').html5_qrcode_stop();
     return;
   },
-  function(error){ // función de mala lectura
+  function(error){ 
+    //popupErrorIdEnvio(error);
   }, function(videoError){ // función si falla la utilización de la camara.
-    alert("videoError");
+    
   });
 }
 
-let tracking = (nroEnvio) =>{
-  limpiarEstado();
+const ingresoManual = () =>{
+  let formAdmin = document.getElementById('form-Admin');
+  formAdmin.addEventListener('submit', async (e) =>{
+    e.preventDefault();
+    let nroEnvio = document.getElementById("nro-Envio").value;
+    if (await noExisteEnvio(nroEnvio)){
+      popupErrorIdEnvio("El número de envio no existe.");
+    }else{
+      maquetarActualizacionEstado(nroEnvio);  
+    }
+  });
+}
+
+const noExisteEnvio = async (nroEnvio) =>{
+  const envio = await getEnvioById(nroEnvio);
+  return envio.status == 400;
+}
+
+const maquetarActualizacionEstado = (nroEnvio) =>{
+  limpiarEstado();  
   let QR = document.querySelector('.QR');
+  QR.removeChild(document.getElementById("reader"));
+  QR.removeChild(document.getElementById("form-Admin"));
   let estadoEnvio = document.createElement("DIV");
   estadoEnvio.id = "estadoEnvio";
   estadoEnvio.innerHTML +=
   `
-    El envio ${nroEnvio} se encuentra en la sucursal de
-    <select id = "sucursal" name="menu1">
-      <option value="1" selected>Retiro</option>
-      <option value="2">Monserrat</option>
-      <option value="3">Florencio Varela</option>
-      <option value="4">Quilmes</option>
-    </select>
-    con un estado de
-    <form name="form1" target="_blank">
-      <select id = "estado" name="menu1">
+    <form action="" class="formulario" id="form-Estado">        
+      <h2>Envío ${nroEnvio}</h2>
+      <select class="control" id="sucursal">
+        <option value="1" selected>Retiro</option>
+        <option value="2">Monserrat</option>
+        <option value="3">Florencio Varela</option>
+        <option value="4">Quilmes</option>
+      </select>
+      <select class="control" id="estado">
         <option value="1" selected>Ingreso a la sucursal</option>
         <option value="2">En proceso</option>
         <option value="3">Despachado</option>
         <option value="4">En viaje al domicilio del destinatiario</option>
         <option value="5">Entregado</option>
       </select>
-      <input id="publicar" type="button" value="Publicar estado">   
+      <input id="publicar" type="submit" class="button" value="Publicar estado">
+      <input id="cancelar-estado" type="button" class="button" value="Cancelar">
+    </form>       
   `
-  QR.appendChild(estadoEnvio);
+  let titulo = document.getElementById("tituloAdmin");
+  titulo.innerText = "Modificando el estado del envío " + nroEnvio;
 
-  let button = document.getElementById("publicar");
-  button.addEventListener("click", async () =>{    
+  QR.appendChild(estadoEnvio);
+  publicarEstado(nroEnvio);
+  cancelar(); 
+}
+
+const publicarEstado = (nroEnvio) =>{
+  let formEstado = document.getElementById("form-Estado");
+  formEstado.addEventListener("submit", async (e) =>{    
+    e.preventDefault();
     let idSucursal = parseInt(document.getElementById("sucursal").value);
     let idEstado = parseInt(document.getElementById("estado").value);
     let sucursalPorEnvio = new SucursalPorEnvio(parseInt(nroEnvio),idSucursal,idEstado);
@@ -77,6 +93,14 @@ let tracking = (nroEnvio) =>{
     }else{
       popupErrorAlPublicarEstado();
     }
+  })
+}
+
+const cancelar = () =>{
+  let cancelar = document.getElementById("cancelar-estado");
+  cancelar.addEventListener("click", ()=>{
+    location.hash = "";
+    toPage("admin.html");
   })
 }
 
