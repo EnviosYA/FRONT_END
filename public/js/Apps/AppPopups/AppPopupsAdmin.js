@@ -1,4 +1,6 @@
 import { toPage } from "../../Utilities/UtAjax.js";
+import { SucursalPorEnvio } from "../../Constants/Constants.js";
+import { postSucursalPorEnvio } from "../../Services/SeguimientoService.js"
 
 export const popupErrorIdEnvio = (error) =>{
     swal({
@@ -48,4 +50,26 @@ export const popupEstadoExitoso = () =>{
             toPage("home.html");
         }
      });
+}
+
+export const popupConfirmarPublicarEstado = (nuevoEstado, nroEnvio) =>{
+    swal({
+        title: "¡Atención, se publicará el nuevo estado!",
+        text: nuevoEstado,
+        buttons: ["Editar", "Confirmar"],
+        icon: "warning"
+    })
+    .then(async (accion) => {
+        if (accion) {           
+            let idSucursal = parseInt(document.getElementById("sucursal").value);
+            let idEstado = parseInt(document.getElementById("estado").value);
+            let sucursalPorEnvio = new SucursalPorEnvio(parseInt(nroEnvio),idSucursal,idEstado);
+            let responseSucPorEnvio = await postSucursalPorEnvio(sucursalPorEnvio);
+            if (responseSucPorEnvio.codigo == 201){
+                popupEstadoExitoso();
+            }else{
+                popupErrorAlPublicarEstado();
+            }
+        }
+    });
 }
