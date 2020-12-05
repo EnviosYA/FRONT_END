@@ -18,7 +18,7 @@ export const seguimiento = () => {
 }
 
 const lectorQRSeguimiento = () =>{
-    $('#reader').html5_qrcode(async function (nroEnvio){      
+    $('#reader').html5_qrcode(function (nroEnvio){      
         getSucursalPorEnvio(nroEnvio);     
         $('#reader').html5_qrcode_stop();
         return;
