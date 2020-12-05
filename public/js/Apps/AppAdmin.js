@@ -5,11 +5,11 @@ import getSucursalPorEnvio, { postSucursalPorEnvio } from "../Services/Seguimien
 import { toPage } from "../Utilities/UtAjax.js";
 
 export const admin = () =>{
-  lectorQR();
+  lectorQRAdmin();
   ingresoManual();
 }
 
-const lectorQR = () =>{
+const lectorQRAdmin = () =>{
   $('#reader').html5_qrcode(async function (nroEnvio){ // función de lectura Ok
     if(await noExisteEnvio(nroEnvio)){
       popupErrorIdEnvio("El QR escaneado es incorrecto.");

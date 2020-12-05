@@ -11,6 +11,11 @@
   justify-content: center;
 }
 
+.readerSeguimiento{
+  margin-left: 12.5%;
+  margin-bottom: 7%;
+}
+
 #seguimiento {
   float: right;
   width: 45%;
@@ -25,7 +30,6 @@
   margin: 0px auto;
   margin-bottom: 10px;
   border: 2px solid #028ec5;
-  /*box-shadow: 1px 1px 2px #028ec5;*/
   border-radius: 5px;
   font-family: "Roboto", sans-serif;
   text-align: center;
@@ -47,10 +51,9 @@
 .nombre-sucursal{
   font-size: 20px !important;
   font-weight: bold;
-  /*border-bottom: 1px solid gray*/
 }
 
-.map-seguimiento {
+.map-seguimiento{
   float: left;
   width: 45%;
   height: 400px;
@@ -63,11 +66,10 @@
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
-#ingreso-busqueda {
-  width: 400px;
+#ingreso-busqueda{
+  width: 30%;
   padding: 20px 30px;
-  margin: auto;
-  margin-top: 25px;
+  margin-top: 2%;
   border-radius: 10px;
   background: #4e4d4d;
   box-shadow: 2px 3px 5px #028ec5;

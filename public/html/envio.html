@@ -1,10 +1,10 @@
 <form action="" class="formulario" id="form-Envio">
     <h2>Completa los datos</h2>
-    <h4>Direccion destino</h4>    
-    <input class="control" id = "localidad" type="text" list="localidades" placeholder="Localidad" required>
+    <h4 id="tituloDireccionDestino">Direccion destino</h4>
+    <input class="control direccionDestino" id = "localidad" type="text" list="localidades" placeholder="Localidad" required>
     <datalist id="localidades"></datalist required>
-    <input class="control" type="text" placeholder="Calle" id = "calle" required>
-    <input class="control" type="number" min="1" step="1" placeholder="Altura" id ="altura" required>
+    <input class="control direccionDestino" type="text" placeholder="Calle" id = "calle" required>
+    <input class="control direccionDestino" type="number" min="1" step="1" placeholder="Altura" id ="altura" required>
         
     <div id = "paquetes">
         <div class="paquete">
@@ -18,7 +18,7 @@
                 <option value="5">Carta simple</option>
             </select>
         </div>
-    </div>            
+    </div>
     <input type="button" value="Agregar paquete" class="button" id="clonar">
     <input type="submit" value="Crear envio" class="button" id="crearEnvio">
 </form>
