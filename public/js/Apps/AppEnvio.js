@@ -28,14 +28,6 @@ const envioInterno = () => {
     agregarPaquete.addEventListener("click", (e)=> {
         e.preventDefault();
         clonar();
-        let btnsEliminarPaquete = document.querySelectorAll("#eliminarPaquete");
-        btnsEliminarPaquete.forEach(btnEliminarPaquete =>{            
-            btnEliminarPaquete.addEventListener("click", (e)=>{
-                let paquete = btnEliminarPaquete.parentNode;
-                let divPaquetes = document.getElementById("paquetes");
-                divPaquetes.removeChild(paquete);
-            })
-        })
     });
 
     let crearEnvio = document.getElementById("form-Envio");
@@ -86,8 +78,8 @@ const clonar = () =>{
         let divPaquetes = document.getElementById("paquetes");
         divPaquetes.insertAdjacentHTML('beforeend',`
         <div class="paquete">
-            <h4 id="numeroPaquete">Paquete ${cantPaquetes}</h4>
-            <input type="button" value="Eliminar paquete" class="button eliminarPaquete">
+            <h4 id="numeroPaquete" class="numeroPaquete">Paquete ${cantPaquetes}</h4>            
+            <input type="button" value="Eliminar" class="button eliminarPaquete">
             <select class="control" name="Tipopaquete" id="tipo" required>
                 <option>  --- Seleccione Tipo de Paquete ---  </option>
                 <option value="1">Caja</option>
@@ -95,7 +87,8 @@ const clonar = () =>{
                 <option value="3">Carta documento</option>
                 <option value="4">Telegrama</option>
                 <option value="5">Carta simple</option>
-            </select>            
+            </select>
+            
         </div>
         `);
         maquetarMedidas();
