@@ -1,4 +1,5 @@
 import { toPage } from "../../Utilities/UtAjax.js";
+import { chequearCantPaquetes, reacomodarNumeroPaquetes } from "../AppEnvio.js";
 
 export const popupLocalidadNoExistente = () =>{
     swal({
@@ -13,6 +14,23 @@ export const popupLocalidadNoExistente = () =>{
         else{
             window.location.href = "mailto:enviosya@enviosya.org";
             toPage("home.html");
+        }
+    });
+}
+
+export const popupEliminarPaquete = (paquete) =>{
+    swal({
+        title: "¡Atención!",
+        text: "¿Está seguro que desea eliminar el paquete?",
+        buttons: ["Cancelar", "Eliminar"],
+        icon: "warning"
+      })
+      .then((accion) => {
+        if (accion) {
+            let divPaquetes = document.getElementById("paquetes");
+            divPaquetes.removeChild(paquete);
+            reacomodarNumeroPaquetes();
+            chequearCantPaquetes();
         }
     });
 }

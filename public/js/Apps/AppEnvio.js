@@ -5,7 +5,7 @@ import{ maquetarLocalidades } from "../Utilities/UtLocalidad.js";
 import { separarJWT } from "../Utilities/UtJWT.js";
 import { popupNoLogin } from "./AppPopups/AppPopupsNoLogin.js";
 import { pascalCase } from "../Utilities/UtFormatos.js";
-import { popupLocalidadNoExistente } from "./AppPopups/AppPopupsEnvio.js"
+import { popupEliminarPaquete, popupLocalidadNoExistente } from "./AppPopups/AppPopupsEnvio.js"
 
 
 let main = document.querySelector("main");
@@ -28,6 +28,14 @@ const envioInterno = () => {
     agregarPaquete.addEventListener("click", (e)=> {
         e.preventDefault();
         clonar();
+        let btnsEliminarPaquete = document.querySelectorAll("#eliminarPaquete");
+        btnsEliminarPaquete.forEach(btnEliminarPaquete =>{            
+            btnEliminarPaquete.addEventListener("click", (e)=>{
+                let paquete = btnEliminarPaquete.parentNode;
+                let divPaquetes = document.getElementById("paquetes");
+                divPaquetes.removeChild(paquete);
+            })
+        })
     });
 
     let crearEnvio = document.getElementById("form-Envio");
@@ -74,11 +82,12 @@ const clonar = () =>{
     let paquetes = document.querySelectorAll(".paquete");
     let cantPaquetes = paquetes.length + 1;
     if (cantPaquetes <= 5)
-    {        
+    {
         let divPaquetes = document.getElementById("paquetes");
         divPaquetes.insertAdjacentHTML('beforeend',`
         <div class="paquete">
-            <h4>Datos de paquete ${cantPaquetes}</h4>
+            <h4 id="numeroPaquete">Paquete ${cantPaquetes}</h4>
+            <input type="button" value="Eliminar paquete" class="button eliminarPaquete">
             <select class="control" name="Tipopaquete" id="tipo" required>
                 <option>  --- Seleccione Tipo de Paquete ---  </option>
                 <option value="1">Caja</option>
@@ -90,12 +99,38 @@ const clonar = () =>{
         </div>
         `);
         maquetarMedidas();
+        añadirEventoEliminarPaquete();
     }
+    
     cantPaquetes = paquetes.length + 1;
     if (cantPaquetes == 5){
         let form = document.getElementById("form-Envio");
         let btnAgregarPaquete = document.getElementById("clonar");
-        form.removeChild(btnAgregarPaquete);
+        btnAgregarPaquete.style.display = "none";
+    }
+}
+const añadirEventoEliminarPaquete = () =>{
+    let btnsEliminarPaquete = document.querySelectorAll(".eliminarPaquete")
+    btnsEliminarPaquete.forEach(btn =>{
+        btn.addEventListener("click", (e)=>{        
+            let paquete = btn.parentNode;
+            popupEliminarPaquete(paquete);    
+        })
+    })    
+}
+
+export const chequearCantPaquetes = () =>{
+    let btnAgregarPaquete = document.getElementById("clonar");
+    let cantPaquetes = document.querySelectorAll(".paquete").length;
+    if(cantPaquetes < 5 && btnAgregarPaquete){
+        btnAgregarPaquete.style.display = "block";
+    }
+}
+
+export const reacomodarNumeroPaquetes = () =>{
+    let paquetes = document.querySelectorAll("#numeroPaquete");
+    for (let i = 0; i < paquetes.length; i++) {
+        paquetes[i].innerText = "Paquete " + (i+2);       
     }
 }
 
@@ -148,7 +183,6 @@ const guardarPaquetes = () =>{
     });
     return paquetes;
 }
-
 
 export const Comprobante = (entity,responseEnvio) =>{
     let main = document.querySelector("main");

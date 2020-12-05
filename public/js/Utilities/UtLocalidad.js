@@ -23,8 +23,7 @@ export const localidadInvalida = () =>{
         return false;    
     } else {    
         return true;    
-    }
-    
+    }  
 
 }
 
