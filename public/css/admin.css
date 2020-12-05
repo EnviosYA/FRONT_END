@@ -12,9 +12,13 @@
   font-weight: bold;
 }
 #form-Admin{
-  position: absolute;
-  margin-top: 12.5%;
-  margin-left: 55%;
+  text-align: center;
+  margin-top: 6%;
+  width: 30%;
+}
+
+.readerAdmin{
+  margin-bottom: 7%;
 }
 
 #contMain {
@@ -23,16 +27,6 @@
 
 #estadoEnvio {
   margin: 7% 55%;
-}
-
-#reader {
-  position: absolute;
-  float: left;
-  margin-left: 20%;
-  margin-top: 12%;
-  border-radius: 10px;
-  width: 360px;
-  height: 274px;
 }
 
 #cancelar-estado{
@@ -51,7 +45,7 @@ video{
 #tituloAdmin{  
   position: absolute;  
   text-align: center;
-  margin-left: 14%;
+  margin: 20px 300px;
   height: 6%;
   width: 70%;
   padding: 10px;

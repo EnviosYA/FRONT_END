@@ -54,8 +54,8 @@ export const popupEstadoExitoso = () =>{
 
 export const popupConfirmarPublicarEstado = (nuevoEstado, nroEnvio) =>{
     swal({
-        title: "¡Atención, se publicará el nuevo estado!",
-        text: nuevoEstado,
+        title: "¡Atención!",
+        text:  "Se publicará un nuevo estado \n" + nuevoEstado,
         buttons: ["Editar", "Confirmar"],
         icon: "warning"
     })

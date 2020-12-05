@@ -3,6 +3,7 @@ import { crearMapaSeguimiento } from "../Services/MapsService.js";
 import { Coordenada } from "../Constants/Constants.js";
 
 export const seguimiento = () => {
+    lectorQRSeguimiento();
     document.getElementById('getSeguimiento').onclick = () => {
         var idEnvio = document.getElementById('input-envio').value;
         if(idEnvio == ""){
@@ -14,6 +15,19 @@ export const seguimiento = () => {
             getSucursalPorEnvio(idEnvio);
         }
     }
+}
+
+const lectorQRSeguimiento = () =>{
+    $('#reader').html5_qrcode(async function (nroEnvio){      
+        getSucursalPorEnvio(nroEnvio);     
+        $('#reader').html5_qrcode_stop();
+        return;
+    },
+    function(error){ 
+      //popupErrorIdEnvio(error);
+    }, function(videoError){ 
+      
+    });
 }
 
 function getSucursalPorEnvio(id) {        
@@ -33,7 +47,7 @@ function getSucursalPorEnvio(id) {
                     `
                         <div id="map-tracking" class="map-seguimiento"></div>
                     `;
-
+                    
                     contenedor.appendChild(seguimiento);
                     maquetarSeguimiento(x);
                 }
