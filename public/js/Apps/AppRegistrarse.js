@@ -1,6 +1,7 @@
 import {Direccion, Usuario, Cuenta} from "../Constants/Constants.js";
 import { obtenerCoordenadas } from "../Services/MapsService.js";
-import {obtenerIdLocalidad,maquetarLocalidades} from "../Utilities/UtLocalidad.js";
+import {obtenerIdLocalidad,maquetarLocalidades, localidadInvalida} from "../Utilities/UtLocalidad.js";
+import { popupLocalidadNoExistente } from "./AppPopups/AppPopupsEnvio.js"
 
 export const registrarse = () =>{   
     maquetarFechas(); 
@@ -8,7 +9,11 @@ export const registrarse = () =>{
     let registrarse = document.getElementById("form-Registrarse");
     registrarse.addEventListener("submit", (e)=>{
         e.preventDefault();
-        registrarUsuario();
+        if(localidadInvalida()){
+            popupLocalidadNoExistente();
+        }else{
+            registrarUsuario();
+        }        
     });
 }
 

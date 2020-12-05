@@ -13,7 +13,7 @@ export const headerLogueado = (token) =>{
             headerLogin.href = "perfil.html"; 
             botonSalir();
         }else if(tokenObject.accountType == 2){
-            headerLogin.innerText = "Admin";
+            headerLogin.innerText = "Administrador";
             headerLogin.setAttribute("data-hash","Admin");
             headerLogin.href = "admin.html";
             botonSalir();

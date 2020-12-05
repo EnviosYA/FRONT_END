@@ -14,3 +14,23 @@ export const obtenerIdLocalidad = () =>{
     if(datalist.options.namedItem(listObj.value) != null)
         return parseInt(datalist.options.namedItem(listObj.value).id);
 }
+
+export const localidadInvalida = () =>{
+    let localidad = document.getElementById("localidad").value;
+    
+    let listaLocalidades = obtenerLocalidades();    
+    if (listaLocalidades.indexOf(localidad) >= 0) {
+        return false;    
+    } else {    
+        return true;    
+    }
+    
+
+}
+
+const obtenerLocalidades = () =>{
+    let lista = document.getElementById("localidades");
+    return Array.prototype.map.call(lista.options, function(option) {
+        return option.value;
+    });
+}
