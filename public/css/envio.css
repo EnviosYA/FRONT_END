@@ -33,3 +33,28 @@
 #form-Envio{
   width: 25%;
 }
+.paquete{
+  margin-bottom: 10%;
+  border-bottom: solid;
+}
+.numeroPaquete{
+  margin-bottom: 10%;
+}
+.eliminarPaquete{
+  position: absolute;
+  margin-left: 16.7%;
+  background: crimson;
+  margin-top: -1.7%;
+  font-size: 70%;
+  width: 5%;
+  height: 3%;
+}
+.eliminarPaquete:hover{
+  border-radius: 8px;
+  box-shadow: 0px 0px 0px rgb(168, 177, 226);
+  background-color: crimson;
+  color: white;
+  font-size: 70%;
+  font-weight: bolder;
+  text-shadow: 0px 0px rgb(179, 179, 179);
+}
