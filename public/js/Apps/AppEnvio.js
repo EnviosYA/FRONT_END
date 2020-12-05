@@ -1,9 +1,11 @@
 import{ Direccion, Envio, Paquete } from "../Constants/Constants.js";
-import { obtenerIdLocalidad } from "../Utilities/UtLocalidad.js";
+import { localidadInvalida, obtenerIdLocalidad } from "../Utilities/UtLocalidad.js";
 import {obtenerCoordenadas} from "../Services/MapsService.js";
 import{ maquetarLocalidades } from "../Utilities/UtLocalidad.js";
 import { separarJWT } from "../Utilities/UtJWT.js";
 import { popupNoLogin } from "./AppPopups/AppPopupsNoLogin.js";
+import { pascalCase } from "../Utilities/UtFormatos.js";
+import { popupLocalidadNoExistente } from "./AppPopups/AppPopupsEnvio.js"
 
 
 let main = document.querySelector("main");
@@ -31,7 +33,11 @@ const envioInterno = () => {
     let crearEnvio = document.getElementById("form-Envio");
     crearEnvio.addEventListener("submit", (e)=> {
         e.preventDefault();
-        guardarEnvio();
+        if(localidadInvalida()){
+            popupLocalidadNoExistente();
+        }else{
+            guardarEnvio();
+        }
     });
 }
 
