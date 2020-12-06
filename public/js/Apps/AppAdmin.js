@@ -70,7 +70,6 @@ const maquetarAdmin = (nroEnvio) =>{
 
 const maquetarActualizacionEstado = (nroEnvio) =>{
   let QR = document.querySelector('.QR');
-  QR.removeChild(document.getElementById("reader"));
   QR.removeChild(document.getElementById("form-Admin"));
   let titulo = document.getElementById("tituloAdmin");
 
