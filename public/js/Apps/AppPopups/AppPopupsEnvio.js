@@ -34,3 +34,15 @@ export const popupEliminarPaquete = (paquete) =>{
         }
     });
 }
+
+export const popupErrorNoSeleccionoPaquete = () =>{
+    swal({
+        title: "¡Error!",
+        text: "Se debe seleccionar el tipo de todos los paquetes.",
+        icon: "error"
+      })
+      .then((accion) => {
+        if (accion) {            
+        }
+    });
+}

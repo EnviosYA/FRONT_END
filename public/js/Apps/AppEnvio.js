@@ -5,7 +5,7 @@ import{ maquetarLocalidades } from "../Utilities/UtLocalidad.js";
 import { separarJWT } from "../Utilities/UtJWT.js";
 import { popupNoLogin } from "./AppPopups/AppPopupsNoLogin.js";
 import { pascalCase } from "../Utilities/UtFormatos.js";
-import { popupEliminarPaquete, popupLocalidadNoExistente } from "./AppPopups/AppPopupsEnvio.js"
+import { popupEliminarPaquete, popupErrorNoSeleccionoPaquete, popupLocalidadNoExistente } from "./AppPopups/AppPopupsEnvio.js"
 
 
 let main = document.querySelector("main");
@@ -24,11 +24,14 @@ export const envio = (response) =>{
 const envioInterno = () => {
     maquetarLocalidades();
     maquetarMedidas();
+
     let agregarPaquete = document.getElementById("clonar");
     agregarPaquete.addEventListener("click", (e)=> {
         e.preventDefault();
-        clonar();
-    });
+        clonar();    
+    });   
+    maquetarCosto();
+    
 
     let crearEnvio = document.getElementById("form-Envio");
     crearEnvio.addEventListener("submit", (e)=> {
@@ -39,6 +42,67 @@ const envioInterno = () => {
             guardarEnvio();
         }
     });
+}
+
+const maquetarCosto = () =>{
+    let calcularCosto = document.getElementById("calcular");
+    calcularCosto.addEventListener("click", (e)=>{
+        e.preventDefault();
+        let costo = 0;
+        let paquetes = document.querySelectorAll(".paquete");
+        paquetes.forEach(paquete =>{
+            let tipoPaquete = paquete.querySelector("#tipo").value;
+            switch(tipoPaquete){
+                case "":
+                    popupErrorNoSeleccionoPaquete();
+                    let span = document.getElementById("costo");
+                    span.style.display = "none";
+                    break;
+                case "1":
+                    costo += 600;
+                    let peso = paquete.querySelector("#peso").value;
+                    let costoPeso = calcularCostoPeso(peso);
+                    costo += costoPeso;
+                    break;
+                case "2":
+                    costo += 500;
+                    break;
+                case "3":
+                    costo += 950;
+                    break;
+                case "4":
+                    costo += 500;
+                    break;
+                case "5":
+                    costo += 300;
+                    break;
+            }            
+        })
+        if(costo>0){
+            let span = document.getElementById("costo");
+            span.innerText = "$ " + costo;
+            span.style.display = "block";
+            setTimeout(() => {
+                span.style.display = "none";
+            }, 5000);
+        }
+    })
+}
+
+const calcularCostoPeso = (peso) =>{
+    if (peso <= 0 || peso == undefined){
+        return 0;
+    }
+    if (peso > 0 && peso < 15)
+        return 200;
+    else if (peso > 15 && peso < 30)
+        return 500;
+    else if (peso > 30 && peso < 45)
+        return 700;
+    else if (peso > 45 && peso < 60)
+        return 900;
+    else
+        return 1200;
 }
 
 const maquetarMedidas = () =>{
