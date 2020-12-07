@@ -40,7 +40,10 @@ function getSucursalPorEnvio(id) {
                     document.getElementById("ingreso-busqueda").style.display = "none";
                     document.getElementById("titulo").style.display = "none";
                     const seguimiento = document.createElement("div");
-                    seguimiento.setAttribute("id", "seguimiento");
+                    seguimiento.setAttribute("id", "tracking");
+                    const ulProgressBar = document.createElement("ul");
+                    ulProgressBar.setAttribute("id", "progreso");
+                    ulProgressBar.innerHTML = '';
                     const contenedor = document.getElementById("container");
 
                     contenedor.innerHTML = 
@@ -49,43 +52,36 @@ function getSucursalPorEnvio(id) {
                     `;
                     
                     contenedor.appendChild(seguimiento);
+                    seguimiento.appendChild(ulProgressBar);
                     maquetarSeguimiento(x);
                 }
             });
 }
 
 function maquetarSeguimiento(seguimiento){
-    var divSeguimiento = document.getElementById("seguimiento");
     var coordenadas = [];
     var sucursalActiva = "";
-    let arrayLetras = ["A", "B", "C", "D", "E", "F", "G"];
-    let i = 0;
-    let cantidadSeguimiento = seguimiento.length;
 
     seguimiento.forEach(element => {
         var ms = Date.parse(element.fecha);
         var fecha = new Date(ms);
 
         if(element.nombre != sucursalActiva){
-            let divEstado = document.createElement("div");
-            divEstado.setAttribute("class", "seguimiento-estado");
-            divEstado.setAttribute("id", `"estado-${element.nombre}"`);
+            let ulEstado = document.createElement("ul");
+            ulEstado.setAttribute("class", "seguimiento-estado");
+            ulEstado.setAttribute("id", `"estado-${element.nombre}"`);
 
             let liNombre = document.createElement("li");
             liNombre.setAttribute("class", "nombre-sucursal");
-            if(cantidadSeguimiento == 1){
-                liNombre.innerHTML = `${element.nombre}`;
-            } else {
-                liNombre.innerHTML = `${element.nombre} (${arrayLetras[i]})`;
-                i += 1;
-            }
+            liNombre.innerHTML = element.nombre;
 
             let liEstadoFecha = document.createElement("li");
             liEstadoFecha.innerHTML = `${element.estado}: ${fecha.getDate()}-${fecha.getMonth()+1}-${fecha.getUTCFullYear()}`;
 
-            divEstado.appendChild(liNombre);
-            divEstado.appendChild(liEstadoFecha);
-            divSeguimiento.appendChild(divEstado);
+            ulEstado.appendChild(liNombre);
+            ulEstado.appendChild(liEstadoFecha);
+            let ulProgressBar = document.getElementById("progreso"); 
+            ulProgressBar.appendChild(ulEstado);
 
             coordenadas.push(new Coordenada(parseFloat(element.latitud), parseFloat(element.longitud)));
             sucursalActiva = element.nombre;
@@ -93,8 +89,8 @@ function maquetarSeguimiento(seguimiento){
             let liEstadoFecha = document.createElement("li");
             liEstadoFecha.innerHTML = `${element.estado}: ${fecha.getDate()}-${fecha.getMonth()+1}-${fecha.getUTCFullYear()}`;
 
-            let divEstado = document.getElementById(`"estado-${element.nombre}"`);
-            divEstado.appendChild(liEstadoFecha);
+            let ulEstado = document.getElementById(`"estado-${element.nombre}"`);
+            ulEstado.appendChild(liEstadoFecha);
         }
     });
     
