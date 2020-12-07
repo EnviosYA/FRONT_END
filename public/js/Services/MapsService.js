@@ -72,8 +72,16 @@ export const crearMapaSeguimiento = (array) => {
     
     if(array.length == 1){
         array.forEach(coord => {
+            const map = new google.maps.Map(document.getElementById("map-tracking"), {
+                zoom: 14,
+                center: coord,
+            });
             new google.maps.Marker({
                 position: coord,
+                label: {
+                    text: 'A', 
+                    color: 'white',
+                    fontSize: '17px'},
                 map: map,
             });
         });
