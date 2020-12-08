@@ -59,9 +59,6 @@
   background-color:#028ec5;
 }
 
-.seguimiento-estado:last-child:before{
-}
-
 .seguimiento-estado:last-child::after{
   content: none;
 }
