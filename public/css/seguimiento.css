@@ -3,17 +3,24 @@
   box-shadow: 1px 1px 3px #028ec5;
 }
 
-#container{
+
+#container{  
+  background-image: url("https://www.mecsoft.com.ar/images/enviosoca.png");
+  background-repeat: repeat-x;
+  background-position-x: right;
+  background-position-y: bottom;
+  height: 90%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  z-index: 10;
 }
 
 .readerSeguimiento{
-  margin-left: 12.5%;
-  margin-bottom: 7%;
+  margin-left: 25%;
+  margin-bottom: 5%;
 }
 
 #tracking{
@@ -81,9 +88,9 @@
 }
 
 #ingreso-busqueda{
-  width: 30%;
+  width: 40%;
   padding: 20px 30px;
-  margin-top: 2%;
+  margin-top: -10%;
   border-radius: 10px;
   background: #4e4d4d;
   box-shadow: 2px 3px 5px #028ec5;

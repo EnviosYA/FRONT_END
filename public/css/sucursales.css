@@ -16,8 +16,7 @@
     flex-wrap: wrap;
     justify-content: center;
     bottom: 50px;
-    width: 100%;
-    
+    width: 100%;    
 }
 
 .sucursal ul li{
@@ -48,6 +47,7 @@
 .map-sucursales{
     width: 60%;
     margin: auto;
+    margin-top: 3%;  
     border-style: solid;
     height: 50%;
     border-radius: 5px;
