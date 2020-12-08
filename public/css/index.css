@@ -63,7 +63,7 @@ body > header {
 #ul-desplegable{
   display: none;
   position: absolute;
-  width: 150px;
+  width: 160px;
   margin-top: 20px;
   margin-left: 20px;
   background-color:rgba(180, 180, 180, 0.7);
