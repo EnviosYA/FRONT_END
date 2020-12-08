@@ -1,16 +1,19 @@
 <p id="titulo">¡Podes escanear el codigo QR del envío o ingresarlo manualmente!</p>
-<div id="container">	 
-	<div id="ingreso-busqueda">
-		<h2>¡Estás a un click de saber dónde está tu envío!</h2>
-		<div class="readerSeguimiento" id="reader"></div>
-		<input type="text" class="control" id="input-envio" name="Id-Envio" placeholder="Número de envio">
-		<input type="submit" name="" id="getSeguimiento" value="Buscar" class="button">
-		<div id="sinEnvio" class="error" style="display: none">
-			Ingrese el número de envío por favor.
-		</div>
-		<div id="envioIncorrecto" class="error" style="display: none">
-			Número de envío incorrecto. Por favor corrobore el número de seguimiento.
+<div id="container">
+	<div class="fondo">
+		<div id="ingreso-busqueda">
+			<h2>¡Estás a un click de saber dónde está tu envío!</h2>
+			<div class="readerSeguimiento" id="reader"></div>
+			<input type="text" class="control" id="input-envio" name="Id-Envio" placeholder="Número de envio">
+			<input type="submit" name="" id="getSeguimiento" value="Buscar" class="button">
+			<div id="sinEnvio" class="error" style="display: none">
+				Ingrese el número de envío por favor.
+			</div>
+			<div id="envioIncorrecto" class="error" style="display: none">
+				Número de envío incorrecto. Por favor corrobore el número de seguimiento.
+			</div>
 		</div>
 	</div>
+	
 </div>
 <div class="fondo-seguimiento"></div>
