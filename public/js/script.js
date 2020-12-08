@@ -4,7 +4,7 @@ import { envio } from "./Apps/AppEnvio.js";
 import { login } from "./Apps/AppLogin.js";
 import { registrarse } from "./Apps/AppRegistrarse.js";
 import { ajax , toHome , recorrerLinks } from "./Utilities/UtAjax.js";
-import { headerLogueado } from "./Apps/AppHeader.js";
+import { cambiarVisualizacionUsuario, headerLogueado } from "./Apps/AppHeader.js";
 import {maquetarPerfil} from './Apps/AppPerfil.js'
 import { admin } from "./Apps/AppAdmin.js";
 
@@ -13,7 +13,9 @@ const token = localStorage.getItem("token");
 
 headerLogueado(token);
 toHome();
-
+main.addEventListener("click", ()=>{
+    cambiarVisualizacionUsuario();
+})
 window.addEventListener("hashchange", () => {   
     let localizacion = location.hash.split("#")[1];    
     let url = localizacion + ".html";
