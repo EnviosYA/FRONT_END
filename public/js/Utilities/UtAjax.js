@@ -1,4 +1,5 @@
 import { pascalCase } from "./UtFormatos.js";
+import { cambiarVisualizacionUsuario } from "../Apps/AppHeader.js";
 
 export const ajax  = (metodo, url, callback) =>{
   let xhr = new XMLHttpRequest();
@@ -18,6 +19,7 @@ export const recorrerLinks = () =>{
   let links = document.querySelectorAll(".links");  
   links.forEach((link) => {
     link.addEventListener("click", (e) => {
+      cambiarVisualizacionUsuario();
       e.preventDefault();
       location.hash = link.getAttribute("data-hash");
     })
