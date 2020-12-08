@@ -1,6 +1,10 @@
 .login{
+  margin: 0;
   width: 100%;
-  height: 90%;
+  height: 100%;
+  background-image: url("https://media.discordapp.net/attachments/750135258149683263/785991181653114950/213.png?width=368&height=431");
+  background-repeat: no-repeat;
+  background-size: 40% 100%;
 }
 
 .formulario {
@@ -27,6 +31,12 @@
   font-size: 14px;
 }
 
+#form-Login{
+  position: absolute;
+  width: 25%;
+  margin-top: 10%;
+  margin-left: 60%;
+}
 #ingresar {
   z-index: 10;
   margin-top: 5px;
