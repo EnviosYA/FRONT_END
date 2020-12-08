@@ -30,8 +30,27 @@ body > header {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
   z-index: 4;
 }
-
-#sesion{
+.slider {
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+}
+.slider ul {
+  display: flex;
+  padding: 0;
+  width: 400%;
+  animation: cambio 20s infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in;
+}
+.slider li {
+  list-style: none;
+  width: 100%;
+}
+.slider img {
+  width: 100%;
+}
+#sesion {
   display: block;
   height: 100%;
   float: right;
@@ -45,28 +64,28 @@ body > header {
   font-family: Helvetica, sans-serif;
 }
 
-#sesion span:hover{
+#sesion span:hover {
   color: #a0a0a0;
   transition: 0.3s;
 }
 
-#sesion span:hover > i{
+#sesion span:hover > i {
   color: #a0a0a0;
   transition: 0.3s;
 }
 
-.fa-caret-down{
+.fa-caret-down {
   margin-left: 5px;
   color: white;
 }
 
-#ul-desplegable{
+#ul-desplegable {
   display: none;
   position: absolute;
   width: 160px;
   margin-top: 20px;
   margin-left: 20px;
-  background-color:rgba(180, 180, 180, 0.7);
+  background-color: rgba(180, 180, 180, 0.7);
   z-index: 5;
 }
 
@@ -74,21 +93,21 @@ body > header {
   list-style: none;
 }
 
-#ul-desplegable li:first-child{
+#ul-desplegable li:first-child {
   border-bottom: 1px solid rgba(180, 180, 180, 0.9);
 }
 
-#ul-desplegable li:hover{
-  background-color:rgba(150, 150, 150, 0.8);
+#ul-desplegable li:hover {
+  background-color: rgba(150, 150, 150, 0.8);
 }
 
-#ul-desplegable li a{
+#ul-desplegable li a {
   display: block;
   margin-left: 0px !important;
   padding: 20px;
 }
 
-#ul-desplegable li:hover a{
+#ul-desplegable li:hover a {
   color: white;
 }
 
@@ -112,10 +131,10 @@ footer {
 }
 
 .profile-description h5 {
-  padding: 6% 25% 0 25%;
+  padding: 3% 31% 0 31%;
   line-height: 30px;
   font-size: 0.9rem;
-  color: #d1d1d1;
+  color: white;
 }
 
 .home {
@@ -166,7 +185,7 @@ footer {
 }
 
 .profile-description strong {
-  font-size: 50px;
+  font-size: 60px;
   font-family: Helvetica, sans-serif;
   text-shadow: black 0.1em 0.1em 0.1em;
 }
@@ -249,4 +268,31 @@ footer {
 #lupa {
   background-image: url("../Images/seguimiento.png");
   background-size: 40% 45%;
+}
+
+@keyframes cambio {
+  0% {
+    margin-left: 0;
+  }
+  20% {
+    margin-left: 0;
+  }
+  25% {
+    margin-left: -100%;
+  }
+  45% {
+    margin-left: -100%;
+  }
+  50% {
+    margin-left: -200%;
+  }
+  70% {
+    margin-left: -200%;
+  }
+  75% {
+    margin-left: -300%;
+  }
+  100% {
+    margin-left: -300%;
+  }
 }
