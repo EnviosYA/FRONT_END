@@ -9,7 +9,7 @@ export const headerLogueado = (token) =>{
         let tokenObject = separarJWT(token);
         
         if(tokenObject.accountType == 1){
-            divSesion.innerHTML = `<span>Hola, ${pascalCase(tokenObject.Name)}!<i class="fas fa-caret-down"></i></span>`;
+            divSesion.innerHTML = `<span>Bienvenido, ${pascalCase(tokenObject.Name)}!<i class="fas fa-caret-down"></i></span>`;
             let ulDesplegable = document.createElement("ul");
             ulDesplegable.setAttribute("id", "ul-desplegable");
 
@@ -86,7 +86,7 @@ const botonSalir = () =>{
         ancla.addEventListener("click",()=>{   
             popupCerrarSesion(li,ancla);
         })
-    }    
+    }
 }
 
 export const cambiarVisualizacionUsuario = () => {
