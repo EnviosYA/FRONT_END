@@ -21,7 +21,6 @@ const lectorQRSeguimiento = () =>{
     $('#reader').html5_qrcode(function (nroEnvio){      
         getSucursalPorEnvio(nroEnvio);
         $('#reader').html5_qrcode_stop();
-        return;
     },
     function(error){ 
       //popupErrorIdEnvio(error);

@@ -1,5 +1,8 @@
 .QR {
-  background-image: url(../Images/homeCamion.jpg);
+  background-image: url("https://cdn.discordapp.com/attachments/750135258149683263/786060945335648266/helloquence-5fnmwej4taa-unsplash.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgba(12, 8, 8, 0);
   text-align: center;
   height: 100%;
   width: 100%;
