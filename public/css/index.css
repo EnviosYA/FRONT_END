@@ -50,6 +50,14 @@ body > header {
 .slider img {
   width: 100%;
 }
+
+#home {
+  background-image: url("../Images/logo.png");
+  background-size: contain;
+  width: 64px;
+  height: 50px;
+}
+
 #sesion {
   display: block;
   height: 100%;
@@ -116,6 +124,7 @@ body > header nav a {
   margin-left: 2rem;
   font-size: 1rem;
   font-family: Helvetica, sans-serif;
+  font-weight: bold;
 }
 
 main {
@@ -162,7 +171,7 @@ footer {
 }
 
 .sticky + main {
-  padding-top: 50px;
+  padding-top: 75px;
 }
 
 .container {
@@ -211,17 +220,20 @@ footer {
   font-family: "Roboto", sans-serif;
   width: 100%;
   height: 50px;
-  margin: 10px 0 -10px 30px;
+  margin: 10px 0 10px 30px;
   font-size: 30px;
 }
 
 .articulo {
-  width: 12%;
-  height: 200px;
-  padding: 35px 0 0 0;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-size: 36px;
+  color: rgba(0, 0, 0, 0.689);
+  width: 22%;
+  height: 280px;
+  padding: 25px 0 0 0;
   border-radius: 10px;
   box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.3);
-  font-family: "Roboto", sans-serif;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -229,26 +241,16 @@ footer {
   background-repeat: no-repeat;
   background-position: 50% 70%;
 }
-
+.articulo-texto {
+  position: absolute;
+  font-size: 18px;
+  margin-top: 80px;
+  color: #5a5959b8;
+}
 .articulo:hover {
   transform: scale(1.1);
   color: black;
   background-color: rgba(224, 224, 224, 0.5);
-}
-
-.articulo img {
-  width: 50%;
-  height: 65%;
-  padding: 0 10% 0 10%;
-  display: block;
-  margin: auto;
-}
-
-.articulo p {
-  width: 60%;
-  margin: auto;
-  font-size: medium;
-  color: #5a5959;
 }
 
 .Cerrar-Sesion:hover {
@@ -257,17 +259,21 @@ footer {
 }
 
 #caja {
-  background-image: url("../Images/caja.png");
-  background-size: 50% 50%;
+  background-image: url("https://cdn.discordapp.com/attachments/750135258149683263/786012289027145778/pngegg_7.png");
+  background-size: 60% 60%;
+  background-position: bottom;
 }
 #ubicacion {
-  background-image: url("../Images/mapa.png");
-  background-size: 40% 45%;
+  background-image: url("https://cdn.discordapp.com/attachments/750135258149683263/786010120891006976/pngegg_1.png");
+  background-size: 35% 35%;
+  background-position: bottom;
+  background-position-y: 94%;
 }
 
 #lupa {
-  background-image: url("../Images/seguimiento.png");
-  background-size: 40% 45%;
+  background-image: url("https://cdn.discordapp.com/attachments/750135258149683263/786010282996269116/pngegg_3.png");
+  background-size: 40% 40%;
+  background-position: bottom;
 }
 
 @keyframes cambio {
