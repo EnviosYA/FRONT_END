@@ -133,12 +133,39 @@ main {
 }
 
 footer {
-  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.2rem 4.8rem;
   background-color: rgba(52, 58, 64, 1);
   color: white;
-  text-align: center;
+  /* text-align: center; */
+  align-items: center;
 }
-
+footer a {
+  color: white;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+footer p {
+  width: 100%;
+}
+#github {
+  background-image: url("../Images/git.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 50px;
+  height: 40px;
+  padding: 0px 30px;
+}
+#contacto {
+  background-image: url("../Images/contacto.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 50px;
+  height: 40px;
+  padding: 0px 30px;
+}
 .profile-description h5 {
   padding: 3% 31% 0 31%;
   line-height: 30px;
