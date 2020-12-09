@@ -150,14 +150,7 @@ footer a:hover {
 footer p {
   width: 100%;
 }
-#github {
-  background-image: url("../Images/git.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  width: 50px;
-  height: 40px;
-  padding: 0px 30px;
-}
+
 #contacto {
   background-image: url("../Images/contacto.png");
   background-repeat: no-repeat;
