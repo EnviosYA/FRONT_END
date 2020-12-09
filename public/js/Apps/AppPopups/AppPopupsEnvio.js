@@ -26,7 +26,7 @@ export const popupEliminarPaquete = (paquete) =>{
         icon: "warning"
       })
       .then((accion) => {
-        if (accion) {
+        if (accion) {            
             let divPaquetes = document.getElementById("paquetes");
             divPaquetes.removeChild(paquete);
             reacomodarNumeroPaquetes();

@@ -30,8 +30,7 @@ const envioInterno = () => {
         e.preventDefault();
         clonar();    
     });   
-    maquetarCosto();
-    
+    maquetarCosto();    
 
     let crearEnvio = document.getElementById("form-Envio");
     crearEnvio.addEventListener("submit", (e)=> {
@@ -161,11 +160,11 @@ const clonar = () =>{
     
     cantPaquetes = paquetes.length + 1;
     if (cantPaquetes == 5){
-        let form = document.getElementById("form-Envio");
         let btnAgregarPaquete = document.getElementById("clonar");
         btnAgregarPaquete.style.display = "none";
     }
 }
+
 const añadirEventoEliminarPaquete = () =>{
     let btnsEliminarPaquete = document.querySelectorAll(".eliminarPaquete")
     btnsEliminarPaquete.forEach(btn =>{

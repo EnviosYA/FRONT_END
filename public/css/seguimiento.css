@@ -15,7 +15,7 @@
 
 .fondo{
   width: 100%;
-  background-image: url("https://www.mecsoft.com.ar/images/enviosoca.png");
+  background-image: url("../Images/fondo-seguimiento.png");
   background-repeat: repeat-x;
   background-position-x: right;
   background-position-y: bottom;
