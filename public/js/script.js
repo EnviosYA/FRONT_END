@@ -3,7 +3,7 @@ import { sucursales } from "../js/Apps/AppSucursales.js";
 import { envio } from "./Apps/AppEnvio.js";
 import { login } from "./Apps/AppLogin.js";
 import { registrarse } from "./Apps/AppRegistrarse.js";
-import { ajax , toHome , recorrerLinks } from "./Utilities/UtAjax.js";
+import { ajax , toHome , recorrerLinks, toPage } from "./Utilities/UtAjax.js";
 import { cambiarVisualizacionUsuario, headerLogueado } from "./Apps/AppHeader.js";
 import {maquetarPerfil} from './Apps/AppPerfil.js'
 import { admin } from "./Apps/AppAdmin.js";
@@ -70,3 +70,44 @@ function fixed(){
         header.classList.remove("sticky");
     }
 }
+
+//Seiciro
+let a = document.getElementById("seiciro")
+a.addEventListener("click",(e)=>{
+    e.preventDefault();
+    console.log("object")
+    swal({
+        title: "Contacto de los miembros",
+        buttons: {
+            lean: "Leandro L.",
+            ciro: "Ciro G.",
+            damian: "Damian D.",
+            eze: "Ezequiel B.",
+            dani: "Daniel V.",
+            cancel: "Cancelar",
+        },
+          })
+      .then((accion) => {
+        switch(accion){
+            case "lean":
+                window.open("https://www.linkedin.com/in/leandro-lima-03510b162/");
+                break;
+            case "ciro":
+                window.open("https://www.linkedin.com/in/ciro-gargatagli-g%C3%B3mez-aba44a1a9/");
+                break;
+            case "damian":
+                window.open("https://www.linkedin.com/in/damian-djirikian-921171b9/");
+                break;
+            case "eze":
+                window.open("https://www.linkedin.com/in/ezequiel-blasi-0944201b6/");
+                break;
+            case "dani":
+                window.open("https://www.linkedin.com/in/daniel-villajuan-78363b1a2/");
+                break;
+            default:
+                toPage("home.html")
+                break;
+        }
+        
+     });
+})

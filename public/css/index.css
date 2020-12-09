@@ -150,6 +150,9 @@ footer a:hover {
 footer p {
   width: 100%;
 }
+#seiciro {
+  cursor: pointer;
+}
 
 #contacto {
   background-image: url("../Images/contacto.png");
