@@ -8,7 +8,7 @@
 }
 
 .formulario {
-  font-family: Roboto;
+  font-family: Roboto, sans-serif;
   text-align: center;
   align-items: center;
   width: 400px;
@@ -116,4 +116,10 @@
 #error-login{
   display:none;
   color: red;
+}
+
+#noCuenta{
+  position: absolute;
+  margin-top: 23.8%;
+  margin-left: 69.5%;
 }
