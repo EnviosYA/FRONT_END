@@ -24,9 +24,7 @@ export const maquetarPerfil = async() =>{
                                     `;
     envioPorUser.forEach(async envio => {
         let data = await Service.default(envio.idEnvio);
-        console.log(envio.idEnvio)
-        console.log(data)
-        console.log(data[data.length-1])
+        console.log(data.length)
         let div = document.createElement("div");
         let origen = document.createElement("div");
         let estado = document.createElement("div");
@@ -44,10 +42,7 @@ export const maquetarPerfil = async() =>{
         ${direccion.altura}
         </h3>
         `
-        estado.innerHTML = `
-        <img src="../Images/flecha.png" alt=""/>
-        <h3>${data[data.length-1].estado}</h3> 
-        `
+        
         destino.innerHTML = `
         <img src="../Images/ubicacion.png" alt=""/>
         <h6>
@@ -59,6 +54,31 @@ export const maquetarPerfil = async() =>{
         </h3>
         `
         div.classList.add("perfil-historial-envio")
+        if(data == 0){          
+                console.log(data[0].estado)
+                estado.innerHTML = `
+                <h3>Te estamos esperando!</h3>
+                <img src="../Images/camion2.png" alt=""/>
+                `
+                div.classList.add("red")        
+        }else{
+            if(data[data.length-1].estado == "Entregado"){
+                estado.innerHTML = `
+                <h3>${data[data.length-1].estado}</h3> 
+                <img src="../Images/camion1.png" alt=""/>
+                 `
+                div.classList.add("green")
+            }else if(data.length >=1){
+                estado.innerHTML = `
+                <h3>En curso</h3>
+                <h5>${data[data.length-1].nombre.split('EnvioYa')[1]}</h5> 
+                <img src="../Images/camion2.png" alt=""/>
+                `
+                div.classList.add("yellow")            
+            }
+        }
+
+        
         div.append(origen,estado,destino);
         perfilHistorial.appendChild(div);
     })    
