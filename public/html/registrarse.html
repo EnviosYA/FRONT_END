@@ -4,19 +4,23 @@
     <div id="contendorDatos">
       <div id="datos1">
         <input class="control" id="mail" type="email" placeholder="Mail" required>
-        <input class="control" id="password" type="password" minlength="8" maxlength="16" pattern="[a-zA-Z0-9\s]+" placeholder="Contraseña" required>
         <input class="control" id="nombre" type="text" minlength="3" maxlength="20" pattern="[a-zA-Z\s]+" placeholder="Nombre" required>
-        <input class="control" id="apellido" type="text" minlength="3" maxlength="20" pattern="[a-zA-Z\s]+" placeholder="Apellido" required>
         <input class="control" id="dni" type="text" minlength="7" maxlength="8" pattern="[0-9\s]+" placeholder="Dni" required>
-      </div>
-      <div id="datos2">
-        <input class="control" id="fechaNac" type="date" min="" max="" placeholder="Fecha de nacimiento" required>
-        <input class="control" type="text" id="localidad" list="localidades" placeholder="Localidad" required>
-        <datalist id="localidades"></datalist>
         <input class="control" id="calle" type="text"pattern="[a-zA-Z0-9\s]+" placeholder="Calle" required>
+        <datalist id="localidades"></datalist>
+        <input class="control" type="text" id="localidad" list="localidades" placeholder="Localidad" required>
+           </div>
+      <div id="datos2">
+        <input class="control" id="password" type="password" minlength="8" maxlength="16" pattern="[a-zA-Z0-9\s]+" placeholder="Contraseña" required>
+        <input class="control" id="apellido" type="text" minlength="3" maxlength="20" pattern="[a-zA-Z\s]+" placeholder="Apellido" required>
+        <input class="control" id="fechaNac" type="date" min="" max="" placeholder="Fecha de nacimiento" required>
         <input class="control" id="altura" type="number" placeholder="Altura" required>
-        <input type="submit" value="Registrarse" class="button" id="registrarse">
+       
       </div>
     </div>
+    
+   
+ 
+    <input type="submit" value="Registrarse" class="button" id="registrarse">
   </form>
 </div>
