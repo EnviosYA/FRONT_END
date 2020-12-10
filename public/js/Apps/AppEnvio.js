@@ -246,18 +246,40 @@ const guardarPaquetes = () =>{
 export const Comprobante = (entity,responseEnvio) =>{
     let main = document.querySelector("main");
     main.innerHTML="";
-
+    console.log(entity);
     let infoEnvio = {
         paquetesEnvio: ""
     }  
-
+    let costo = 0;
     let cantPaquetes = 1;             
     entity.paquetes.forEach(paquete =>{                    
         infoEnvio.paquetesEnvio += "Articulo " + cantPaquetes + ", Tipo de paquete: " + paquete.tipoPaquete + " ";
         if(paquete.tipoPaquete == "Caja"){
             infoEnvio.paquetesEnvio += "Detalle: Peso: " + paquete.peso + "kg, " + "Largo " +  paquete.largo + "m, " + "Ancho " + paquete.ancho + "m, " + "Alto: " + paquete.alto + "m";
         }
+        console.log(paquete)
         cantPaquetes++;
+        console.log(costo)
+        switch(paquete.idTipoPaquete){
+            case 1:
+                costo += 600;
+                let costoPeso = calcularCostoPeso(paquete.peso);
+                costo += costoPeso;
+                break;
+            case 2:
+                costo += 500;
+                break;
+            case 3:
+                costo += 950;
+                break;
+            case 4:
+                costo += 500;
+                break;
+            case 5:
+                costo += 300;
+                break;
+            } 
+            console.log(costo);
     })
     let info = infoEnvio.paquetesEnvio;
 
@@ -313,6 +335,7 @@ export const Comprobante = (entity,responseEnvio) =>{
     <h3>Datos del destinatario</h3><br>
     Destino: ${entity.direccionDestino.calle} ${entity.direccionDestino.altura} ${entity.direccionDestino.localidad}<br>
     Descripcion: ${info}
+    <h3>Precio:</h3><h4>$${costo}</h4>
 `;
     let codigoQR = document.createElement("div");
     codigoQR.id="codigoQR";
