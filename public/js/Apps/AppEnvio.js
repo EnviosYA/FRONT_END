@@ -157,7 +157,7 @@ const clonar = () =>{
         maquetarMedidas();
         añadirEventoEliminarPaquete();
     }
-    
+    añadirEventoEliminarPaquete();
     cantPaquetes = paquetes.length + 1;
     if (cantPaquetes == 5){
         let btnAgregarPaquete = document.getElementById("clonar");
@@ -168,9 +168,12 @@ const clonar = () =>{
 const añadirEventoEliminarPaquete = () =>{
     let btnsEliminarPaquete = document.querySelectorAll(".eliminarPaquete");
     btnsEliminarPaquete.forEach(btn =>{
-        btn.addEventListener("click", (e)=>{        
-            let paquete = btn.parentNode;
-            popupEliminarPaquete(paquete);    
+        let paquete = btn.parentNode;
+        while(paquete.className != "paquete"){
+            paquete = paquete.parentNode;
+        }
+        btn.addEventListener("click", (e)=>{                    
+            popupEliminarPaquete(paquete);
         })
     })    
 }
