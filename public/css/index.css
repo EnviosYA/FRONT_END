@@ -153,7 +153,11 @@ footer p {
   width: 100%;
 }
 #seiciro {
+  text-decoration: none;
   cursor: pointer;
+}
+#seiciro:hover {
+  color: gray;
 }
 
 #contacto {

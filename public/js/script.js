@@ -75,16 +75,14 @@ function fixed(){
 let a = document.getElementById("seiciro")
 a.addEventListener("click",(e)=>{
     e.preventDefault();
-    console.log("object")
     swal({
-        title: "Contacto de los miembros",
+        title: "Seiciro",
         buttons: {
-            lean: "Leandro L.",
-            ciro: "Ciro G.",
-            damian: "Damian D.",
-            eze: "Ezequiel B.",
-            dani: "Daniel V.",
-            cancel: "Cancelar",
+            lean: "Leandro Lima",
+            ciro: "Ciro Gargatagli",
+            damian: "Damian Djirikian",
+            eze: "Ezequiel Blasi",
+            dani: "Daniel Villamierda"
         },
           })
       .then((accion) => {
