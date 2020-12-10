@@ -18,7 +18,7 @@ export const login = () =>{
             headerLogueado(localStorage.getItem("token"));
             toHome()
         }
-    });
+    })
     //Si tocas el botón "No tengo cuenta"
     noCuenta();
 }
@@ -37,19 +37,16 @@ const maquetarErrorLogin = (opcion) =>{
     }
     else{
         error.style.display = "none";
-    }
-    
+    }    
 }
 
 const noCuenta = () =>{
-    let main = document.querySelector("main");
+    console.log("mipijadormida")
     let noCuenta = document.getElementById("noCuenta");
+    console.log(noCuenta);
     noCuenta.addEventListener("click", e=>{
-        e.preventDefault();
-        location.hash = e.target.dataset.hash;
-        let url = location.hash.split("#")[1] + ".html";
-        ajax("get", url, (response) => {
-            main.innerHTML = response;
-        });
+        e.preventDefault();        
+        location.hash = noCuenta.getAttribute("data-hash");
+        console.log(data-hash)
     });
 }
