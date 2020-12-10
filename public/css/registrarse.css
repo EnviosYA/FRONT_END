@@ -12,27 +12,30 @@
     position: absolute;
     margin: 0;
     margin-left: 7%;
-    margin-top: 9%;
+    margin-top: 6%;
 }
 
 #contendorDatos{
+    height: 285px;
     display: flex;
 }
 
+#contendorDatos input{
+    width: 270px;
+}
+
 #form-Registrarse{
-    width: 700px;
+    width: 675px;
 }
 
-#datos1{
-    height: 330px;
-    margin: 20px;
-}
-
-#datos2{
-    height: 330px;
-    margin: 20px;
+#datos1, #datos2{
+    margin: 20px 20px 0 20px;
 }
 
 #contendorDatos #registrarse{
     margin: 0;
+}
+
+#registrarse{
+    width: 300px;
 }
