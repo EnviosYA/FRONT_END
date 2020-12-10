@@ -11,12 +11,11 @@
 #form-Registrarse{
     position: absolute;
     margin: 0;
-    margin-left: 7%;
+    margin-left: 8.5%;
     margin-top: 6%;
 }
 
 #contendorDatos{
-    height: 285px;
     display: flex;
 }
 
@@ -38,4 +37,39 @@
 
 #registrarse{
     width: 300px;
+}
+#mail,#password{
+    margin-top: 7%;
+}
+#nombre,#apellido{
+    margin-top: 22%;
+}
+#calle,#altura{
+    margin-top: 23%;
+}
+
+#titCuenta{
+    height: 4%;
+    width: 30%;
+    margin-left: 31%;
+    margin-top: -1%;
+    position: absolute;
+    border-bottom: 1px solid;
+}
+#titDireccion{
+    height: 4%;
+    width: 30%;
+    margin-top: 42%;
+    margin-left: 31%;
+    border-bottom: 1px solid;
+    position: absolute;
+}
+#titDatos{
+    height: 4%;
+    width: 30%;
+    margin-top: 16%;
+    margin-left: 31%;
+    position: absolute;
+    border-bottom: 1px solid;
+    
 }

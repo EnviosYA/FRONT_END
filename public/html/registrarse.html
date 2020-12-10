@@ -2,7 +2,11 @@
   <form action="" class="formulario" id="form-Registrarse">
     <h2>Registro de usuario</h2>
     <div id="contendorDatos">
+      <h4 id ="titCuenta">Cuenta</h4>
+      <h4 id ="titDireccion">Dirección</h4>
+      <h4 id ="titDatos">Datos personales</h4>
       <div id="datos1">
+        
         <input class="control" id="mail" type="email" placeholder="Mail" required>
         <input class="control" id="nombre" type="text" minlength="3" maxlength="20" pattern="[a-zA-Z\s]+" placeholder="Nombre" required>
         <input class="control" id="dni" type="text" minlength="7" maxlength="8" pattern="[0-9\s]+" placeholder="Dni" required>
@@ -17,10 +21,9 @@
         <input class="control" id="altura" type="number" placeholder="Altura" required>
        
       </div>
+      
     </div>
-    
-   
- 
     <input type="submit" value="Registrarse" class="button" id="registrarse">
+    
   </form>
 </div>
