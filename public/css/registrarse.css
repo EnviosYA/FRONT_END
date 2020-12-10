@@ -38,13 +38,17 @@
 #registrarse{
     width: 300px;
 }
-#mail,#password{
+.mail,.password{
     margin-top: 7%;
 }
-#nombre,#apellido{
+.nombre,.apellido{
     margin-top: 22%;
 }
-#calle,#altura{
+.calle{
+    margin-top: 25%;
+}
+.altura{
+    width: 100%;
     margin-top: 23%;
 }
 
