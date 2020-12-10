@@ -56,6 +56,10 @@
   align-items: center;
   cursor: pointer;
 }
+.perfil-historial-envio h5 {
+  width: 100%;
+  text-align: center;
+}
 .perfil-historial-envio:hover {
   background-color: rgba(224, 224, 224, 0.5);
   transition: 0.3s;
