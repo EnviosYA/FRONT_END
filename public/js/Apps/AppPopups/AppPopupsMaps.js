@@ -60,13 +60,11 @@ export const popupErrorRegistro = (responseUsuario) =>{
 }
 
 export const popupHistorialEnvio = (envio) =>{
-    console.log(envio.idEnvio)
     let main = document.querySelector("main");
     main.innerHTML="";
     let infoEnvio = {
         paquetesEnvio: ""
     }  
-    console.log(envio)
     let cantPaquetes = 1;             
     envio.paquetes.forEach(paquete =>{                    
         infoEnvio.paquetesEnvio += "Articulo " + cantPaquetes + ", Tipo de paquete: " + paquete.tipoPaquete + " ";
