@@ -246,7 +246,6 @@ const guardarPaquetes = () =>{
 export const Comprobante = (entity,responseEnvio) =>{
     let main = document.querySelector("main");
     main.innerHTML="";
-    console.log(entity);
     let infoEnvio = {
         paquetesEnvio: ""
     }  
@@ -257,9 +256,7 @@ export const Comprobante = (entity,responseEnvio) =>{
         if(paquete.tipoPaquete == "Caja"){
             infoEnvio.paquetesEnvio += "Detalle: Peso: " + paquete.peso + "kg, " + "Largo " +  paquete.largo + "m, " + "Ancho " + paquete.ancho + "m, " + "Alto: " + paquete.alto + "m";
         }
-        console.log(paquete)
         cantPaquetes++;
-        console.log(costo)
         switch(paquete.idTipoPaquete){
             case 1:
                 costo += 600;
@@ -279,7 +276,6 @@ export const Comprobante = (entity,responseEnvio) =>{
                 costo += 300;
                 break;
             } 
-            console.log(costo);
     })
     let info = infoEnvio.paquetesEnvio;
 
