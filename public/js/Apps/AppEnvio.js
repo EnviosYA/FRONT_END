@@ -166,7 +166,7 @@ const clonar = () =>{
 }
 
 const añadirEventoEliminarPaquete = () =>{
-    let btnsEliminarPaquete = document.querySelectorAll(".eliminarPaquete")
+    let btnsEliminarPaquete = document.querySelectorAll(".eliminarPaquete");
     btnsEliminarPaquete.forEach(btn =>{
         btn.addEventListener("click", (e)=>{        
             let paquete = btn.parentNode;
