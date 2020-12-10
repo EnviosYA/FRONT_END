@@ -3,7 +3,7 @@ export let imprimirPDF = () =>{
     html2pdf()
     .set({
         margin: 1,
-        filename: 'EnvioYA',
+        filename: 'Comprobante de envio - EnvioYA',
         image: {
             type: 'jpeg',
             quality: 0.98

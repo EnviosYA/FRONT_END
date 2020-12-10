@@ -24,7 +24,6 @@ export const maquetarPerfil = async() =>{
                                     `;
     envioPorUser.forEach(async envio => {
         let data = await Service.default(envio.idEnvio);
-        console.log(data.length == 0)
         let div = document.createElement("div");
         let origen = document.createElement("div");
         let estado = document.createElement("div");
@@ -41,8 +40,7 @@ export const maquetarPerfil = async() =>{
         ${pascalCase(direccion.calle)}
         ${direccion.altura}
         </h3>
-        `
-        
+        `        
         destino.innerHTML = `
         <img src="../Images/ubicacion.png" alt=""/>
         <h6>
@@ -78,8 +76,7 @@ export const maquetarPerfil = async() =>{
                     <img src="../Images/camion2.png" alt=""/>
                     `
                     div.classList.add("yellow")            
-                }
-                
+                }                
             }
         
         div.append(origen,estado,destino);
