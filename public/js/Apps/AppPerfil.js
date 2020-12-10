@@ -24,7 +24,6 @@ export const maquetarPerfil = async() =>{
                                     `;
     envioPorUser.forEach(async envio => {
         let data = await Service.default(envio.idEnvio);
-        console.log(data.length)
         let div = document.createElement("div");
         let origen = document.createElement("div");
         let estado = document.createElement("div");
@@ -55,7 +54,6 @@ export const maquetarPerfil = async() =>{
         `
         div.classList.add("perfil-historial-envio")
         if(data == 0){          
-                console.log(data[0].estado)
                 estado.innerHTML = `
                 <h3>Te estamos esperando!</h3>
                 <img src="../Images/camion2.png" alt=""/>
