@@ -32,6 +32,7 @@ const lectorQRSeguimiento = () =>{
 function getSucursalPorEnvio(id) {        
     Service.default(id)
             .then(x => {
+                console.log(x)
                 if(x.length == 0){
                     document.getElementById('sinEnvio').style.display = "none";
                     document.getElementById("envioIncorrecto").style.display = "block";
