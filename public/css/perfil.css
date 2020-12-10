@@ -52,7 +52,7 @@
   justify-content: space-between;
   border-radius: 10px;
   box-shadow: 1px 4px 7px 0px rgba(0, 0, 0, 0.3);
-  margin: auto;
+  margin: 40px auto;
   align-items: center;
   cursor: pointer;
 }
@@ -97,7 +97,17 @@
   height: 125px;
 }
 .historial-estado img {
-  height: 70%;
-  width: 200px;
+  height: 80%;
+  width: 140px;
   margin-bottom: 10px;
+  margin-top: 10px;
+}
+.green:hover {
+  background-color: rgba(0, 161, 0, 0.295);
+}
+.yellow:hover {
+  background-color: rgba(231, 231, 0, 0.479);
+}
+.red:hover {
+  background-color: red;
 }
