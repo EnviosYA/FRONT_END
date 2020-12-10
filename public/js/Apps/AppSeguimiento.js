@@ -37,8 +37,10 @@ function getSucursalPorEnvio(id) {
                     document.getElementById('sinEnvio').style.display = "none";
                     document.getElementById("envioIncorrecto").style.display = "block";
                 } else {
-                    document.getElementById("ingreso-busqueda").style.display = "none";
-                    document.getElementById("titulo").style.display = "none";
+                    if(document.getElementById("ingreso-busqueda")){
+                        document.getElementById("ingreso-busqueda").style.display = "none";
+                        document.getElementById("titulo").style.display = "none";
+                    }                        
                     const seguimiento = document.createElement("div");
                     seguimiento.setAttribute("id", "tracking");
                     const ulProgressBar = document.createElement("ul");
