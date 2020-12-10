@@ -40,8 +40,7 @@ export const maquetarPerfil = async() =>{
         ${pascalCase(direccion.calle)}
         ${direccion.altura}
         </h3>
-        `
-        
+        `        
         destino.innerHTML = `
         <img src="../Images/ubicacion.png" alt=""/>
         <h6>
@@ -53,29 +52,32 @@ export const maquetarPerfil = async() =>{
         </h3>
         `
         div.classList.add("perfil-historial-envio")
-        if(data == 0){          
-                estado.innerHTML = `
-                <h3>Te estamos esperando!</h3>
-                <img src="../Images/camion2.png" alt=""/>
-                `
-                div.classList.add("red")        
-        }else{
-            if(data[data.length-1].estado == "Entregado"){
-                estado.innerHTML = `
-                <h3>${data[data.length-1].estado}</h3> 
-                <img src="../Images/camion1.png" alt=""/>
-                 `
-                div.classList.add("green")
-            }else if(data.length >=1){
-                estado.innerHTML = `
-                <h3>En curso</h3>
-                <h5>${data[data.length-1].nombre.split('EnvioYa')[1]}</h5> 
-                <img src="../Images/camion2.png" alt=""/>
-                `
-                div.classList.add("yellow")            
-            }
-        }
+        if(data.length == 0){
+            console.log("puto el que lee")
+            estado.innerHTML = `
+            <h3>Te estamos esperando!</h3> 
+            <img src="../Images/alert.png" alt=""/>
+            `
+            div.classList.add("red")
+         }else{
 
+             if(data[data.length-1].estado == "Entregado"){
+                 console.log("entregado")
+                 estado.innerHTML = `
+                 <h3>${data[data.length-1].estado}</h3> 
+                 <img src="../Images/check.png" alt=""/>
+                 `
+                 div.classList.add("green")
+                }else{
+                    console.log("en curso")
+                    estado.innerHTML = `
+                    <h3>En curso</h3>
+                    <h5>${data[data.length-1].nombre.split('EnvioYa')[1]}</h5> 
+                    <img src="../Images/camion2.png" alt=""/>
+                    `
+                    div.classList.add("yellow")            
+                }                
+            }
         
         div.append(origen,estado,destino);
         perfilHistorial.appendChild(div);
