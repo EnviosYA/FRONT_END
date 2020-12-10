@@ -20,6 +20,8 @@ export const login = () =>{
         }
     });
     //Si tocas el botón "No tengo cuenta"
+    console.log("Aca deberia cargar no cuenta");
+    console.log(noCuenta);
     noCuenta();
 }
 
@@ -50,6 +52,8 @@ const noCuenta = () =>{
         let url = location.hash.split("#")[1] + ".html";
         ajax("get", url, (response) => {
             main.innerHTML = response;
+            console.log("Aca deberiamos verlo");
+            console.log(location.hash);
         });
     });
 }
