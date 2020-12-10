@@ -103,7 +103,6 @@ a.addEventListener("click",(e)=>{
                 window.open("https://www.linkedin.com/in/daniel-villajuan-78363b1a2/");
                 break;
             default:
-                toPage("home.html")
                 break;
         }
         
