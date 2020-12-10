@@ -57,6 +57,7 @@ export const maquetarPerfil = async() =>{
             estado.innerHTML = `
             <h3>Te estamos esperando!</h3> 
             <img src="../Images/alert.png" alt=""/>
+            <h6>Envio N°: ${envio.idEnvio}</h6>
             `
             div.classList.add("red")
          }else{
@@ -66,6 +67,7 @@ export const maquetarPerfil = async() =>{
                  estado.innerHTML = `
                  <h3>${data[data.length-1].estado}</h3> 
                  <img src="../Images/check.png" alt=""/>
+                 <h6>Envio N°: ${envio.idEnvio}</h6>
                  `
                  div.classList.add("green")
                 }else{
@@ -74,6 +76,7 @@ export const maquetarPerfil = async() =>{
                     <h3>En curso</h3>
                     <h5>${data[data.length-1].nombre.split('EnvioYa')[1]}</h5> 
                     <img src="../Images/camion2.png" alt=""/>
+                    <h6>Envio N°: ${envio.idEnvio}</h6>
                     `
                     div.classList.add("yellow")            
                 }                
