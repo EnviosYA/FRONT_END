@@ -1,5 +1,5 @@
 .perfil {
-  color: #424242;
+  color: #424242da;
   font-family: "Ubuntu";
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -21,10 +21,19 @@
   grid-column: 2 / 4;
   grid-row: 1/3;
 }
+.perfil-historial h2 {
+  border-top: solid 1px rgba(128, 128, 128, 0.596);
+  border-bottom: solid 1px rgba(128, 128, 128, 0.596);
+  width: 17%;
+  padding-bottom: 6px;
+  padding-top: 6px;
+  margin-bottom: 50px;
+  color: #424242cc;
+}
 .perfil img {
   border-radius: 10px;
-  width: 100%;
-  margin-bottom: 20px;
+  width: 70%;
+  margin-bottom: 40px;
 }
 .perfil-description {
   margin-top: 40px;
@@ -33,5 +42,62 @@
 }
 .perfil-name {
   border-bottom: 1px solid gray;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
+}
+
+.perfil-historial-envio {
+  display: flex;
+  height: 200px;
+  width: 85%;
+  justify-content: space-between;
+  border-radius: 10px;
+  box-shadow: 1px 4px 7px 0px rgba(0, 0, 0, 0.3);
+  margin: auto;
+  align-items: center;
+  cursor: pointer;
+}
+.perfil-historial-envio:hover {
+  background-color: rgba(224, 224, 224, 0.5);
+  transition: 0.3s;
+  transform: scale(1.02);
+}
+
+.historial-destino,
+.historial-origen {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 200px;
+  height: 160px;
+  margin: 0px 130px;
+  line-height: 25px;
+}
+
+.historial-destino h6,
+.historial-origen h6 {
+  text-align: center;
+  width: 100%;
+  color: #9b9b9b;
+  font-size: 14px;
+}
+
+.historial-origen img,
+.historial-destino img {
+  height: 70%;
+  width: 80%;
+  margin-left: 40px;
+  margin-bottom: 10px;
+}
+
+.historial-estado {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 125px;
+  height: 125px;
+}
+.historial-estado img {
+  height: 70%;
+  width: 200px;
+  margin-bottom: 10px;
 }
