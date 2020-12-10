@@ -57,6 +57,10 @@ export const popupErrorRegistro = (responseUsuario) =>{
      });
 }
 
+export const popupHistorialEnvio = () =>{
+
+}
+
 export const popupEnvioCorrecto = (entity,responseEnvio) =>{
     Comprobante(entity,responseEnvio);
     codeQR(responseEnvio.id);
@@ -73,7 +77,6 @@ export const popupEnvioCorrecto = (entity,responseEnvio) =>{
 }
 
 export const popupErrorEnvio = (responseEnvio) =>{
-    console.log(responseEnvio);
     swal({
         title: "Ocurrió un error al crear su envío.",
         text: responseEnvio.mensaje,
