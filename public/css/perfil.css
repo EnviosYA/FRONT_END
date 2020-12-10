@@ -126,6 +126,14 @@
   height: 60%;
   margin-bottom: 20px;
 }
+.green .historial-estado img {
+  height: 65%;
+  width: 70%;
+}
+.red .historial-estado img {
+  height: 45%;
+  width: 55%;
+}
 .red img {
   height: 60%;
 }
@@ -133,5 +141,5 @@
   text-align: center;
 }
 .red:hover {
-  background-color: rgba(207, 0, 0, 0.493);
+  background-color: rgba(255, 166, 0, 0.445);
 }

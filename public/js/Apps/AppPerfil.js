@@ -56,7 +56,7 @@ export const maquetarPerfil = async() =>{
             console.log("puto el que lee")
             estado.innerHTML = `
             <h3>Te estamos esperando!</h3> 
-            <img src="../Images/alert.png" alt=""/>
+            <img src="../Images/alerta.png" alt=""/>
             <h6>Envio N°: ${envio.idEnvio}</h6>
             `
             div.classList.add("red")
