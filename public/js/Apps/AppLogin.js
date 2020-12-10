@@ -1,4 +1,4 @@
-import { ajax, toHome } from "../Utilities/UtAjax.js";
+import { ajax, toHome, toPage } from "../Utilities/UtAjax.js";
 import { Cuenta } from "../Constants/Constants.js";
 import { autenticarse } from "../Services/CuentaService.js";
 import { headerLogueado } from './AppHeader.js'
@@ -41,12 +41,9 @@ const maquetarErrorLogin = (opcion) =>{
 }
 
 const noCuenta = () =>{
-    console.log("mipijadormida")
     let noCuenta = document.getElementById("noCuenta");
-    console.log(noCuenta);
-    noCuenta.addEventListener("click", e=>{
-        e.preventDefault();        
-        location.hash = noCuenta.getAttribute("data-hash");
-        console.log(data-hash)
+    noCuenta.addEventListener("click", (e)=>{
+        e.preventDefault();
+        toPage("registrarse.html");
     });
 }
