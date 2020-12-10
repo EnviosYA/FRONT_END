@@ -102,14 +102,28 @@
   margin-bottom: 10px;
   margin-top: 10px;
 }
+.yellow h6,
+.red h6,
+.green h6 {
+  width: 100%;
+  text-align: center;
+  color: #9b9b9b;
+}
 .green:hover {
   background-color: rgba(0, 161, 0, 0.295);
 }
+.yellow img {
+  height: 60%;
+}
 .yellow:hover {
-  background-color: rgba(231, 231, 0, 0.479);
+  background-color: rgba(231, 231, 0, 0.39);
+}
+.green img {
+  height: 60%;
+  margin-bottom: 20px;
 }
 .red img {
-  height: 65%;
+  height: 60%;
 }
 .red h3 {
   text-align: center;
