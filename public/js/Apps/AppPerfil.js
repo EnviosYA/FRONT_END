@@ -18,6 +18,7 @@ export const maquetarPerfil = async() =>{
     let direccion = await getDireccionByID(user[0].idDireccion);
     let envioPorUser = await getEnvioByIdUser(result.IdUser);
     let perfilHistorial = document.querySelector(".perfil-historial")
+    perfilHistorial.innerHTML = "";
     perfilNombre.innerText = `${pascalCase(result.Name)} ${pascalCase(result.LastName)}`
     perfilDescription.innerText = `${result.Email}
                                     ${user[0].dni}
