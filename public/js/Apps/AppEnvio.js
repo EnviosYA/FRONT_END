@@ -308,7 +308,7 @@ export const Comprobante = (entity,responseEnvio) =>{
     Remitente.innerHTML+=
     `
     <h3>Datos del remitente</h3><br>
-    Numero de envio ${responseEnvio.id}<br>
+    Numero de envio: ${responseEnvio.id}<br>
     Nombre y apellido: ${pascalCase(tokenObject.Name)} ${pascalCase(tokenObject.LastName)}<br>
     <h3>Datos del destinatario</h3><br>
     Destino: ${entity.direccionDestino.calle} ${entity.direccionDestino.altura} ${entity.direccionDestino.localidad}<br>
@@ -329,5 +329,7 @@ export const Comprobante = (entity,responseEnvio) =>{
     main.appendChild(paginaPDF);
 
     main.appendChild(contenedorBoton);
+
+    
 }
 

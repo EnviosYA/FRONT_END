@@ -4,6 +4,10 @@ import {getUsuario} from '../Services/UsuarioService.js'
 import {getDireccionByID} from '../Services/SucursalService.js'
 import { getEnvioByIdUser } from '../Services/EnvioService.js'
 import * as Service from "../Services/SeguimientoService.js";
+import {popupHistorialEnvio} from "../Apps/AppPopups/AppPopupsMaps.js"
+import {toPage} from "../Utilities/UtAjax.js"
+import {imprimirPDF} from "../Apps/imprimirPDF.js"
+import {codeQR} from '../Utilities/UtQR.js'
 
 export const maquetarPerfil = async() =>{
     let token = localStorage.getItem("token");
@@ -53,7 +57,6 @@ export const maquetarPerfil = async() =>{
         `
         div.classList.add("perfil-historial-envio")
         if(data.length == 0){
-            console.log("puto el que lee")
             estado.innerHTML = `
             <h3>Te estamos esperando!</h3> 
             <img src="../Images/alerta.png" alt=""/>
@@ -62,8 +65,7 @@ export const maquetarPerfil = async() =>{
             div.classList.add("red")
          }else{
 
-             if(data[data.length-1].estado == "Entregado"){
-                 console.log("entregado")
+             if(data[data.length-1].estado == "Entregado"){                
                  estado.innerHTML = `
                  <h3>${data[data.length-1].estado}</h3> 
                  <img src="../Images/check.png" alt=""/>
@@ -71,7 +73,6 @@ export const maquetarPerfil = async() =>{
                  `
                  div.classList.add("green")
                 }else{
-                    console.log("en curso")
                     estado.innerHTML = `
                     <h3>En curso</h3>
                     <h5>${data[data.length-1].nombre.split('EnvioYa')[1]}</h5> 
@@ -83,6 +84,20 @@ export const maquetarPerfil = async() =>{
             }
         
         div.append(origen,estado,destino);
+        div.addEventListener("click",()=>{
+            popupHistorialEnvio(envio);
+            codeQR(envio.idEnvio);
+            const botonImprimir = document.getElementById('button1');
+                botonImprimir.addEventListener('click', function(){
+                imprimirPDF();
+            });
+
+            const botonVolver = document.getElementById('button2');
+                botonVolver.addEventListener('click', function(){
+                location.hash = "";
+                toPage('perfil.html');
+            });
+        })
         perfilHistorial.appendChild(div);
     })    
 }
