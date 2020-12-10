@@ -1,4 +1,4 @@
-import { ajax, toHome } from "../Utilities/UtAjax.js";
+import { ajax, toHome, toPage } from "../Utilities/UtAjax.js";
 import { Cuenta } from "../Constants/Constants.js";
 import { autenticarse } from "../Services/CuentaService.js";
 import { headerLogueado } from './AppHeader.js'
@@ -18,7 +18,7 @@ export const login = () =>{
             headerLogueado(localStorage.getItem("token"));
             toHome()
         }
-    });
+    })
     //Si tocas el botón "No tengo cuenta"
     noCuenta();
 }
@@ -37,19 +37,13 @@ const maquetarErrorLogin = (opcion) =>{
     }
     else{
         error.style.display = "none";
-    }
-    
+    }    
 }
 
 const noCuenta = () =>{
-    let main = document.querySelector("main");
     let noCuenta = document.getElementById("noCuenta");
-    noCuenta.addEventListener("click", e=>{
+    noCuenta.addEventListener("click", (e)=>{
         e.preventDefault();
-        location.hash = e.target.dataset.hash;
-        let url = location.hash.split("#")[1] + ".html";
-        ajax("get", url, (response) => {
-            main.innerHTML = response;
-        });
+        toPage("registrarse.html");
     });
 }

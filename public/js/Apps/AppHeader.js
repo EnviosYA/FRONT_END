@@ -18,6 +18,7 @@ export const headerLogueado = (token) =>{
             let linkPerfil = document.createElement("a");
             linkPerfil.innerHTML = 'Mi cuenta';
             linkPerfil.setAttribute("class", "links");
+            linkPerfil.setAttribute("id", "mi-cuenta");
             linkPerfil.setAttribute("data-hash", "Perfil");
             linkPerfil.href = "perfil.html";
 
@@ -37,6 +38,7 @@ export const headerLogueado = (token) =>{
             let linkPerfil = document.createElement("a");
             linkPerfil.innerHTML = 'Mantenimiento';
             linkPerfil.setAttribute("class", "links");
+            linkPerfil.setAttribute("id", "administrador");
             linkPerfil.setAttribute("data-hash", "Admin");
             linkPerfil.href = "admin.html";
 
@@ -69,7 +71,7 @@ export const headerLogueado = (token) =>{
                 ul.style.display = 'block';
             }
         }
-    });   
+    });
 }
 
 const botonSalir = () =>{
@@ -78,6 +80,7 @@ const botonSalir = () =>{
         let li = document.createElement("li");
         let ancla = document.createElement("a");
         ancla.setAttribute("class", "links");
+        ancla.setAttribute("id", "cerrar-sesion");
         ancla.classList.add("Cerrar-Sesion");
         ancla.innerText="Cerrar sesión";
         ancla.style.cursor = "pointer";

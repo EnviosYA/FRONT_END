@@ -2,7 +2,7 @@
 .fondo-registrarse{    
     width: 100%;
     height: 100%;
-    background-image: url("https://cdn.discordapp.com/attachments/750135258149683263/786056632256823326/sindrome-de-vision-de-ordenador.png");
+    background-image: url("../Images/registrarse-fondo.png");
     background-repeat: no-repeat;
     background-size: 50% 100%;
     background-position: right;
@@ -11,7 +11,31 @@
 #form-Registrarse{
     position: absolute;
     margin: 0;
-    margin-left: 15%;
-    margin-top: 4%;
+    margin-left: 7%;
+    margin-top: 6%;
 }
 
+#contendorDatos{
+    height: 285px;
+    display: flex;
+}
+
+#contendorDatos input{
+    width: 270px;
+}
+
+#form-Registrarse{
+    width: 675px;
+}
+
+#datos1, #datos2{
+    margin: 20px 20px 0 20px;
+}
+
+#contendorDatos #registrarse{
+    margin: 0;
+}
+
+#registrarse{
+    width: 300px;
+}
